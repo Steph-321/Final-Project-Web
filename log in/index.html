@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Yam Login & Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class ="container" id="loginPage">
+
+        <h2>Welcome Back To Purple Yam</h2>
+        <p class="sub">Sign in to continue ordering your favorite treats!</p>
+
+        <div class ="input-box">
+            <label>Email or Username</label>
+            <input type = "text" placeholder="Enter email or user name">
+        </div>
+
+        <div class = "input-box">
+            <label>Password</label>
+            <input type = "password" placeholder="Enter password">
+
+        </div>
+
+        <button class="btn" onclick="login()">Login</button>
+
+        <div class="social-login">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg">
+    </div>
+
+    <p class="switch">Don't have an account?
+        <a onclick="showRegister()">Create Account</a>
+    </p>
+    <p class="forgot"><a href="#">Forgot Password?</a></p>
+</div>
+
+<div class = "container" id="RegisterPage" style="display:none">
+
+    <h2>Create Your Purple Yam Account</h2>
+
+    <div class ="step-indicator">
+        <div class="step active" id="s1"></div>
+        <div class="step" id="s2"></div>
+        <div class="step" id="s3"></div>
+    </div>
+
+     <div class="form-step" id="step1">
+
+        <h3 class="section-title">Personal Information</h3>
+
+        <div class="input-box"><label>First Name</label><input type="text"></div>
+        <div class="input-box"><label>Middle Name (Optional)</label><input type="text"></div>
+        <div class="input-box"><label>Last Name</label><input type="text"></div>
+        <div class="input-box"><label>Suffix (Optional)</label><input type="text" placeholder="e.g. Jr., III"></div>
+        <div class="input-box"><label>Birthday</label><input type="date"></div>
+
+        <div class="input-box">
+            <label>Gender</label>
+            <select>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to say</option>
+            </select>
+        </div>
+        <div class="form-step" id="step2" style="display:none;">
+
+        <h3 class="section-title">Address</h3>
+
+        <div class="input-box"><label>Street</label><input type="text"></div>
+        <div class="input-box"><label>Barangay</label><input type="text"></div>
+        <div class="input-box"><label>City</label><input type="text"></div>
+        <div class="input-box"><label>Province</label><input type="text"></div>
+        <div class="input-box"><label>Region</label><input type="text"></div>
+        <div class="input-box"><label>Postal Code</label><input type="text"></div>
+
+        <button class="btn back" onclick="prevStep(2)">Back</button>
+        <button class="btn" onclick="nextStep(2)">Next</button>
+    </div>
+
+    <div class="form-step" id="step3" style="display:none;">
+
+        <h3 class="section-title">Account Details</h3>
+
+        <div class="input-box"><label>Email</label><input type="email"></div>
+        <div class="input-box"><label>Password</label><input type="password"></div>
+        <div class="input-box"><label>Confirm Password</label><input type="password"></div>
+
+        <button class="btn back" onclick="prevStep(3)">Back</button>
+        <button class="btn" onclick="register()">Register</button>
+
+         <p class="switch">
+            Already have an account?
+            <a onclick="showLogin()">Login</a>
+        </p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
