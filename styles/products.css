@@ -11,88 +11,7 @@ body {
   color: #2d033b;
 }
 
-/* Navigation */
-.nav {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 60px;
-  height: 70px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  width: 80px;
-  height: auto;
-}
-
-.logo a {
-  font-size: 25px;
-  font-weight: bold;
-  color: #6a1b9a;
-  text-decoration: none;
-}
-
-.navLinks {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.navLinks a {
-  text-decoration: none;
-  color: #6a1b9a;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.navLinks a:hover {
-  color: #4a148c;
-}
-
-/* Hero Slideshow */
-.hero-slideshow {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-  margin-top: 70px;
-}
-
-.slide {
-  display: none;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.hero-text {
-  position: absolute;
-  bottom: 30px;
-  left: 50px;
-  color: #fff;
-  background: rgba(106,27,154,0.7);
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.hero-text h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-/* Sections */
+/* Section wrapper */
 .spots-section {
   margin: 40px auto;
   padding: 40px;
@@ -104,16 +23,18 @@ body {
 .spots-section h2 {
   text-align: center;
   color: #6a1b9a;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-/* Product Cards */
+/* Grid layout for product cards */
 .spots-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 25px;
+  margin-bottom: 40px;
 }
 
+/* Product card */
 .spot-card {
   background: #fff;
   border-radius: 10px;
@@ -122,118 +43,89 @@ body {
 }
 
 .spot-card h3 {
-  color: #2d033b;
+  color: #6a1b9a;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .spot-card p {
   color: #5c5c5c;
   margin-bottom: 15px;
+  text-align: center;
 }
 
-/* Variants */
+/* Variant row: 3 columns, centered */
 .variant-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
   justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
 }
 
+/* Variant box: balanced size */
 .variant-box {
   background: #f3e5f5;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 12px;
   text-align: center;
-  min-width: 120px;
+  width: 180px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Image: wider and shorter */
+.variant-box img {
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Text styling */
 .variant-type {
   font-weight: bold;
   color: #6a1b9a;
+  margin-bottom: 4px;
 }
 
 .variant-price {
   color: #e76f51;
+  margin-bottom: 8px;
 }
 
-/* Buttons */
-.card-actions {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-}
-
-.order-btn {
+/* Buy button */
+.cart-btn {
   background: #6a1b9a;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 6px 12px;
   border-radius: 6px;
+  font-size: 0.85em;
   cursor: pointer;
-  font-weight: bold;
   transition: background 0.3s;
 }
 
-.order-btn:hover {
+.cart-btn:hover {
   background: #4a148c;
 }
 
-.cart-btn {
-  background: #fff;
-  color: #6a1b9a;
-  border: 2px solid #6a1b9a;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
-}
 
-.cart-btn:hover {
-  background: #6a1b9a;
-  color: #fff;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255,255,255,0.8);
-  margin-top: 40px;
-  color: #5c5c5c;
-}
-
-/* Slideshow fade animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from { opacity: .4 }
-  to { opacity: 1 }
-}
-
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .nav {
-    padding: 0 20px;
-  }
-
-  .logo a {
-    font-size: 20px;
-  }
-
-  .hero-text {
-    left: 20px;
-    right: 20px;
-    font-size: 0.9em;
+  .spots-section {
+    padding: 20px;
   }
 
   .variant-box {
-    min-width: 100px;
+    width: 120px;
     padding: 8px;
+  }
+
+  .variant-box img {
+    height: 70px;
   }
 }
