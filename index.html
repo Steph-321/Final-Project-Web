@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Purple Yam Bakeshop</title>
-  <link rel="icon" href="assets/logo.png" type="image/png">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="assets/logo.png" alt="Purple Yam Logo">
+      <img src="assets/logo.png" alt="Purple Yam Logo" />
       <h1>PURPLE YAM</h1>
     </div>
+
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
@@ -22,11 +23,13 @@
         <li><a href="#">Stores</a></li>
       </ul>
     </nav>
+
     <div class="auth-links">
       <a href="#">
-        <img src="assets/profile-picture.png" alt="user" class="user-icon">
-      <a href="#">Login</a>
-      <a href="#">Sign up</a>
+        <img src="assets/profile-picture.png" alt="user" class="user-icon" />
+      </a>
+      <a href="#" class="login-trigger">Login</a>
+      <a href="#" class="signup-trigger">Sign up</a>
     </div>
   </header>
 
@@ -111,5 +114,90 @@
     </div>
     <p class="footer-bottom">© 2024 Purple Yam Bakeshop. All rights reserved.</p>
   </footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
+    <div class="modal-content" role="document">
+      <button class="close" aria-label="Close login dialog">&times;</button>
+      
+      <form class="login-form" id="loginForm" action="php/login-process.php" method="post">
+        <h2 id="loginTitle">Welcome Back To Purple Yam</h2>
+        <p>Sign in to continue ordering your favorite treats!</p>
+
+        <div class="form-group">
+          <!-- <label for="login-email">Email Address</label> -->
+          <input type="email" id="index-login-email" name="email" placeholder="Email" required />
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="login-password">Password</label> -->
+          <input type="password" id="index-login-password" name="password" placeholder="Password" required />
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <div class="login-options">
+          <img src="assets/google-icon.png" alt="Google">
+          <img src="assets/facebook-icon.png" alt="Facebook">
+          <img src="assets/apple-icon.png" alt="Apple">
+        </div>
+
+        <p class="signup-links">
+          Don't have an account? <a href="#" class="signup-trigger">Sign in here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signupModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="signupTitle">
+    <div class="modal-content" role="document">
+      <button class="close-signup" aria-label="Close sign up dialog">&times;</button>
+      
+      <form action="php/signup-process.php" method="POST" class="signup-form" id="signupForm">
+        <h2 id="signupTitle">Create Your Purple Yam Account</h2>
+        <p>Join us and enjoy delicious cakes and pastries!</p>
+
+        <div class="form-group">
+          <!-- <label for="signup-firstname">Firstname</label> -->
+          <input type="text" id="index-signup-firstname" name="firstname" placeholder="Firstname" required autocomplete="firstname">
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="signup-lastname">Lastname</label> -->
+          <input type="text" id="index-signup-lastname" name="lastname" placeholder="Lastname" required autocomplete="lastname">
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="signup-contact">Contact</label> -->
+          <input type="text" id="index-signup-contact" name="contact" placeholder="Phone" required autocomplete="contact number">
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="signup-email">Email</label> -->
+          <input type="email" id="index-signup-email" name="email" placeholder="Email" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="signup-password">Password</label> -->
+          <input type="password" id="index-signup-password" name="password" placeholder="Password" required autocomplete="new-password">
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="signup-confirm-password">Confirm Password</label> -->
+          <input type="password" id="index-signup-confirm-password" name="confirm" placeholder="Confirm password" required autocomplete="new-password">
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+
+        <p class="signup-links">
+          Already have an account? <a href="#" class="login-trigger">Login here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- external JS -->
+  <script src="javascripts/index.js" defer></script>  
 </body>
 </html>
