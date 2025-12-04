@@ -54,38 +54,31 @@ body {
   text-align: center;
 }
 
-/* Variant row: 3 columns, centered */
 .variant-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /* center all boxes */
   gap: 25px;
   margin-top: 20px;
 }
 
-/* Variant box: balanced size */
 .variant-box {
-  background: #f3e5f5;
+  background: #fff;
   border-radius: 10px;
-  padding: 12px;
+  padding: 15px;
   text-align: center;
-  width: 180px;
+  width: 220px; /* wider box */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Image: wider and shorter */
 .variant-box img {
-  width: 160px;
-  height: 100px;
-  object-fit: cover;
+  width: 100%;
+  height: 160px; /* bigger but not too tall */
+  object-fit: cover; /* crop nicely */
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-/* Text styling */
 .variant-type {
   font-weight: bold;
   color: #6a1b9a;
@@ -97,14 +90,13 @@ body {
   margin-bottom: 8px;
 }
 
-/* Buy button */
 .cart-btn {
   background: #6a1b9a;
   color: #fff;
   border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.85em;
+  padding: 8px 14px;
+  border-radius: 50%; /* circular button for plus sign */
+  font-size: 1.1em;
   cursor: pointer;
   transition: background 0.3s;
 }
