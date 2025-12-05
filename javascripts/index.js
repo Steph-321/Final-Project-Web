@@ -1,3 +1,16 @@
+// select the nav and log it
+const mainNav = document.querySelector('.main-nav');
+console.log(mainNav);
+
+// select all links inside it
+const navLinks = document.querySelectorAll('.main-nav a');
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    // handle navigation
+  });
+});
+
 // Grab modal elements
 const loginModal = document.getElementById('loginModal');
 const signupModal = document.getElementById('signupModal');
@@ -105,3 +118,11 @@ loginForm && loginForm.addEventListener('submit', e => {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  closeModal(loginModal);
+  closeModal(signupModal);
+});
+
+
+

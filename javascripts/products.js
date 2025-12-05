@@ -1,15 +1,16 @@
-// products.js - slideshow logic
+function adjustQuantity(change) {
+  const qtyInput = document.getElementById('quantity');
+  let value = parseInt(qtyInput.value);
+  value = Math.max(1, value + change);
+  qtyInput.value = value;
+  updatePrice();
+}
 
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let slides = document.getElementsByClassName("slide");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1 }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 4000); // Change image every 4 seconds
+function updatePrice() {
+  const typeSelect = document.getElementById('cake-type');
+  const selectedOption = typeSelect.options[typeSelect.selectedIndex];
+  const basePrice = parseInt(selectedOption.getAttribute('data-price'));
+  const quantity = parseInt(document.getElementById('quantity').value);
+  const total = basePrice * quantity;
+  document.getElementById('action-price').innerText = `₱${total}`;
 }
