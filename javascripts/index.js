@@ -1,3 +1,16 @@
+// select the nav and log it
+const mainNav = document.querySelector('.main-nav');
+console.log(mainNav);
+
+// select all links inside it
+const navLinks = document.querySelectorAll('.main-nav a');
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    // handle navigation
+  });
+});
+
 // Grab modal elements
 const loginModal = document.getElementById('loginModal');
 const signupModal = document.getElementById('signupModal');
@@ -105,3 +118,48 @@ loginForm && loginForm.addEventListener('submit', e => {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  closeModal(loginModal);
+  closeModal(signupModal);
+});
+
+
+document.getElementById("stores-link").addEventListener("click", function(e) {
+  e.preventDefault(); 
+  document.getElementById("storesModal").style.display = "flex";
+});
+
+// Close Stores modal
+function closeStores() {
+  document.getElementById("storesModal").style.display = "none";
+}
+
+function openMap(storeId) {
+    const mapImage = document.getElementById("mapImage");
+
+    if (storeId === "argao") {
+      mapImage.src = "../assets/argao.png";
+    } else if (storeId === "dalaguete") {
+      mapImage.src = "../assets/dalaguete.png";
+    } else if (storeId === "carcar") {
+      mapImage.src = "../assets/carcar.png";
+    } else if (storeId === "talisay") {
+      mapImage.src = "../assets/talisay.png";
+    } else if (storeId === "cebu") {
+      mapImage.src = "../assets/cebu.png";
+    } else if (storeId === "gallery") {
+      mapImage.src = "../assets/gallery.png";
+    } else if (storeId == "cordova") {
+      mapImage.src = "../assets/cordova.png"
+    } else if (storeId == "oslob") {
+      mapImage.src = "../assets/oslob.png"
+    }
+
+    document.getElementById("mapModal").style.display = "flex";
+  }
+
+  function closeMap() {
+    document.getElementById("mapModal").style.display = "none";
+  }
+

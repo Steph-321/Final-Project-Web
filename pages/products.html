@@ -80,6 +80,12 @@
           <p>Soft, moist, and unforgettable. Served with coffee or on its own.</p>
           <div class="variant-row">
             <div class="variant-box">
+              <img src="../assets/photos/cake3.jpg" alt="Large">
+              <span class="variant-type">Large</span>
+              <span class="variant-price">₱920</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
               <img src="../assets/photos/cakemedium.jpg" alt="Medium">
               <span class="variant-price">₱610-₱920</span>
               <button class="details-btn"
@@ -287,140 +293,88 @@
     </section>
   </main>
 
+  <!-- Step 1 Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('productModal')">&times;</span>
+      <img id="modal-img" src="" alt="Product" class="modal-img">
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+      <div class="modal-actions">
+        <button onclick="openActionModal('cart')" class="order-btn">ADD TO CART</button>
+        <button onclick="openActionModal('order')" class="order-btn">ORDER NOW</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Product Details Modal -->
- <!-- Product Details Modal -->
-<div id="productModal" class="modal">
-  <div class="modal-content featured-layout">
-    <span class="close-btn" onclick="closeModal('productModal')">&times;</span>
+  <!-- Step 2 Modal -->
+  <div id="actionModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('actionModal')">&times;</span>
+      <h3 id="action-title"></h3>
 
-    <div class="modal-body">
-      <!-- Left side: image -->
-      <img id="modal-img" src="" alt="Product" class="modal-img-side">
+      <!-- Bottom row: Type, Quantity, Price -->
+      <div class="bottom-row">
+        <select id="cake-type" onchange="updatePrice()">
+          <option value="Large" data-price="920">Large</option>
+          <option value="Medium" data-price="610">Medium</option>
+        </select>
 
-      <!-- Right side: details -->
-      <div class="modal-info">
-        <h3 id="modal-title">Product Title</h3>
-
-        <!-- Price -->
-        <p id="action-price" class="modal-price">₱0</p>
-
-        <!-- Description -->
-        <p id="modal-description" class="modal-description"></p>
-
-        <!-- Quantity -->
-        <div class="quantity-row">
-          <label for="quantity">Qty:</label>
+        <div class="quantity-box">
           <button onclick="adjustQuantity(-1)">−</button>
           <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
           <button onclick="adjustQuantity(1)">+</button>
         </div>
 
-        <!-- Dynamic type buttons -->
-        <div id="type-buttons" class="type-selector"></div>
-
-        <!-- Action buttons -->
-        <div class="action-buttons">
-          <button class="order-btn">ADD TO CART</button>
-          <button class="order-btn">ORDER NOW</button>
-        </div>
+        <p id="action-price" class="modal-price">₱920</p>
       </div>
+
+      <button class="order-btn" id="final-action-btn">ADD TO CART</button>
     </div>
   </div>
-</div>
 
 
 
-<script>
-let currentProduct = {};
-let selectedPrice = 0;
+  <script>
+  let currentProduct = {};
 
-function openModal(title, description, imgSrc, types = []) {
-  currentProduct = { title, description, imgSrc, types };
-  document.getElementById('modal-title').innerText = title;
-  document.getElementById('modal-description').innerText = description;
-  document.getElementById('modal-img').src = imgSrc;
-  document.getElementById('quantity').value = 1;
-
-  const container = document.getElementById('type-buttons');
-  container.innerHTML = '';
-
-  if (types.length > 0) {
-    types.forEach(type => {
-      const btn = document.createElement('button');
-      btn.className = 'type-btn';
-      btn.innerText = type.label;
-      btn.onclick = () => selectType(type);
-      container.appendChild(btn);
-    });
-    selectType(types[0]); // default to first type
-  } else {
-    selectedPrice = 0;
-    updatePrice();
+  function openModal(title, description, imgSrc) {
+    currentProduct = { title, description, imgSrc };
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-description').innerText = description;
+    document.getElementById('modal-img').src = imgSrc;
+    document.getElementById('productModal').style.display = 'block';
   }
 
-  document.getElementById('productModal').style.display = 'block';
-}
+  function openActionModal(actionType) {
+    document.getElementById('productModal').style.display = 'none';
+    document.getElementById('action-title').innerText = currentProduct.title;
+    document.getElementById('quantity').value = 1;
+    document.getElementById('final-action-btn').innerText = actionType === 'cart' ? 'ADD TO CART' : 'ORDER NOW';
+    document.getElementById('actionModal').style.display = 'block';
+  }
 
-function selectType(type) {
-  selectedPrice = type.price;
-  document.getElementById('modal-img').src = type.img;
-  document.getElementById('modal-description').innerText = type.description;
-  updatePrice();
-  highlightSelectedType(type.label);
-}
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
 
-function updatePrice() {
-  const qty = parseInt(document.getElementById('quantity').value) || 1;
-  const total = selectedPrice * qty;
-  document.getElementById('action-price').innerText = `₱${total}`;
-}
+  function adjustQuantity(change) {
+    const qtyInput = document.getElementById('quantity');
+    let value = parseInt(qtyInput.value);
+    value = Math.max(1, value + change);
+    qtyInput.value = value;
+  }
 
-function adjustQuantity(change) {
-  const qtyInput = document.getElementById('quantity');
-  let value = parseInt(qtyInput.value);
-  value = Math.max(1, value + change);
-  qtyInput.value = value;
-  updatePrice();
-}
+  window.onclick = function(event) {
+    ['productModal', 'actionModal'].forEach(id => {
+      const modal = document.getElementById(id);
+      if (event.target == modal) modal.style.display = "none";
+    });
+  }
+  </script>
 
-function highlightSelectedType(label) {
-  const buttons = document.querySelectorAll('.type-btn');
-  buttons.forEach(btn => {
-    btn.classList.toggle('active', btn.innerText === label);
-  });
-}
 
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-}
-</script>
-
-<!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="about">
-        <h3>Purple Yam</h3>
-        <p>Delicious cakes and pastries made with love and the finest ingredients.</p>
-      </div>
-      <div class="links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div class="contact">
-        <h4>Contact Info</h4>
-        <p>Email: info@purpleyam.com</p>
-        <p>Phone: (123) 456-7890</p>
-        <p>Address: 123 Bakery Street</p>
-      </div>
-    </div>
-    <p class="footer-bottom">© 2024 Purple Yam Bakeshop. All rights reserved.</p>
-  </footer>
+  
 
 </body>
 </html>

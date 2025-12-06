@@ -1,67 +1,15 @@
-let currentProduct = {};
-let selectedPrice = 0;
+// products.js - slideshow logic
 
-function openModal(title, description, imgSrc, types = [], changePhoto = true) {
-  currentProduct = { title, description, imgSrc, types, changePhoto };
-  document.getElementById('modal-title').innerText = title;
-  document.getElementById('modal-description').innerText = description;
-  document.getElementById('modal-img').src = imgSrc;
-  document.getElementById('quantity').value = 1;
+let slideIndex = 0;
+showSlides();
 
-  const container = document.getElementById('type-buttons');
-  container.innerHTML = '';
-
-  if (types.length > 0) {
-    types.forEach(type => {
-      const btn = document.createElement('button');
-      btn.className = 'type-btn';
-      btn.innerText = type.label;
-      btn.onclick = () => selectType(type);
-      container.appendChild(btn);
-    });
-    selectType(types[0]); // default to first type
-  } else {
-    selectedPrice = 0;
-    updatePrice();
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
-
-  document.getElementById('productModal').style.display = 'block';
-}
-
-function selectType(type) {
-  selectedPrice = type.price;
-
-  // Only change photo/description if allowed
-  if (currentProduct.changePhoto) {
-    document.getElementById('modal-img').src = type.img;
-    document.getElementById('modal-description').innerText = type.description;
-  }
-
-  updatePrice();
-  highlightSelectedType(type.label);
-}
-
-function updatePrice() {
-  const qty = parseInt(document.getElementById('quantity').value) || 1;
-  const total = selectedPrice * qty;
-  document.getElementById('action-price').innerText = `₱${total}`;
-}
-
-function adjustQuantity(change) {
-  const qtyInput = document.getElementById('quantity');
-  let value = parseInt(qtyInput.value);
-  value = Math.max(1, value + change);
-  qtyInput.value = value;
-  updatePrice();
-}
-
-function highlightSelectedType(label) {
-  const buttons = document.querySelectorAll('.type-btn');
-  buttons.forEach(btn => {
-    btn.classList.toggle('active', btn.innerText === label);
-  });
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+  slides[slideIndex - 1].style.display = "block";
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
 }

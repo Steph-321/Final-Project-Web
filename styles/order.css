@@ -100,7 +100,7 @@ header nav a:hover, .auth-links a:hover {
 }
 
 /* ===== Main Layout ===== */
-.main {
+.order-main {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

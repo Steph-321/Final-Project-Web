@@ -43,8 +43,8 @@ header .logo h1{
 }
 
 header .logo img{
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -68,14 +68,36 @@ header nav a:hover, .auth-links a:hover {
   opacity: 0.8;
 }
 
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .auth-links {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 .auth-links a {
   margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
 }
 
 .auth-links input[type="text"] {
@@ -84,11 +106,19 @@ header nav a:hover, .auth-links a:hover {
   border-radius: 10px;
 }
 
-.auth-links .search-icon, .user-icon {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  margin-right: 0.3rem;
+.auth-links img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.auth-links img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(106, 27, 154, 0.4);
 }
 /* Hero */
 .hero {
@@ -134,46 +164,119 @@ header nav a:hover, .auth-links a:hover {
   border: 2px solid #6a1b9a;
 }
 
+/* Products Section */
+.spots-section {
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  max-width: 1200px;
+}
 
+.spots-section h2 {
+  text-align: center;
+  color: #6a1b9a;
+  margin-bottom: 30px;
+}
 
-/* Featured Cakes */
-.featured {
-  padding: 2rem;
+/* Grid layout for product cards */
+.spots-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Product card */
+.spot-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.spot-card h3 {
+  color: #6a1b9a;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.products {
+.spot-card p {
+  color: #5c5c5c;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.variant-row {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  flex-wrap: wrap;
+  justify-content: center; /* center all boxes */
+  gap: 25px;
+  margin-top: 20px;
 }
 
-.card {
+.variant-box {
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  width: 250px;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  width: 220px; /* wider box */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.variant-box img {
+  width: 100%;
+  height: 120px; /* bigger but not too tall */
+  object-fit: cover; /* crop nicely */
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.card h3 {
-  margin-bottom: 0.5rem;
-}
-
-.card span {
-  display: block;
-  margin: 0.5rem 0;
+.variant-type {
   font-weight: bold;
+  color: #000;
+  margin-bottom: 5px;
 }
 
-.card button {
+.variant-price {
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.cart-btn {
   background: #6a1b9a;
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  padding: 8px 14px;
+  border-radius: 6px; /* circular button for plus sign */
+  font-size: 0.9em;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cart-btn:hover {
+  background: #4a148c;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .spots-section {
+    padding: 20px;
+  }
+
+  .variant-box {
+    width: 120px;
+    padding: 8px;
+  }
+
+  .variant-box img {
+    height: 70px;
+  }
 }
 
 /* Why Choose Us */
@@ -197,42 +300,92 @@ header nav a:hover, .auth-links a:hover {
 footer {
   background: #6a1b9a;
   color: #fff;
-  padding: 2rem;
+  padding: 2.5rem 1.5rem;
 }
 
 .footer-content {
-  list-style: none;
   display: flex;
+  gap: 2rem;
   justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.footer-content div {
+.footer-content > div {
+  flex: 1 1 220px;
+  min-width: 150px;
+  margin: 0.5rem 0.5rem;
+}
+
+.footer-content h3 {
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-content p {
+  color: rgba(255,255,255,0.95);
+  line-height: 1.5;
+}
+
+/* reset lists inside footer and remove bullets */
+.footer-content ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-content ul li {
+  margin: 0.35rem 0;
+}
+
+/* links */
+.footer-content a {
+  color: rgba(255,255,255,0.95);
   text-decoration: none;
-  margin: 1rem;
+  transition: color 0.15s ease;
+}
+
+.footer-content a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+}
+
+/* responsive: stack columns on small screens */
+@media (max-width: 640px) {
+  .footer-content > div {
+    flex-basis: 100%;
+  }
 }
 
 /* Modal Overlay */
 .modal {
   display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   position: fixed;
+  inset: 0;
   z-index: 1000;
-  inset: 0; /* shorthand for top/left/right/bottom */
-  width: 100%;
-  height: 100%;
   background-color: rgba(0,0,0,0.5);
-  animation: fadeIn 0.3s ease;
-  display: flex;
   align-items: center;
   justify-content: center;
-  /* backdrop-filter: blur(4px); adds subtle background blur */
 }
+
+.modal[aria-hidden="false"] {
+  display: flex;
+  opacity: 1;
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -241,14 +394,15 @@ footer {
 
 .modal-content {
   width: 100%;
-  max-width: 450px; /* smaller width */
-  max-height: 600px; /* shorter height */
+  max-width: 420px; /* slightly narrower for better proportions */
+  max-height: 85vh; /* responsive height */
   padding: 1.5rem;
   overflow-y: auto;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 8px 30px rgba(106, 27, 154, 0.15);
   scrollbar-width: none;
+  position: relative; /* IMPORTANT: anchor absolute children (close button) */
 }
 
 .modal-content::-webkit-scrollbar {
@@ -258,6 +412,17 @@ footer {
 .modal-content::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 3px;
+}
+
+.modal-content > img,
+.modal-logo {
+  display: block;
+  margin: 0 auto 1rem;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(106,27,154,0.12);
 }
 
 body.modal-open,
@@ -270,17 +435,21 @@ html.modal-open {
 /* Close Button */
 .close, .close-signup {
   position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 28px;
-  font-weight: bold;
+  right: 12px;
+  top: 12px;
+  font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
   color: #6a1b9a;
   background: transparent;
   border: none;
+  z-index: 40;
+  padding: 6px;
+  border-radius: 6px;
 }
 
 .close:hover, .close-signup:hover {
+  background: rgba(106,27,154,0.06);
   color: #4a148c;
 }
 
@@ -419,3 +588,31 @@ html.modal-open {
   }
 }
 
+.map-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.map-content {
+  background: #fff;
+  width: 700px;   /* fixed size */
+  max-height: 80%;
+  overflow-y: auto; /* scroll if list is long */
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #800080;
+}

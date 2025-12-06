@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Purple Yam Bakeshop</title>
-  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="icon" href="../Final-Project-Web/assets/" type="image/png" />
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
@@ -15,20 +15,19 @@
       <h1>PURPLE YAM</h1>
     </div>
 
-    <nav>
+    <nav class="main-nav">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
+        <li><a href="#spots-section">Menu</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Stores</a></li>
+        <li><a href="pages/order.html">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
       <a href="#">
-        <img src="assets/profile-picture.png" alt="user" class="user-icon" />
+        <img src="assets/profile-picture.png" alt="user" class="login-trigger" />
       </a>
-      <a href="#" class="login-trigger">Login</a>
       <a href="#" class="signup-trigger">Sign up</a>
     </div>
   </header>
@@ -43,32 +42,213 @@
     </div>
   </section>
 
-  <!-- Featured Cakes -->
-  <section class="featured">
-    <h2>Featured Cakes</h2>
-    <p>Our most popular and delicious offerings</p>
-    <div class="products">
-      <div class="card">
-        <h3>Ube Cake</h3>
-        <p>Classic purple yam cake with cream cheese frosting</p>
-        <span>₱850.00</span>
-        <button>Add to Cart</button>
+  <!-- Main Content -->
+  <main>
+    <section id="spots-section" class="spots-section">
+      <h2>Our Bestsellers</h2>
+
+      <!-- Category: UBE -->
+      <!-- <h3 class="category-heading">UBE</h3> -->
+
+      <div class="spots-grid">
+        <div class="spot-card">
+          <h3>PURPLE YAM CAKE</h3>
+          <p>Soft, moist, and unforgettable. Served with coffee or on its own.</p>
+          <div class="variant-row">
+            <div class="variant-box">
+              <img src="assets/photos/cake3.jpg" alt="Large">
+              <span class="variant-type">Large</span>
+              <span class="variant-price">₱920</span>
+              <button class="cart-btn" onclick="window.location.href='../Final-Project-Web/pages/order.html'">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cakemedium.jpg" alt="Medium">
+              <span class="variant-type">Medium</span>
+              <span class="variant-price">₱610</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cake.jpg" alt="Round">
+              <span class="variant-type">Round</span>
+              <span class="variant-price">₱490</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cake5.jpg" alt="Heart-shaped">
+              <span class="variant-type">Heart-shaped</span>
+              <span class="variant-price">₱490</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cakesalata.jpg" alt="Tincan Round">
+              <span class="variant-type">Tincan Round</span>
+              <span class="variant-price">₱340</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/canheart.jpg" alt="Tincan Heart">
+              <span class="variant-type">Tincan Heart</span>
+              <span class="variant-price">₱360</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/messycup.jpg" alt="Messy Cup">
+              <span class="variant-type">Messy Cup</span>
+              <span class="variant-price">₱70</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+          </div>
+          <!-- <button>Order Now</button> -->
+          <!-- <button class="cart-btn">Add to Cart</button> -->
+        </div>
+
+        <div class="spot-card">
+          <h3>UBE BRAZO DE MERCEDES</h3>
+          <p>Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.</p>
+          <div class="variant-row">
+            <div class="variant-box">
+              <img src="assets/photos/tallbrazo.jpg" alt="Tall">
+              <span class="variant-type">Tall</span>
+              <span class="variant-price">₱100</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cakesabaso1.jpg" alt="Small">
+              <span class="variant-type">Small</span>
+              <span class="variant-price">₱55</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+          </div>
+          <!-- <button>Order Now</button> -->
+          <!-- <button class="cart-btn">Add to Cart</button> -->
+        </div>
       </div>
-      <div class="card">
-        <h3>Chocolate Cake</h3>
-        <p>Rich chocolate cake with chocolate ganache</p>
-        <span>₱750.00</span>
-        <button>Add to Cart</button>
+
+      <!-- Category: CHOCO MOIST -->
+      <!-- <h3 class="category-heading">CHOCO MOIST</h3> -->
+      <div class="spots-grid">
+        <div class="spot-card">
+          <h3>CHOCO MOIST</h3>
+          <p>Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!</p>
+          <div class="variant-row">
+            <div class="variant-box">
+              <img src="assets/photos/cake4.jpg" alt="Large">
+              <span class="variant-type">Large</span>
+              <span class="variant-price">₱1, 150</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/mediumchoco.jpg" alt="Medium">
+              <span class="variant-type">Medium</span>
+              <span class="variant-price">₱730</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/roundchoco.jpg" alt="Round">
+              <span class="variant-type">Round</span>
+              <span class="variant-price">₱530</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cake2.jpg" alt="Heart-shaped">
+              <span class="variant-type">Heart-shaped</span>
+              <span class="variant-price">₱530</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/cakesalata5.jpg" alt="Tincan Round">
+              <span class="variant-type">Tincan Round</span>
+              <span class="variant-price">₱380</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/chocoheart.jpg" alt="Tincan Heart">
+              <span class="variant-type">Tincan Heart</span>
+              <span class="variant-price">₱410</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/messychoco.jpg" alt="Messy Cup">
+              <span class="variant-type">Messy Cup</span>
+              <span class="variant-price">₱85</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Strawberry Shortcake</h3>
-        <p>Light sponge cake with fresh strawberries and cream</p>
-        <span>₱680.00</span>
-        <button>Add to Cart</button>
+
+      <!-- Category: UBE CUSTARD -->
+      <!-- <h3 class="category-heading">UBE CUSTARD</h3> -->
+      <div class="spots-grid">
+        <div class="spot-card">
+          <h3>UBE CUSTARD CAKE</h3>
+          <p>Velvety ube sponge layered with golden custard. A Filipino classic reimagined.</p>
+          <div class="variant-row">
+            <div class="variant-box">
+              <img src="assets/photos/ubecustard.jpg" alt="Round">
+              <span class="variant-type">Round</span>
+              <span class="variant-price">₱490</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src=".assets/photos/ubecustardtriangle.jpg" alt="Slice">
+              <span class="variant-type">Slice</span>
+              <span class="variant-price">₱70</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <a href="#" class="btn">View All Products</a>
-  </section>
+
+      <!-- Category: UBE CREAMCHEESE BAR -->
+      <!-- <h3 class="category-heading">UBE CREAMCHEESE BAR</h3> -->
+      <div class="spots-grid">
+        <div class="spot-card">
+          <h3>UBE CREAMCHEESE BAR</h3>
+          <p>Ube bar topped with rich cream cheese swirl. Sweet, tangy, and satisfying.</p>
+          <div class="variant-row">
+            <div class="variant-box">
+              <img src="assets/photos/purplebrownie.jpg" alt="Box">
+              <span class="variant-type">Box of 16</span>
+              <span class="variant-price">₱545</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/creamcheese1.jpg" alt="Slice">
+              <span class="variant-type">Slice</span>
+              <span class="variant-price">₱23</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Category: UBE CALAMANSI BAR -->
+      <!-- <h3 class="category-heading">UBE CALAMANSI BAR</h3> -->
+      <div class="spots-grid">
+        <div class="spot-card">
+          <h3>UBE CALAMANSI BAR</h3>
+          <p>A zesty twist on ube — tangy calamansi meets creamy purple yam in a chewy bar.</p>
+          <div class="variant-row">
+            <div class="variant-box">
+              <img src="assets/photos/ubecalamansi.jpg" alt="Box">
+              <span class="variant-type">Box of 16</span>
+              <span class="variant-price">₱475</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+            <div class="variant-box">
+              <img src="assets/photos/ubecalamansi2.jpg" alt="Slice">
+              <span class="variant-type">Slice</span>
+              <span class="variant-price">₱20</span>
+              <button class="cart-btn">Buy</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- Why Choose Us -->
   <section class="why">
@@ -118,10 +298,10 @@
   <!-- Login Modal -->
   <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
     <div class="modal-content" role="document">
+      <img src="../Final-Project-Web/assets/logo.png" alt="Purple Yam Logo">
       <button class="close" aria-label="Close login dialog">&times;</button>
       
-      <form class="login-form" id="loginForm" action="php/login-process.php" method="post">
-        <h2 id="loginTitle">Welcome Back To Purple Yam</h2>
+      <form class="login-form" id="loginForm" >
         <p>Sign in to continue ordering your favorite treats!</p>
 
         <div class="form-group">
@@ -136,12 +316,6 @@
 
         <button type="submit" class="btn">Login</button>
 
-        <div class="login-options">
-          <img src="assets/google-icon.png" alt="Google">
-          <img src="assets/facebook-icon.png" alt="Facebook">
-          <img src="assets/apple-icon.png" alt="Apple">
-        </div>
-
         <p class="signup-links">
           Don't have an account? <a href="#" class="signup-trigger">Sign in here</a>
         </p>
@@ -152,10 +326,11 @@
   <!-- Sign Up Modal -->
   <div id="signupModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="signupTitle">
     <div class="modal-content" role="document">
+      <img src="../Final-Project-Web/assets/logo.png" alt="Purple Yam Logo">
       <button class="close-signup" aria-label="Close sign up dialog">&times;</button>
       
-      <form action="php/signup-process.php" method="POST" class="signup-form" id="signupForm">
-        <h2 id="signupTitle">Create Your Purple Yam Account</h2>
+      <form class="signup-form" id="signupForm">
+        <!-- <h2 id="signupTitle">Create Your Purple Yam Account</h2> -->
         <p>Join us and enjoy delicious cakes and pastries!</p>
 
         <div class="form-group">
