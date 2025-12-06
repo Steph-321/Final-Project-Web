@@ -1,51 +1,120 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Purple Yam</title>
+  <link rel="icon" href="../assets/logo.png" type="image/png" />
   <link rel="stylesheet" href="../styles/products.css" />
 </head>
 <body>
 
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="../assets/logo.png" alt="Purple Yam Logo" />
+      <h1>PURPLE YAM</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Stores</a></li>
+      </ul>
+    </nav>
+
+    <div class="auth-links">
+      <a href="#">
+        <img src="../assets/profile-picture.png" alt="user" class="user-icon" />
+      </a>
+      <a href="#" class="login-trigger">Login</a>
+      <a href="#" class="signup-trigger">Sign up</a>
+    </div>
+  </header>
+
 
   <!-- Main Content -->
   <main>
-    <section class="spots-section">
-      <h2>Our Bestsellers</h2>
 
-      <!-- Category: UBE -->
-      <!-- <h3 class="category-heading">UBE</h3> -->
+    <section class="spots-section">
+      <nav class="category-tabs">
+      <button onclick="showCategory('ube')">CLASSIC UBE CAKES</button>
+      <button onclick="showCategory('brazo')">BRAZO DE MERCEDES</button>
+      <button onclick="showCategory('choco')">CHOCO MOIST</button>
+      <button onclick="showCategory('custard')">UBE CUSTARD</button>
+      <button onclick="showCategory('creamcheese')">UBE CREAMCHEESE BARS</button>
+      <button onclick="showCategory('calamansi')">UBE CALAMANSI BARS</button>
+    </nav>
+      
+
+      <div id="ube" class="category-section">
+        <!-- PURPLE YAM CAKE and its variants -->
+      </div>
+
+      <div id="brazo" class="category-section" style="display:none;">
+        <!-- UBE BRAZO DE MERCEDES -->
+      </div>
+
+      <div id="choco" class="category-section" style="display:none;">
+        <!-- CHOCO MOIST -->
+      </div>
+
+      <div id="custard" class="category-section" style="display:none;">
+        <!-- UBE CUSTARD CAKE -->
+      </div>
+
+      <div id="creamcheese" class="category-section" style="display:none;">
+        <!-- UBE CREAMCHEESE BAR -->
+      </div>
+
+      <div id="calamansi" class="category-section" style="display:none;">
+        <!-- UBE CALAMANSI BAR -->
+      </div>
 
       <div class="spots-grid">
         <div class="spot-card">
-          <h3>PURPLE YAM CAKE</h3>
+          <h3>CLASSIC UBE CAKES</h3>
           <p>Soft, moist, and unforgettable. Served with coffee or on its own.</p>
           <div class="variant-row">
             <div class="variant-box">
-              <img src="../assets/photos/cake3.jpg" alt="Large">
-              <span class="variant-type">Large</span>
-              <span class="variant-price">₱920</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
               <img src="../assets/photos/cakemedium.jpg" alt="Medium">
-              <span class="variant-type">Medium</span>
-              <span class="variant-price">₱610</span>
-              <button class="cart-btn">Buy</button>
+              <span class="variant-price">₱610-₱920</span>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Purple Yam Cake',
+                  'Soft, moist, and unforgettable. Served with coffee or on its own.',
+                  '../assets/photos/cakemedium.jpg',
+                  [
+                    { label: 'Large', price: 920, img: '../assets/photos/cakemedium.jpg', description: 'Large ube cake, perfect for celebrations.' },
+                    { label: 'Medium', price: 610, img: '../assets/photos/cake3.jpg', description: 'Medium ube cake, ideal for smaller gatherings.' }
+                  ],
+                  false   /* <!-- 🚩 photo does NOT change --> */
+                )">
+                VIEW DETAILS
+              </button>
             </div>
+
             <div class="variant-box">
               <img src="../assets/photos/cake.jpg" alt="Round">
-              <span class="variant-type">Round</span>
               <span class="variant-price">₱490</span>
-              <button class="cart-btn">Buy</button>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Purple Yam Cake',
+                  'A round version of our classic ube cake, soft and moist with a rich yam flavor.',
+                  '../assets/photos/cake.jpg',
+                  [
+                    { label: 'Round', price: 490, img: '../assets/photos/cake.jpg', description: 'A round version of our classic ube cake, soft and moist with a rich yam flavor.' },
+                    { label: 'Heart', price: 490, img: '../assets/photos/cake5.jpg', description: 'A heart-shaped ube cake, perfect for sharing love and sweetness.' }
+                  ],
+                  true   /* <!-- 🚩 photo DOES change -->*/
+                )">
+                VIEW DETAILS
+              </button>
             </div>
-            <div class="variant-box">
-              <img src="../assets/photos/cake5.jpg" alt="Heart-shaped">
-              <span class="variant-type">Heart-shaped</span>
-              <span class="variant-price">₱490</span>
-              <button class="cart-btn">Buy</button>
-            </div>
+
             <div class="variant-box">
               <img src="../assets/photos/cakesalata.jpg" alt="Tincan Round">
               <span class="variant-type">Tincan Round</span>
@@ -218,7 +287,140 @@
     </section>
   </main>
 
-  
+
+  <!-- Product Details Modal -->
+ <!-- Product Details Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content featured-layout">
+    <span class="close-btn" onclick="closeModal('productModal')">&times;</span>
+
+    <div class="modal-body">
+      <!-- Left side: image -->
+      <img id="modal-img" src="" alt="Product" class="modal-img-side">
+
+      <!-- Right side: details -->
+      <div class="modal-info">
+        <h3 id="modal-title">Product Title</h3>
+
+        <!-- Price -->
+        <p id="action-price" class="modal-price">₱0</p>
+
+        <!-- Description -->
+        <p id="modal-description" class="modal-description"></p>
+
+        <!-- Quantity -->
+        <div class="quantity-row">
+          <label for="quantity">Qty:</label>
+          <button onclick="adjustQuantity(-1)">−</button>
+          <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+          <button onclick="adjustQuantity(1)">+</button>
+        </div>
+
+        <!-- Dynamic type buttons -->
+        <div id="type-buttons" class="type-selector"></div>
+
+        <!-- Action buttons -->
+        <div class="action-buttons">
+          <button class="order-btn">ADD TO CART</button>
+          <button class="order-btn">ORDER NOW</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+let currentProduct = {};
+let selectedPrice = 0;
+
+function openModal(title, description, imgSrc, types = []) {
+  currentProduct = { title, description, imgSrc, types };
+  document.getElementById('modal-title').innerText = title;
+  document.getElementById('modal-description').innerText = description;
+  document.getElementById('modal-img').src = imgSrc;
+  document.getElementById('quantity').value = 1;
+
+  const container = document.getElementById('type-buttons');
+  container.innerHTML = '';
+
+  if (types.length > 0) {
+    types.forEach(type => {
+      const btn = document.createElement('button');
+      btn.className = 'type-btn';
+      btn.innerText = type.label;
+      btn.onclick = () => selectType(type);
+      container.appendChild(btn);
+    });
+    selectType(types[0]); // default to first type
+  } else {
+    selectedPrice = 0;
+    updatePrice();
+  }
+
+  document.getElementById('productModal').style.display = 'block';
+}
+
+function selectType(type) {
+  selectedPrice = type.price;
+  document.getElementById('modal-img').src = type.img;
+  document.getElementById('modal-description').innerText = type.description;
+  updatePrice();
+  highlightSelectedType(type.label);
+}
+
+function updatePrice() {
+  const qty = parseInt(document.getElementById('quantity').value) || 1;
+  const total = selectedPrice * qty;
+  document.getElementById('action-price').innerText = `₱${total}`;
+}
+
+function adjustQuantity(change) {
+  const qtyInput = document.getElementById('quantity');
+  let value = parseInt(qtyInput.value);
+  value = Math.max(1, value + change);
+  qtyInput.value = value;
+  updatePrice();
+}
+
+function highlightSelectedType(label) {
+  const buttons = document.querySelectorAll('.type-btn');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.innerText === label);
+  });
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+
+<!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="about">
+        <h3>Purple Yam</h3>
+        <p>Delicious cakes and pastries made with love and the finest ingredients.</p>
+      </div>
+      <div class="links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h4>Contact Info</h4>
+        <p>Email: info@purpleyam.com</p>
+        <p>Phone: (123) 456-7890</p>
+        <p>Address: 123 Bakery Street</p>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2024 Purple Yam Bakeshop. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
