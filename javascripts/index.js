@@ -125,4 +125,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.getElementById("stores-link").addEventListener("click", function(e) {
+  e.preventDefault(); 
+  document.getElementById("storesModal").style.display = "flex";
+});
+
+// Close Stores modal
+function closeStores() {
+  document.getElementById("storesModal").style.display = "none";
+}
+
+function openMap(storeId) {
+    const mapImage = document.getElementById("mapImage");
+
+    if (storeId === "argao") {
+      mapImage.src = "../assets/argao.png";
+    } else if (storeId === "dalaguete") {
+      mapImage.src = "../assets/dalaguete.png";
+    } else if (storeId === "carcar") {
+      mapImage.src = "../assets/carcar.png";
+    } else if (storeId === "talisay") {
+      mapImage.src = "../assets/talisay.png";
+    } else if (storeId === "cebu") {
+      mapImage.src = "../assets/cebu.png";
+    } else if (storeId === "gallery") {
+      mapImage.src = "../assets/gallery.png";
+    } else if (storeId == "cordova") {
+      mapImage.src = "../assets/cordova.png"
+    } else if (storeId == "oslob") {
+      mapImage.src = "../assets/oslob.png"
+    }
+
+    document.getElementById("mapModal").style.display = "flex";
+  }
+
+  function closeMap() {
+    document.getElementById("mapModal").style.display = "none";
+  }
 
