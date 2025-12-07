@@ -17,22 +17,24 @@
       <h1>PURPLE YAM</h1>
     </div>
 
-    <nav class="main-nav">
+    <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#spots-section">Menu</a></li>
+        <li><a href="#">Products</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="pages/order.html">Stores</a></li>
+        <li><a href="#">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
       <a href="#">
-        <img src="../assets/profile-picture.png" alt="user" class="login-trigger" />
+        <img src="../assets/profile-picture.png" alt="user" class="user-icon" />
       </a>
+      <a href="#" class="login-trigger">Login</a>
       <a href="#" class="signup-trigger">Sign up</a>
     </div>
   </header>
+  
 
 
   <!-- Main Content -->
@@ -48,301 +50,289 @@
       <button onclick="showCategory('calamansi')">UBE CALAMANSI BARS</button>
     </nav>
       
-
+      <!-- Category: CLASSIC UBE CAKES -->
       <div id="ube" class="category-section">
-        <!-- PURPLE YAM CAKE and its variants -->
-      </div>
+        <div class="spots-grid">
+          <div class="spot-card">
+            <h3>CLASSIC UBE CAKES</h3>
+            <p>Soft, moist, and unforgettable. Served with coffee or on its own.</p>
+            <div class="variant-row">
+              <div class="variant-box">
+                <img src="../assets/photos/cakemedium.jpg" alt="Medium">
+                <span class="variant-price">₱610-₱920</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Purple Yam Cake',
+                    'Soft, moist, and unforgettable. Served with coffee or on its own.',
+                    '../assets/photos/cakemedium.jpg',
+                    [
+                      { label: 'Large', price: 920, img: '../assets/photos/cakemedium.jpg', description: 'Large ube cake, perfect for celebrations.' },
+                      { label: 'Medium', price: 610, img: '../assets/photos/cake3.jpg', description: 'Medium ube cake, ideal for smaller gatherings.' }
+                    ]
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
 
-      <div id="brazo" class="category-section" style="display:none;">
-        <!-- UBE BRAZO DE MERCEDES -->
-      </div>
+              <div class="variant-box">
+                <img src="../assets/photos/cake.jpg" alt="Round">
+                <span class="variant-price">₱490</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Purple Yam Cake',
+                    'A round version of our classic ube cake, soft and moist with a rich yam flavor.',
+                    '../assets/photos/cake.jpg',
+                    [
+                      {
+                        label: 'Round',
+                        price: 490,
+                        img: '../assets/photos/cake.jpg',
+                        description: 'A round version of our classic ube cake, soft and moist with a rich yam flavor.'
+                      },
+                      {
+                        label: 'Heart',
+                        price: 490,
+                        img: '../assets/photos/cake5.jpg',
+                        description: 'A heart-shaped ube cake, perfect for sharing love and sweetness.'
+                      }
+                    ]
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
+        
+              <div class="variant-box">
+                <img src="../assets/photos/cakesalata.jpg" alt="Tincan Round">
+                <span class="variant-price">₱340–₱360</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Purple Yam Cake (Tincan)',
+                    'Special ube cake in tin containers, available in round or heart shapes.',
+                    '../assets/photos/cakesalata.jpg',
+                    [
+                      { label: 'Tincan Round', price: 340, img: '../assets/photos/cakesalata.jpg', description: 'Round tin ube cake, compact and perfect for gifting.' },
+                      { label: 'Tincan Heart', price: 360, img: '../assets/photos/canheart.jpg', description: 'Heart-shaped tin ube cake, sweet and thoughtful presentation.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
 
-      <div id="choco" class="category-section" style="display:none;">
-        <!-- CHOCO MOIST -->
-      </div>
-
-      <div id="custard" class="category-section" style="display:none;">
-        <!-- UBE CUSTARD CAKE -->
-      </div>
-
-      <div id="creamcheese" class="category-section" style="display:none;">
-        <!-- UBE CREAMCHEESE BAR -->
-      </div>
-
-      <div id="calamansi" class="category-section" style="display:none;">
-        <!-- UBE CALAMANSI BAR -->
-      </div>
-
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>CLASSIC UBE CAKES</h3>
-          <p>Soft, moist, and unforgettable. Served with coffee or on its own.</p>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/cakemedium.jpg" alt="Medium">
-              <span class="variant-price">₱610-₱920</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Purple Yam Cake',
-                  'Soft, moist, and unforgettable. Served with coffee or on its own.',
-                  '../assets/photos/cakemedium.jpg',
-                  [
-                    { label: 'Large', price: 920, img: '../assets/photos/cakemedium.jpg', description: 'Large ube cake, perfect for celebrations.' },
-                    { label: 'Medium', price: 610, img: '../assets/photos/cake3.jpg', description: 'Medium ube cake, ideal for smaller gatherings.' }
-                  ]
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-
-            <div class="variant-box">
-              <img src="../assets/photos/cake.jpg" alt="Round">
-              <span class="variant-price">₱490</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Purple Yam Cake',
-                  'A round version of our classic ube cake, soft and moist with a rich yam flavor.',
-                  '../assets/photos/cake.jpg',
-                  [
-                    {
-                      label: 'Round',
-                      price: 490,
-                      img: '../assets/photos/cake.jpg',
-                      description: 'A round version of our classic ube cake, soft and moist with a rich yam flavor.'
-                    },
-                    {
-                      label: 'Heart',
-                      price: 490,
-                      img: '../assets/photos/cake5.jpg',
-                      description: 'A heart-shaped ube cake, perfect for sharing love and sweetness.'
-                    }
-                  ]
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-      
-            <div class="variant-box">
-              <img src="../assets/photos/cakesalata.jpg" alt="Tincan Round">
-              <span class="variant-price">₱340–₱360</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Purple Yam Cake (Tincan)',
-                  'Special ube cake in tin containers, available in round or heart shapes.',
-                  '../assets/photos/cakesalata.jpg',
-                  [
-                    { label: 'Tincan Round', price: 340, img: '../assets/photos/cakesalata.jpg', description: 'Round tin ube cake, compact and perfect for gifting.' },
-                    { label: 'Tincan Heart', price: 360, img: '../assets/photos/canheart.jpg', description: 'Heart-shaped tin ube cake, sweet and thoughtful presentation.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-
-            <div class="variant-box">
-              <img src="../assets/photos/messycup.jpg" alt="Messy Cup">
-              <span class="variant-price">₱70</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Messy Cup',
-                  'Single‑serve ube messy cup, soft and moist with rich yam flavor.',
-                  '../assets/photos/messycup.jpg',
-                  [
-                    { label: 'Messy Cup', price: 70, img: '../assets/photos/messycup.jpg', description: 'Single‑serve ube messy cup, perfect for a quick treat.' }
-                  ],
-                  false
-                )">
-                VIEW DETAILS
-              </button>
+              <div class="variant-box">
+                <img src="../assets/photos/messycup.jpg" alt="Messy Cup">
+                <span class="variant-price">₱70</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Messy Cup',
+                    'Single‑serve ube messy cup, soft and moist with rich yam flavor.',
+                    '../assets/photos/messycup.jpg',
+                    [
+                      { label: 'Messy Cup', price: 70, img: '../assets/photos/messycup.jpg', description: 'Single‑serve ube messy cup, perfect for a quick treat.' }
+                    ],
+                    false
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Category: UBE BRAZO DE MERCEDES -->
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>UBE BRAZO DE MERCEDES</h3>
-          <p>Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.</p>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/tallbrazo.jpg" alt="Tall">
-              <span class="variant-price">₱100</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Ube Brazo de Mercedes',
-                  'Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.',
-                  '../assets/photos/tallbrazo.jpg',
-                  [
-                    { label: 'Tall', price: 100, img: '../assets/photos/tallbrazo.jpg', description: 'Tall roll, perfect for sharing.' },
-                    { label: 'Small', price: 55, img: '../assets/photos/cakesabaso1.jpg', description: 'Small roll, ideal for individual servings.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
+      <div id="brazo" class="category-section" style="display:none;">
+        <div class="spots-grid">
+          <div class="spot-card">
+            <h3>UBE BRAZO DE MERCEDES</h3>
+            <p>Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.</p>
+            <div class="variant-row">
+              <div class="variant-box">
+                <img src="../assets/photos/tallbrazo.jpg" alt="Tall">
+                <span class="variant-price">₱100</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Ube Brazo de Mercedes',
+                    'Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.',
+                    '../assets/photos/tallbrazo.jpg',
+                    [
+                      { label: 'Tall', price: 100, img: '../assets/photos/tallbrazo.jpg', description: 'Tall roll, perfect for sharing.' },
+                      { label: 'Small', price: 55, img: '../assets/photos/cakesabaso1.jpg', description: 'Small roll, ideal for individual servings.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Category: CHOCO MOIST -->
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>CHOCO MOIST</h3>
-          <p>Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!</p>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/cake4.jpg" alt="Choco Moist">
-              <span class="variant-price">₱730–₱1,150</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Choco Moist Cake',
-                  'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
-                  '../assets/photos/cake4.jpg',
-                  [
-                    { label: 'Large', price: 1150, img: '../assets/photos/cake4.jpg', description: 'Large choco moist cake for big celebrations.' },
-                    { label: 'Medium', price: 730, img: '../assets/photos/mediumchoco.jpg', description: 'Medium choco moist cake for smaller gatherings.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
+      <div id="choco" class="category-section" style="display:none;">
+        <div class="spots-grid">
+          <div class="spot-card">
+            <h3>CHOCO MOIST</h3>
+            <p>Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!</p>
+            <div class="variant-row">
+              <div class="variant-box">
+                <img src="../assets/photos/cake4.jpg" alt="Choco Moist">
+                <span class="variant-price">₱730–₱1,150</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Choco Moist Cake',
+                    'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
+                    '../assets/photos/cake4.jpg',
+                    [
+                      { label: 'Large', price: 1150, img: '../assets/photos/cake4.jpg', description: 'Large choco moist cake for big celebrations.' },
+                      { label: 'Medium', price: 730, img: '../assets/photos/mediumchoco.jpg', description: 'Medium choco moist cake for smaller gatherings.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
 
-            <div class="variant-box">
-              <img src="../assets/photos/roundchoco.jpg" alt="Choco Moist">
-              <span class="variant-price">₱530</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Choco Moist Cake',
-                  'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
-                  '../assets/photos/roundchoco.jpg',
-                  [
-                    { label: 'Round', price: 530, img: '../assets/photos/roundchoco.jpg', description: 'Round choco moist cake, classic style.' },
-                    { label: 'Heart-shaped', price: 530, img: '../assets/photos/cake2.jpg', description: 'Heart-shaped choco moist cake, perfect for sharing love.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
+              <div class="variant-box">
+                <img src="../assets/photos/roundchoco.jpg" alt="Choco Moist">
+                <span class="variant-price">₱530</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Choco Moist Cake',
+                    'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
+                    '../assets/photos/roundchoco.jpg',
+                    [
+                      { label: 'Round', price: 530, img: '../assets/photos/roundchoco.jpg', description: 'Round choco moist cake, classic style.' },
+                      { label: 'Heart-shaped', price: 530, img: '../assets/photos/cake2.jpg', description: 'Heart-shaped choco moist cake, perfect for sharing love.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
 
-            <div class="variant-box">
-              <img src="../assets/photos/cakesalata5.jpg" alt="Choco Moist Tincan">
-              <span class="variant-price">₱380–₱410</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Choco Moist Cake (Tincan)',
-                  'Rich chocolate cake in compact tin containers, perfect for gifting or sharing.',
-                  '../assets/photos/cakesalata5.jpg',
-                  [
-                    { label: 'Tincan Round', price: 380, img: '../assets/photos/cakesalata5.jpg', description: 'Round tin choco moist cake, compact and classic.' },
-                    { label: 'Tincan Heart', price: 410, img: '../assets/photos/chocoheart.jpg', description: 'Heart-shaped tin choco moist cake, sweet and thoughtful presentation.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
+              <div class="variant-box">
+                <img src="../assets/photos/cakesalata5.jpg" alt="Choco Moist Tincan">
+                <span class="variant-price">₱380–₱410</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Choco Moist Cake (Tincan)',
+                    'Rich chocolate cake in compact tin containers, perfect for gifting or sharing.',
+                    '../assets/photos/cakesalata5.jpg',
+                    [
+                      { label: 'Tincan Round', price: 380, img: '../assets/photos/cakesalata5.jpg', description: 'Round tin choco moist cake, compact and classic.' },
+                      { label: 'Tincan Heart', price: 410, img: '../assets/photos/chocoheart.jpg', description: 'Heart-shaped tin choco moist cake, sweet and thoughtful presentation.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
 
-            <div class="variant-box">
-              <img src="../assets/photos/messychoco.jpg" alt="Messy Cup">
-              <span class="variant-price">₱85</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Choco Moist Messy Cup',
-                  'Single‑serve choco moist cup, rich and indulgent for a quick treat.',
-                  '../assets/photos/messychoco.jpg',
-                  [
-                    { label: 'Messy Cup', price: 85, img: '../assets/photos/messychoco.jpg', description: 'Single‑serve choco moist cup, perfect for chocolate lovers.' }
-                  ],
-                  false
-                )">
-                VIEW DETAILS
-              </button>
+              <div class="variant-box">
+                <img src="../assets/photos/messychoco.jpg" alt="Messy Cup">
+                <span class="variant-price">₱85</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Choco Moist Messy Cup',
+                    'Single‑serve choco moist cup, rich and indulgent for a quick treat.',
+                    '../assets/photos/messychoco.jpg',
+                    [
+                      { label: 'Messy Cup', price: 85, img: '../assets/photos/messychoco.jpg', description: 'Single‑serve choco moist cup, perfect for chocolate lovers.' }
+                    ],
+                    false
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Category: UBE CUSTARD CAKE -->
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>UBE CUSTARD CAKE</h3>
-          <p>Velvety ube sponge layered with golden custard. A Filipino classic reimagined.</p>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/ubecustard.jpg" alt="Round">
-              <span class="variant-price">₱490</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Ube Custard Cake',
-                  'Velvety ube sponge layered with golden custard. A Filipino classic reimagined.',
-                  '../assets/photos/ubecustard.jpg',
-                  [
-                    { label: 'Round', price: 490, img: '../assets/photos/ubecustard.jpg', description: 'Round ube custard cake.' },
-                    { label: 'Slice', price: 70, img: '../assets/photos/ubecustardtriangle.jpg', description: 'Slice of ube custard cake.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
+      <div id="custard" class="category-section" style="display:none;">
+        <div class="spots-grid">
+          <div class="spot-card">
+            <h3>UBE CUSTARD CAKE</h3>
+            <p>Velvety ube sponge layered with golden custard. A Filipino classic reimagined.</p>
+            <div class="variant-row">
+              <div class="variant-box">
+                <img src="../assets/photos/ubecustard.jpg" alt="Round">
+                <span class="variant-price">₱490</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Ube Custard Cake',
+                    'Velvety ube sponge layered with golden custard. A Filipino classic reimagined.',
+                    '../assets/photos/ubecustard.jpg',
+                    [
+                      { label: 'Round', price: 490, img: '../assets/photos/ubecustard.jpg', description: 'Round ube custard cake.' },
+                      { label: 'Slice', price: 70, img: '../assets/photos/ubecustardtriangle.jpg', description: 'Slice of ube custard cake.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Category: UBE CREAMCHEESE BAR -->
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>UBE CREAMCHEESE BAR</h3>
-          <p>Ube bar topped with rich cream cheese swirl. Sweet, tangy, and satisfying.</p>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/purplebrownie.jpg" alt="Ube Creamcheese Bars">
-              <span class="variant-price">₱23–₱545</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Ube Creamcheese Bars',
-                  'Delicious ube bars topped with creamcheese, available by slice or box of 16.',
-                  '../assets/photos/purplebrownie.jpg',
-                  [
-                    { label: 'Box of 16', price: 545, img: '../assets/photos/purplebrownie.jpg', description: 'Perfect for sharing — 16 pieces of ube creamcheese bars.' },
-                    { label: 'Slice', price: 23, img: '../assets/photos/creamcheese1.jpg', description: 'Single slice of ube creamcheese bar, ideal for a quick treat.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-          </div>      
+      <div id="creamcheese" class="category-section" style="display:none;">
+        <div class="spots-grid">
+          <div class="spot-card">
+            <h3>UBE CREAMCHEESE BAR</h3>
+            <p>Ube bar topped with rich cream cheese swirl. Sweet, tangy, and satisfying.</p>
+            <div class="variant-row">
+              <div class="variant-box">
+                <img src="../assets/photos/purplebrownie.jpg" alt="Ube Creamcheese Bars">
+                <span class="variant-price">₱23–₱545</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Ube Creamcheese Bars',
+                    'Delicious ube bars topped with creamcheese, available by slice or box of 16.',
+                    '../assets/photos/purplebrownie.jpg',
+                    [
+                      { label: 'Box of 16', price: 545, img: '../assets/photos/purplebrownie.jpg', description: 'Perfect for sharing — 16 pieces of ube creamcheese bars.' },
+                      { label: 'Slice', price: 23, img: '../assets/photos/creamcheese1.jpg', description: 'Single slice of ube creamcheese bar, ideal for a quick treat.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>      
+          </div>
         </div>
       </div>
 
       <!-- Category: UBE CALAMANSI BAR -->
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>UBE CALAMANSI BAR</h3>
-          <p>A zesty twist on ube — tangy calamansi meets creamy purple yam in a chewy bar.</p>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/ubecalamansi.jpg" alt="Ube Calamansi Bars">
-              <span class="variant-price">₱20–₱475</span>
-              <button class="details-btn"
-                onclick="openModal(
-                  'Ube Calamansi Bars',
-                  'Tangy calamansi blended with sweet ube in chewy bars, available by slice or box of 16.',
-                  '../assets/photos/ubecalamansi.jpg',
-                  [
-                    { label: 'Box of 16', price: 475, img: '../assets/photos/ubecalamansi.jpg', description: 'Perfect for sharing — 16 pieces of ube calamansi bars.' },
-                    { label: 'Slice', price: 20, img: '../assets/photos/ubecalamansi2.jpg', description: 'Single slice of ube calamansi bar, ideal for a quick treat.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
+      <div id="calamansi" class="category-section" style="display:none;">
+        <div class="spots-grid">
+          <div class="spot-card">
+            <h3>UBE CALAMANSI BAR</h3>
+            <p>A zesty twist on ube — tangy calamansi meets creamy purple yam in a chewy bar.</p>
+            <div class="variant-row">
+              <div class="variant-box">
+                <img src="../assets/photos/ubecalamansi.jpg" alt="Ube Calamansi Bars">
+                <span class="variant-price">₱20–₱475</span>
+                <button class="details-btn"
+                  onclick="openModal(
+                    'Ube Calamansi Bars',
+                    'Tangy calamansi blended with sweet ube in chewy bars, available by slice or box of 16.',
+                    '../assets/photos/ubecalamansi.jpg',
+                    [
+                      { label: 'Box of 16', price: 475, img: '../assets/photos/ubecalamansi.jpg', description: 'Perfect for sharing — 16 pieces of ube calamansi bars.' },
+                      { label: 'Slice', price: 20, img: '../assets/photos/ubecalamansi2.jpg', description: 'Single slice of ube calamansi bar, ideal for a quick treat.' }
+                    ],
+                    true
+                  )">
+                  VIEW DETAILS
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -455,6 +445,19 @@ function highlightSelectedType(label) {
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
 }
+
+function showCategory(categoryId) {
+  const sections = document.querySelectorAll('.category-section');
+  sections.forEach(section => {
+    section.style.display = section.id === categoryId ? 'block' : 'none';
+  });
+
+  const buttons = document.querySelectorAll('.category-tabs button');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(categoryId));
+  });
+}
+
 </script>
 
 <!-- Footer -->

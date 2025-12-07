@@ -60,3 +60,15 @@ function highlightSelectedType(label) {
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
 }
+
+function showCategory(categoryId) {
+  const sections = document.querySelectorAll('.category-section');
+  sections.forEach(section => {
+    section.style.display = section.id === categoryId ? 'block' : 'none';
+  });
+
+  const buttons = document.querySelectorAll('.category-tabs button');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(categoryId));
+  });
+}
