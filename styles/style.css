@@ -10,7 +10,7 @@
 
 /* Fonts & Colors */
 body {
-  font-family: 'Material Symbols Outlined', sans-serif;
+  font-family: 'Roboto', system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
   background: #fffafc;
   color: #333;
@@ -18,13 +18,20 @@ body {
 
 /* Header */
 header {
+  position: fixed;
+  top: 0;
+  left: 10PX;
+  right: 10PX;
+  height: 64px;          
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #6a1b9a;
   color: #fff;
-  padding: 1rem 2rem;
-  gap: 2rem;
+  padding: 0 1.25rem;   
+  gap: 1rem;
+  z-index: 1100;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
 }
 
 header .logo {
@@ -34,7 +41,6 @@ header .logo {
 }
 
 header .logo h1{
-  font-family: 'Quicksand', sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
@@ -43,8 +49,8 @@ header .logo h1{
 }
 
 header .logo img{
-  height: 35px;
-  width: 35px;
+  height: 32px;
+  width: 32px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -107,8 +113,8 @@ header nav a:hover, .auth-links a:hover {
 }
 
 .auth-links img {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
@@ -164,119 +170,8 @@ header nav a:hover, .auth-links a:hover {
   border: 2px solid #6a1b9a;
 }
 
-/* Products Section */
-.spots-section {
-  margin: 40px auto;
-  padding: 40px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  max-width: 1200px;
-}
-
-.spots-section h2 {
-  text-align: center;
-  color: #6a1b9a;
-  margin-bottom: 30px;
-}
-
-/* Grid layout for product cards */
-.spots-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 25px;
-  margin-bottom: 40px;
-}
-
-/* Product card */
-.spot-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  padding: 20px;
-}
-
-.spot-card h3 {
-  color: #6a1b9a;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.spot-card p {
-  color: #5c5c5c;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.variant-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* center all boxes */
-  gap: 25px;
-  margin-top: 20px;
-}
-
-.variant-box {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  width: 220px; /* wider box */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.variant-box img {
-  width: 100%;
-  height: 120px; /* bigger but not too tall */
-  object-fit: cover; /* crop nicely */
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.variant-type {
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 5px;
-}
-
-.variant-price {
-  color: #000;
-  margin-bottom: 10px;
-}
-
-.cart-btn {
-  background: #6a1b9a;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px; /* circular button for plus sign */
-  font-size: 0.9em;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.cart-btn:hover {
-  background: #4a148c;
-}
-
-
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .spots-section {
-    padding: 20px;
-  }
-
-  .variant-box {
-    width: 120px;
-    padding: 8px;
-  }
-
-  .variant-box img {
-    height: 70px;
-  }
+.btn-secondary:hover {
+  background: #f3e5f5;
 }
 
 /* Why Choose Us */
@@ -361,7 +256,7 @@ footer {
   font-size: 0.95rem;
 }
 
-/* responsive: stack columns on small screens */
+/* responsive*/
 @media (max-width: 640px) {
   .footer-content > div {
     flex-basis: 100%;
@@ -382,7 +277,7 @@ footer {
 }
 
 .modal[aria-hidden="false"] {
-  display: flex;
+  display: flex !important;
   opacity: 1;
 }
 
@@ -394,15 +289,16 @@ footer {
 
 .modal-content {
   width: 100%;
-  max-width: 420px; /* slightly narrower for better proportions */
-  max-height: 85vh; /* responsive height */
+  max-width: 420px; 
+  max-height: 85vh;
   padding: 1.5rem;
   overflow-y: auto;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 8px 30px rgba(106, 27, 154, 0.15);
   scrollbar-width: none;
-  position: relative; /* IMPORTANT: anchor absolute children (close button) */
+  position: relative;
+  margin: auto;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -438,7 +334,7 @@ html.modal-open {
   right: 12px;
   top: 12px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: normal;
   cursor: pointer;
   color: #6a1b9a;
   background: transparent;
@@ -584,10 +480,80 @@ html.modal-open {
   .login-form input,
   .signup-form input {
     padding: 0.65rem;
-    font-size: 16px; /* prevents zoom on iOS */
+    font-size: 16px
   }
 }
 
+#storesModal {
+  align-items: flex-start; 
+  padding-top: 60px;       
+}
+
+
+#storesModal .modal-content {
+  max-width: 50%;
+  height: auto;
+  overflow: auto;
+  display: flex;
+  padding: 30px;
+  align-items: flex-start;
+}
+
+/* Stores Section */
+#stores-container{
+  width: 100%;
+  max-width: 100%;
+}
+
+.store-list {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.store-list h2 {
+  text-align: center;
+  color: #6a1b9a;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.store-card {
+background-color: #f8f0ff;
+border-left: 5px solid #6a1b9a;
+padding: 15px;
+margin-bottom: 10px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+border-radius: 6px;
+transition: transform 0.2s ease, box-shadow 0.2s ease;  
+}
+
+.store-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.15);
+}
+
+.store-card h3 {
+  margin: 0 0 8px 0;
+  color: #6a1b9a;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+}
+
+.store-card p {
+  margin: 5px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.store-card p:hover {
+  color: #6a1b9a;
+  text-decoration: underline;
+}
+
+/* Map MOdal Overlay */
 .map-overlay {
   position: fixed;
   top: 0; left: 0;
@@ -599,20 +565,67 @@ html.modal-open {
   z-index: 1000;
 }
 
-.map-content {
-  background: #fff;
-  width: 700px;   /* fixed size */
-  max-height: 80%;
-  overflow-y: auto; /* scroll if list is long */
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
+.map-overlay[data-active="true"] {
+  display: none;
 }
 
+/* Map modal box */
+.map-content {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+/* Image inside map modal */
+.map-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Close Button for Map */
 .close-btn {
   position: absolute;
-  top: 10px; right: 15px;
+  top: 12px;
+  right: 15px;
   font-size: 24px;
   cursor: pointer;
-  color: #800080;
+  color: #6a1b9a;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(106, 27, 154, 0.1);
+  color: #4a148c;
+}
+
+/* Responsive for stores modal */
+@media (max-width: 768px) {
+  .store-list {
+    padding: 15px;
+  }
+
+  .store-card {
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  .map-content {
+    width: 95%;
+    max-height: 70vh;
+    padding: 15px;
+  }
 }

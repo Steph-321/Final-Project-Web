@@ -1,23 +1,16 @@
-// select the nav and log it
+// Select the nav and log it
 const mainNav = document.querySelector('.main-nav');
 console.log(mainNav);
-
-// select all links inside it
-const navLinks = document.querySelectorAll('.main-nav a');
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    // handle navigation
-  });
-});
 
 // Grab modal elements
 const loginModal = document.getElementById('loginModal');
 const signupModal = document.getElementById('signupModal');
+const storesModal = document.getElementById('storesModal'); // make sure HTML uses this ID
 
 // Grab triggers
 const loginTriggers = document.querySelectorAll('.login-trigger');
 const signupTriggers = document.querySelectorAll('.signup-trigger');
+const storesTrigger = document.querySelector('.stores-trigger'); // nav link/button
 
 // Grab forms
 const loginForm = document.getElementById('loginForm');
@@ -25,41 +18,94 @@ const signupForm = document.getElementById('signupForm');
 
 // Utility functions
 function openModal(modal) {
-  modal.style.display = 'block';
+  if (!modal) return;
+  modal.style.display = 'flex'; // flex for centering
   modal.setAttribute('aria-hidden', 'false');
 }
 
 function closeModal(modal) {
+  if (!modal) return;
   modal.style.display = 'none';
   modal.setAttribute('aria-hidden', 'true');
 }
 
-// Close buttons
-document.querySelectorAll('.close, .close-signup').forEach(btn => {
-  btn.addEventListener('click', () => {
-    closeModal(loginModal);
-    closeModal(signupModal);
+// Close buttons for all modals
+document.querySelectorAll('.close, .close-signup, .close-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const modal = e.target.closest('.modal');
+    if (modal) closeModal(modal);
   });
 });
 
-// Trigger events
+// Login trigger events
 loginTriggers.forEach(trigger => {
   trigger.addEventListener('click', e => {
     e.preventDefault();
     openModal(loginModal);
     closeModal(signupModal);
+    closeModal(storesModal);
   });
 });
 
+// Signup trigger events
 signupTriggers.forEach(trigger => {
   trigger.addEventListener('click', e => {
     e.preventDefault();
     openModal(signupModal);
     closeModal(loginModal);
+    closeModal(storesModal);
   });
 });
 
-// ✅ Handle Signup
+// Stores trigger event
+if (!storesTrigger) {
+  console.warn('No .stores-trigger found in DOM');
+} else {
+  storesTrigger.addEventListener('click', async e => {
+    e.preventDefault();
+
+    const pathsToTry = ['stores.html', 'pages/stores.html', './pages/stores.html'];
+    let html = null;
+
+    for (const p of pathsToTry) {
+      try {
+        const res = await fetch(p);
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+        html = await res.text();
+        console.log('Loaded stores from', p);
+        break;
+      } catch (err) {
+        console.debug('fetch failed for', p, err);
+      }
+    }
+
+    if (!html) {
+      console.error('Could not load stores.html from any path.');
+      return;
+    }
+
+    const storesContainer = document.getElementById('stores-container');
+    if (!storesContainer) {
+      console.error('#stores-container not found in DOM. Add the modal placeholder to index.html.');
+      return;
+    }
+
+    storesContainer.innerHTML = html;
+    openModal(storesModal);
+    closeModal(loginModal);
+    closeModal(signupModal);
+
+    // attach dynamic handlers inside loaded content
+    storesContainer.querySelectorAll('[data-open-map]').forEach(el => {
+      el.addEventListener('click', (ev) => {
+        const id = el.getAttribute('data-open-map');
+        openMap(id);
+      });
+    });
+  });
+}
+
+// Handle Signup
 signupForm && signupForm.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -91,7 +137,7 @@ signupForm && signupForm.addEventListener('submit', e => {
   });
 });
 
-// ✅ Handle Login
+// Handle Login
 loginForm && loginForm.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -107,7 +153,6 @@ loginForm && loginForm.addEventListener('submit', e => {
       alert('Login successful!');
       loginForm.reset();
       closeModal(loginModal);
-      // Redirect to account page
       window.location.href = 'php/account.php';
     } else if (data === 'invalid') {
       alert('Incorrect password.');
@@ -119,47 +164,35 @@ loginForm && loginForm.addEventListener('submit', e => {
   });
 });
 
+document.getElementById('mapModal').setAttribute('data-active', 'true');
+
+// Map functions
+function openMap(storeId) {
+  const mapImage = document.getElementById('mapImage');
+  const mapMap = {
+    argao: '../assets/argao.png',
+    dalaguete: '../assets/dalaguete.png',
+    carcar: '../assets/carcar.png',
+    talisay: '../assets/talisay.png',
+    cebu: '../assets/cebu.png',
+    gallery: '../assets/gallery.png',
+    cordova: '../assets/cordova.png',
+    oslob: '../assets/oslob.png'
+  };
+
+  if (mapMap[storeId]) {
+    mapImage.src = mapMap[storeId];
+    document.getElementById('mapModal').style.display = 'flex';
+  }
+}
+
+function closeMap() {
+  document.getElementById('mapModal').style.display = 'none';
+}
+
+// Initialize - close modals on load
 document.addEventListener('DOMContentLoaded', () => {
   closeModal(loginModal);
   closeModal(signupModal);
+  closeModal(storesModal);
 });
-
-
-document.getElementById("stores-link").addEventListener("click", function(e) {
-  e.preventDefault(); 
-  document.getElementById("storesModal").style.display = "flex";
-});
-
-// Close Stores modal
-function closeStores() {
-  document.getElementById("storesModal").style.display = "none";
-}
-
-function openMap(storeId) {
-    const mapImage = document.getElementById("mapImage");
-
-    if (storeId === "argao") {
-      mapImage.src = "../assets/argao.png";
-    } else if (storeId === "dalaguete") {
-      mapImage.src = "../assets/dalaguete.png";
-    } else if (storeId === "carcar") {
-      mapImage.src = "../assets/carcar.png";
-    } else if (storeId === "talisay") {
-      mapImage.src = "../assets/talisay.png";
-    } else if (storeId === "cebu") {
-      mapImage.src = "../assets/cebu.png";
-    } else if (storeId === "gallery") {
-      mapImage.src = "../assets/gallery.png";
-    } else if (storeId == "cordova") {
-      mapImage.src = "../assets/cordova.png"
-    } else if (storeId == "oslob") {
-      mapImage.src = "../assets/oslob.png"
-    }
-
-    document.getElementById("mapModal").style.display = "flex";
-  }
-
-  function closeMap() {
-    document.getElementById("mapModal").style.display = "none";
-  }
-
