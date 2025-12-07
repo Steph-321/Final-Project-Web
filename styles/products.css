@@ -254,13 +254,17 @@ header nav a:hover, .auth-links a:hover {
   max-width: 100%;
 }
 
-
-.modal-img {
+.modal-img-side {
   width: 170%;
   max-height: 300px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 20px;
+}
+
+.modal-info {
+  flex: 1;
+  max-width: 400px;
 }
 
 .close-btn {
@@ -327,11 +331,11 @@ header nav a:hover, .auth-links a:hover {
   border: 1px solid #ccc;
 }
 
-.modal-price {
-  font-size: 24px; /* or larger */
+.modal-content .modal-price {
+  font-size: 32px; /* or larger */
   font-weight: bold;
-  color: #6a1b9a;
-  margin-bottom: 8px;
+  color: #444;
+  margin-bottom: 12px;
 }
 
 
