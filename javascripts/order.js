@@ -130,9 +130,25 @@ function submitOrder() {
   updateOrderDisplay();
 }
 
-// Initialize on page load
-window.addEventListener("DOMContentLoaded", () => {
-  displayUserInfo();
-  loadProducts();
-  updateOrderDisplay();
-});
+window.onload = function () {
+  const orderList = document.getElementById('order-list');
+  const totalAmount = document.getElementById('total-amount');
+  const grandTotal = document.getElementById('grand-total');
+  const feeAmount = parseFloat(document.getElementById('fee-amount').value);
+
+  const selectedOrder = JSON.parse(sessionStorage.getItem('selectedOrder')) || [];
+
+  let total = 0;
+
+  selectedOrder.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <strong>${item.title}</strong> (${item.type}) x${item.qty} — ₱${item.price}
+    `;
+    orderList.appendChild(li);
+    total += item.price * item.qty;
+  });
+
+  totalAmount.value = total.toFixed(2);
+  grandTotal.value = (total + feeAmount).toFixed(2);
+};

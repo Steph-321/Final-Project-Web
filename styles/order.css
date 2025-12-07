@@ -125,7 +125,7 @@ header nav a:hover, .auth-links a:hover {
 
 .left h2 {
   margin-top: 0;
-  color: #d011c6;
+  color: #6a1b9a;
 }
 
 label {
@@ -159,7 +159,7 @@ input[type="text"] {
 
 .add-address {
   color: #fff;
-  background: #d011c6;
+  background: #6a1b9a;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -168,7 +168,7 @@ input[type="text"] {
 }
 
 .add-address:hover {
-  background: #a00e9a;
+  background: #6a1b9a;
 }
 
 /* Order List Box (Right) */
@@ -183,7 +183,7 @@ input[type="text"] {
 
 .right h2 {
   margin-top: 0;
-  color: #d011c6;
+  color: #6a1b9a;
 }
 
 .order-box {
@@ -237,7 +237,7 @@ input[type="text"] {
 
 .places {
     color: #fff;
-    background: #d011c6;
+    background: #6a1b9a;
     border: none;
     padding: 10px 10px;
     border-radius: 8px;
@@ -247,19 +247,74 @@ input[type="text"] {
 
 }
 
-
-
-/* ===== Footer ===== */
-.footer {
-  margin-top: 220px;
-  background: #fff;
-  border-top: 1px solid #ccc;
-  padding: 10px 20px;
-  text-align: center;
+/* Footer */
+footer {
+  background: #6a1b9a;
+  color: #fff;
+  padding: 2.5rem 1.5rem;
 }
 
-.footer nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #666;
+.footer-content {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-content > div {
+  flex: 1 1 220px;
+  min-width: 150px;
+  margin: 0.5rem 0.5rem;
+}
+
+.footer-content h3 {
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-content p {
+  color: rgba(255,255,255,0.95);
+  line-height: 1.5;
+}
+
+/* reset lists inside footer and remove bullets */
+.footer-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-content ul li {
+  margin: 0.35rem 0;
+}
+
+/* links */
+.footer-content a {
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-content a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 1.25rem;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+}
+
+/* responsive: stack columns on small screens */
+@media (max-width: 640px) {
+  .footer-content > div {
+    flex-basis: 100%;
+  }
 }
