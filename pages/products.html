@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Purple Yam</title>
-  <link rel="icon" href="../assets/logo.png" type="image/png" />
+  <link rel="icon" href="../Final-Project-Web/assets/logo.png" type="image/png" />
   <link rel="stylesheet" href="../styles/products.css" />
 </head>
 <body>
@@ -17,20 +17,19 @@
       <h1>PURPLE YAM</h1>
     </div>
 
-    <nav>
+    <nav class="main-nav">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
+        <li><a href="#spots-section">Menu</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Stores</a></li>
+        <li><a href="pages/order.html">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
       <a href="#">
-        <img src="../assets/profile-picture.png" alt="user" class="user-icon" />
+        <img src="../assets/profile-picture.png" alt="user" class="login-trigger" />
       </a>
-      <a href="#" class="login-trigger">Login</a>
       <a href="#" class="signup-trigger">Sign up</a>
     </div>
   </header>
@@ -80,12 +79,6 @@
           <p>Soft, moist, and unforgettable. Served with coffee or on its own.</p>
           <div class="variant-row">
             <div class="variant-box">
-              <img src="../assets/photos/cake3.jpg" alt="Large">
-              <span class="variant-type">Large</span>
-              <span class="variant-price">₱920</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
               <img src="../assets/photos/cakemedium.jpg" alt="Medium">
               <span class="variant-price">₱610-₱920</span>
               <button class="details-btn"
@@ -96,8 +89,7 @@
                   [
                     { label: 'Large', price: 920, img: '../assets/photos/cakemedium.jpg', description: 'Large ube cake, perfect for celebrations.' },
                     { label: 'Medium', price: 610, img: '../assets/photos/cake3.jpg', description: 'Medium ube cake, ideal for smaller gatherings.' }
-                  ],
-                  false   /* <!-- 🚩 photo does NOT change --> */
+                  ]
                 )">
                 VIEW DETAILS
               </button>
@@ -112,115 +104,170 @@
                   'A round version of our classic ube cake, soft and moist with a rich yam flavor.',
                   '../assets/photos/cake.jpg',
                   [
-                    { label: 'Round', price: 490, img: '../assets/photos/cake.jpg', description: 'A round version of our classic ube cake, soft and moist with a rich yam flavor.' },
-                    { label: 'Heart', price: 490, img: '../assets/photos/cake5.jpg', description: 'A heart-shaped ube cake, perfect for sharing love and sweetness.' }
+                    {
+                      label: 'Round',
+                      price: 490,
+                      img: '../assets/photos/cake.jpg',
+                      description: 'A round version of our classic ube cake, soft and moist with a rich yam flavor.'
+                    },
+                    {
+                      label: 'Heart',
+                      price: 490,
+                      img: '../assets/photos/cake5.jpg',
+                      description: 'A heart-shaped ube cake, perfect for sharing love and sweetness.'
+                    }
+                  ]
+                )">
+                VIEW DETAILS
+              </button>
+            </div>
+      
+            <div class="variant-box">
+              <img src="../assets/photos/cakesalata.jpg" alt="Tincan Round">
+              <span class="variant-price">₱340–₱360</span>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Purple Yam Cake (Tincan)',
+                  'Special ube cake in tin containers, available in round or heart shapes.',
+                  '../assets/photos/cakesalata.jpg',
+                  [
+                    { label: 'Tincan Round', price: 340, img: '../assets/photos/cakesalata.jpg', description: 'Round tin ube cake, compact and perfect for gifting.' },
+                    { label: 'Tincan Heart', price: 360, img: '../assets/photos/canheart.jpg', description: 'Heart-shaped tin ube cake, sweet and thoughtful presentation.' }
                   ],
-                  true   /* <!-- 🚩 photo DOES change -->*/
+                  true
                 )">
                 VIEW DETAILS
               </button>
             </div>
 
             <div class="variant-box">
-              <img src="../assets/photos/cakesalata.jpg" alt="Tincan Round">
-              <span class="variant-type">Tincan Round</span>
-              <span class="variant-price">₱340</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/canheart.jpg" alt="Tincan Heart">
-              <span class="variant-type">Tincan Heart</span>
-              <span class="variant-price">₱360</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
               <img src="../assets/photos/messycup.jpg" alt="Messy Cup">
-              <span class="variant-type">Messy Cup</span>
               <span class="variant-price">₱70</span>
-              <button class="cart-btn">Buy</button>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Messy Cup',
+                  'Single‑serve ube messy cup, soft and moist with rich yam flavor.',
+                  '../assets/photos/messycup.jpg',
+                  [
+                    { label: 'Messy Cup', price: 70, img: '../assets/photos/messycup.jpg', description: 'Single‑serve ube messy cup, perfect for a quick treat.' }
+                  ],
+                  false
+                )">
+                VIEW DETAILS
+              </button>
             </div>
           </div>
-          <!-- <button>Order Now</button> -->
-          <!-- <button class="cart-btn">Add to Cart</button> -->
         </div>
+      </div>
 
+      <!-- Category: UBE BRAZO DE MERCEDES -->
+      <div class="spots-grid">
         <div class="spot-card">
           <h3>UBE BRAZO DE MERCEDES</h3>
           <p>Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.</p>
           <div class="variant-row">
             <div class="variant-box">
               <img src="../assets/photos/tallbrazo.jpg" alt="Tall">
-              <span class="variant-type">Tall</span>
               <span class="variant-price">₱100</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/cakesabaso1.jpg" alt="Small">
-              <span class="variant-type">Small</span>
-              <span class="variant-price">₱55</span>
-              <button class="cart-btn">Buy</button>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Ube Brazo de Mercedes',
+                  'Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.',
+                  '../assets/photos/tallbrazo.jpg',
+                  [
+                    { label: 'Tall', price: 100, img: '../assets/photos/tallbrazo.jpg', description: 'Tall roll, perfect for sharing.' },
+                    { label: 'Small', price: 55, img: '../assets/photos/cakesabaso1.jpg', description: 'Small roll, ideal for individual servings.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
           </div>
-          <!-- <button>Order Now</button> -->
-          <!-- <button class="cart-btn">Add to Cart</button> -->
         </div>
       </div>
 
       <!-- Category: CHOCO MOIST -->
-      <!-- <h3 class="category-heading">CHOCO MOIST</h3> -->
       <div class="spots-grid">
         <div class="spot-card">
           <h3>CHOCO MOIST</h3>
           <p>Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!</p>
           <div class="variant-row">
             <div class="variant-box">
-              <img src="../assets/photos/cake4.jpg" alt="Large">
-              <span class="variant-type">Large</span>
-              <span class="variant-price">₱1, 150</span>
-              <button class="cart-btn">Buy</button>
+              <img src="../assets/photos/cake4.jpg" alt="Choco Moist">
+              <span class="variant-price">₱730–₱1,150</span>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Choco Moist Cake',
+                  'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
+                  '../assets/photos/cake4.jpg',
+                  [
+                    { label: 'Large', price: 1150, img: '../assets/photos/cake4.jpg', description: 'Large choco moist cake for big celebrations.' },
+                    { label: 'Medium', price: 730, img: '../assets/photos/mediumchoco.jpg', description: 'Medium choco moist cake for smaller gatherings.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
+
             <div class="variant-box">
-              <img src="../assets/photos/mediumchoco.jpg" alt="Medium">
-              <span class="variant-type">Medium</span>
-              <span class="variant-price">₱730</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/roundchoco.jpg" alt="Round">
-              <span class="variant-type">Round</span>
+              <img src="../assets/photos/roundchoco.jpg" alt="Choco Moist">
               <span class="variant-price">₱530</span>
-              <button class="cart-btn">Buy</button>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Choco Moist Cake',
+                  'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
+                  '../assets/photos/roundchoco.jpg',
+                  [
+                    { label: 'Round', price: 530, img: '../assets/photos/roundchoco.jpg', description: 'Round choco moist cake, classic style.' },
+                    { label: 'Heart-shaped', price: 530, img: '../assets/photos/cake2.jpg', description: 'Heart-shaped choco moist cake, perfect for sharing love.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
+
             <div class="variant-box">
-              <img src="../assets/photos/cake2.jpg" alt="Heart-shaped">
-              <span class="variant-type">Heart-shaped</span>
-              <span class="variant-price">₱530</span>
-              <button class="cart-btn">Buy</button>
+              <img src="../assets/photos/cakesalata5.jpg" alt="Choco Moist Tincan">
+              <span class="variant-price">₱380–₱410</span>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Choco Moist Cake (Tincan)',
+                  'Rich chocolate cake in compact tin containers, perfect for gifting or sharing.',
+                  '../assets/photos/cakesalata5.jpg',
+                  [
+                    { label: 'Tincan Round', price: 380, img: '../assets/photos/cakesalata5.jpg', description: 'Round tin choco moist cake, compact and classic.' },
+                    { label: 'Tincan Heart', price: 410, img: '../assets/photos/chocoheart.jpg', description: 'Heart-shaped tin choco moist cake, sweet and thoughtful presentation.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
-            <div class="variant-box">
-              <img src="../assets/photos/cakesalata5.jpg" alt="Tincan Round">
-              <span class="variant-type">Tincan Round</span>
-              <span class="variant-price">₱380</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/chocoheart.jpg" alt="Tincan Heart">
-              <span class="variant-type">Tincan Heart</span>
-              <span class="variant-price">₱410</span>
-              <button class="cart-btn">Buy</button>
-            </div>
+
             <div class="variant-box">
               <img src="../assets/photos/messychoco.jpg" alt="Messy Cup">
-              <span class="variant-type">Messy Cup</span>
               <span class="variant-price">₱85</span>
-              <button class="cart-btn">Buy</button>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Choco Moist Messy Cup',
+                  'Single‑serve choco moist cup, rich and indulgent for a quick treat.',
+                  '../assets/photos/messychoco.jpg',
+                  [
+                    { label: 'Messy Cup', price: 85, img: '../assets/photos/messychoco.jpg', description: 'Single‑serve choco moist cup, perfect for chocolate lovers.' }
+                  ],
+                  false
+                )">
+                VIEW DETAILS
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Category: UBE CUSTARD -->
-      <!-- <h3 class="category-heading">UBE CUSTARD</h3> -->
+      <!-- Category: UBE CUSTARD CAKE -->
       <div class="spots-grid">
         <div class="spot-card">
           <h3>UBE CUSTARD CAKE</h3>
@@ -228,153 +275,213 @@
           <div class="variant-row">
             <div class="variant-box">
               <img src="../assets/photos/ubecustard.jpg" alt="Round">
-              <span class="variant-type">Round</span>
               <span class="variant-price">₱490</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/ubecustardtriangle.jpg" alt="Slice">
-              <span class="variant-type">Slice</span>
-              <span class="variant-price">₱70</span>
-              <button class="cart-btn">Buy</button>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Ube Custard Cake',
+                  'Velvety ube sponge layered with golden custard. A Filipino classic reimagined.',
+                  '../assets/photos/ubecustard.jpg',
+                  [
+                    { label: 'Round', price: 490, img: '../assets/photos/ubecustard.jpg', description: 'Round ube custard cake.' },
+                    { label: 'Slice', price: 70, img: '../assets/photos/ubecustardtriangle.jpg', description: 'Slice of ube custard cake.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
           </div>
-         
         </div>
       </div>
 
       <!-- Category: UBE CREAMCHEESE BAR -->
-      <!-- <h3 class="category-heading">UBE CREAMCHEESE BAR</h3> -->
       <div class="spots-grid">
         <div class="spot-card">
           <h3>UBE CREAMCHEESE BAR</h3>
           <p>Ube bar topped with rich cream cheese swirl. Sweet, tangy, and satisfying.</p>
           <div class="variant-row">
             <div class="variant-box">
-              <img src="../assets/photos/purplebrownie.jpg" alt="Box">
-              <span class="variant-type">Box of 16</span>
-              <span class="variant-price">₱545</span>
-              <button class="cart-btn">Buy</button>
+              <img src="../assets/photos/purplebrownie.jpg" alt="Ube Creamcheese Bars">
+              <span class="variant-price">₱23–₱545</span>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Ube Creamcheese Bars',
+                  'Delicious ube bars topped with creamcheese, available by slice or box of 16.',
+                  '../assets/photos/purplebrownie.jpg',
+                  [
+                    { label: 'Box of 16', price: 545, img: '../assets/photos/purplebrownie.jpg', description: 'Perfect for sharing — 16 pieces of ube creamcheese bars.' },
+                    { label: 'Slice', price: 23, img: '../assets/photos/creamcheese1.jpg', description: 'Single slice of ube creamcheese bar, ideal for a quick treat.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
-            <div class="variant-box">
-              <img src="../assets/photos/creamcheese1.jpg" alt="Slice">
-              <span class="variant-type">Slice</span>
-              <span class="variant-price">₱23</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-          </div>
-          
+          </div>      
         </div>
       </div>
 
       <!-- Category: UBE CALAMANSI BAR -->
-      <!-- <h3 class="category-heading">UBE CALAMANSI BAR</h3> -->
       <div class="spots-grid">
         <div class="spot-card">
           <h3>UBE CALAMANSI BAR</h3>
           <p>A zesty twist on ube — tangy calamansi meets creamy purple yam in a chewy bar.</p>
           <div class="variant-row">
             <div class="variant-box">
-              <img src="../assets/photos/ubecalamansi.jpg" alt="Box">
-              <span class="variant-type">Box of 16</span>
-              <span class="variant-price">₱475</span>
-              <button class="cart-btn">Buy</button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/ubecalamansi2.jpg" alt="Slice">
-              <span class="variant-type">Slice</span>
-              <span class="variant-price">₱20</span>
-              <button class="cart-btn">Buy</button>
+              <img src="../assets/photos/ubecalamansi.jpg" alt="Ube Calamansi Bars">
+              <span class="variant-price">₱20–₱475</span>
+              <button class="details-btn"
+                onclick="openModal(
+                  'Ube Calamansi Bars',
+                  'Tangy calamansi blended with sweet ube in chewy bars, available by slice or box of 16.',
+                  '../assets/photos/ubecalamansi.jpg',
+                  [
+                    { label: 'Box of 16', price: 475, img: '../assets/photos/ubecalamansi.jpg', description: 'Perfect for sharing — 16 pieces of ube calamansi bars.' },
+                    { label: 'Slice', price: 20, img: '../assets/photos/ubecalamansi2.jpg', description: 'Single slice of ube calamansi bar, ideal for a quick treat.' }
+                  ],
+                  true
+                )">
+                VIEW DETAILS
+              </button>
             </div>
           </div>
-          
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Step 1 Modal -->
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('productModal')">&times;</span>
-      <img id="modal-img" src="" alt="Product" class="modal-img">
-      <h3 id="modal-title"></h3>
-      <p id="modal-description"></p>
-      <div class="modal-actions">
-        <button onclick="openActionModal('cart')" class="order-btn">ADD TO CART</button>
-        <button onclick="openActionModal('order')" class="order-btn">ORDER NOW</button>
-      </div>
-    </div>
-  </div>
+  <!-- Product Details Modal -->
+ <div id="productModal" class="modal">
+  <div class="modal-content featured-layout">
+    <span class="close-btn" onclick="closeModal('productModal')">&times;</span>
 
-  <!-- Step 2 Modal -->
-  <div id="actionModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('actionModal')">&times;</span>
-      <h3 id="action-title"></h3>
+    <div class="modal-body">
+      <!-- Left side: image -->
+      <img id="modal-img" src="" alt="Product" class="modal-img-side">
 
-      <!-- Bottom row: Type, Quantity, Price -->
-      <div class="bottom-row">
-        <select id="cake-type" onchange="updatePrice()">
-          <option value="Large" data-price="920">Large</option>
-          <option value="Medium" data-price="610">Medium</option>
-        </select>
+      <!-- Right side: details -->
+      <div class="modal-info">
+        <h3 id="modal-title">Purple Yam Cake</h3>
 
-        <div class="quantity-box">
+        <!-- Price (replaces type position) -->
+        <p id="action-price" class="modal-price">₱920</p>
+
+        <!-- Description -->
+        <p id="modal-description" class="modal-description"></p>
+
+
+        <!-- Quantity (moved to lower right) -->
+        <div class="quantity-row">
+          <label for="quantity">Qty:</label>
           <button onclick="adjustQuantity(-1)">−</button>
           <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
           <button onclick="adjustQuantity(1)">+</button>
         </div>
 
-        <p id="action-price" class="modal-price">₱920</p>
-      </div>
+        <!-- Type buttons (moved below photo) -->
+        <div id="type-buttons" class="type-selector"></div>
 
-      <button class="order-btn" id="final-action-btn">ADD TO CART</button>
+        <!-- Action buttons -->
+        <div class="action-buttons">
+          <button class="order-btn">ADD TO CART</button>
+          <button class="order-btn">ORDER NOW</button>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
 
+<script>
+let currentProduct = {};
+let selectedPrice = 0;
 
-  <script>
-  let currentProduct = {};
+function openModal(title, description, imgSrc, types = []) {
+  currentProduct = { title, description, imgSrc, types };
+  document.getElementById('modal-title').innerText = title;
+  document.getElementById('modal-description').innerText = description;
+  document.getElementById('modal-img').src = imgSrc;
+  document.getElementById('quantity').value = 1;
 
-  function openModal(title, description, imgSrc) {
-    currentProduct = { title, description, imgSrc };
-    document.getElementById('modal-title').innerText = title;
-    document.getElementById('modal-description').innerText = description;
-    document.getElementById('modal-img').src = imgSrc;
-    document.getElementById('productModal').style.display = 'block';
-  }
+  const container = document.getElementById('type-buttons');
+  container.innerHTML = '';
 
-  function openActionModal(actionType) {
-    document.getElementById('productModal').style.display = 'none';
-    document.getElementById('action-title').innerText = currentProduct.title;
-    document.getElementById('quantity').value = 1;
-    document.getElementById('final-action-btn').innerText = actionType === 'cart' ? 'ADD TO CART' : 'ORDER NOW';
-    document.getElementById('actionModal').style.display = 'block';
-  }
-
-  function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
-  }
-
-  function adjustQuantity(change) {
-    const qtyInput = document.getElementById('quantity');
-    let value = parseInt(qtyInput.value);
-    value = Math.max(1, value + change);
-    qtyInput.value = value;
-  }
-
-  window.onclick = function(event) {
-    ['productModal', 'actionModal'].forEach(id => {
-      const modal = document.getElementById(id);
-      if (event.target == modal) modal.style.display = "none";
+  if (types.length > 0) {
+    types.forEach(type => {
+      const btn = document.createElement('button');
+      btn.className = 'type-btn';
+      btn.innerText = type.label;
+      btn.onclick = () => selectType(type);
+      container.appendChild(btn);
     });
+    selectType(types[0]); // default to first type
+  } else {
+    selectedPrice = 0;
+    updatePrice();
   }
-  </script>
 
+  document.getElementById('productModal').style.display = 'block';
+}
 
-  
+function selectType(type) {
+  selectedPrice = type.price;
+  document.getElementById('modal-img').src = type.img;
+  document.getElementById('modal-description').innerText = type.description;
+  updatePrice();
+  highlightSelectedType(type.label);
+}
+
+function updatePrice() {
+  const qty = parseInt(document.getElementById('quantity').value) || 1;
+  const total = selectedPrice * qty;
+  document.getElementById('action-price').innerText = `₱${total}`;
+}
+
+function adjustQuantity(change) {
+  const qtyInput = document.getElementById('quantity');
+  let value = parseInt(qtyInput.value);
+  value = Math.max(1, value + change);
+  qtyInput.value = value;
+  updatePrice();
+}
+
+function highlightSelectedType(label) {
+  const buttons = document.querySelectorAll('.type-btn');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.innerText === label);
+  });
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+
+<!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="about">
+        <h3>Purple Yam</h3>
+        <p>Delicious cakes and pastries made with love and the finest ingredients.</p>
+      </div>
+      <div class="links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h4>Contact Info</h4>
+        <p>Email: info@purpleyam.com</p>
+        <p>Phone: (123) 456-7890</p>
+        <p>Address: 123 Bakery Street</p>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2024 Purple Yam Bakeshop. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
