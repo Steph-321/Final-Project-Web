@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Profile</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e1bee7 100%);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #6a1b9a 0%, #8e24aa 100%);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 15px 0;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .sidebar li:hover::before {
+            left: 100%;
+        }
+
+        .sidebar li.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .account-info h2 {
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .account-info form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .account-info .full-width {
+            grid-column: span 2;
+        }
+
+        .account-info label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .account-info input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .account-info input:focus {
+            border-color: #6a1b9a;
+            box-shadow: 0 0 10px rgba(106, 27, 154, 0.3);
+            outline: none;
+        }
+
+        .account-info button {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        .account-info button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.4);
+        }
+
+        .transactions h2 {
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .transactions table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .transactions th {
+            background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .transactions td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transactions tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        .transactions tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .transactions tbody tr:hover {
+            background-color: #e1bee7;
+            transform: scale(1.01);
+        }
+
+        .logout {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .logout h2 {
+            color: #6a1b9a;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .logout p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .logout button {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .logout button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 27, 154, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li id="account-info-tab" class="active">Account Information</li>
+            <li id="transactions-tab">Transactions</li>
+            <li id="logout-tab">Log Out</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div id="account-info" class="section active">
+            <h2>Account Information</h2>
+            <form>
+                <div>
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" value="Doe">
+                </div>
+                <div>
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" value="John">
+                </div>
+                <div>
+                    <label for="contact-number">Contact Number:</label>
+                    <input type="tel" id="contact-number" name="contact-number" value="123-456-7890">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="john.doe@example.com">
+                </div>
+                <div class="full-width">
+                    <button type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+        <div id="transactions" class="section">
+            <h2>Transactions</h2>
+            <table class="transactions">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-10-01</td>
+                        <td>Purchase Item A</td>
+                        <td>$50.00</td>
+                        <td>Completed</td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-05</td>
+                        <td>Purchase Item B</td>
+                        <td>$30.00</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-10</td>
+                        <td>Refund Item C</td>
+                        <td>-$20.00</td>
+                        <td>Completed</td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-15</td>
+                        <td>Purchase Item D</td>
+                        <td>$75.00</td>
+                        <td>Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="logout" class="section">
+            <h2>Log Out</h2>
+            <p>Are you sure you want to log out?</p>
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </div>
+
+    <script>
+        // Get all tabs and sections
+        const tabs = document.querySelectorAll('.sidebar li');
+        const sections = document.querySelectorAll('.section');
+
+        // Add click event to each tab
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and sections
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding section
+                tab.classList.add('active');
+                const sectionId = tab.id.replace('-tab', '');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Logout function (simple alert for demo)
+        function logout() {
+            alert('You have been logged out.');
+            // In a real app, redirect to login page or clear session
+        }
+    </script>
+</body>
+
+</html>
