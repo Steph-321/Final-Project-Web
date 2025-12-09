@@ -21,13 +21,16 @@
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#" class="stores-trigger">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
       <a href="#">
+        <a href="#" class="login-trigger">
+          <img src="../assets/cart.png" alt="Cart">
+        </a>
         <img src="../assets/profile-picture.png" alt="user" class="login-trigger" />
       </a>
       <a href="#" class="signup-trigger">Sign up</a>
@@ -380,7 +383,7 @@
 
 
   <!-- Why Choose Us -->
-  <section class="why">
+  <section id="about" class="why">
     <h2>Why Choose Purple Yam?</h2>
     <div class="reasons">
       <div class="reason">
@@ -486,11 +489,13 @@
         </div>
 
         <div class="form-group">
+          <!-- <label for="signup-password">Password</label> -->
           <input type="password" id="index-signup-password" name="password" placeholder="Password" required
             autocomplete="new-password">
         </div>
 
         <div class="form-group">
+          <!-- <label for="signup-confirm-password">Confirm Password</label> -->
           <input type="password" id="index-signup-confirm-password" name="confirm" placeholder="Confirm password"
             required autocomplete="new-password">
         </div>
@@ -554,6 +559,7 @@
     </div>
   </div>
 
+  <!-- external JS -->
   <script src="javascripts/index.js" defer></script>
 </body>
 
