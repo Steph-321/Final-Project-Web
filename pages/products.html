@@ -3,39 +3,36 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Purple Yam</title>
-  <link rel="icon" href="../Final-Project-Web/assets/logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purple Yam Bakeshop</title>
+  <link rel="icon" href="../Final-Project-Web/assets/" type="image/png" />
   <link rel="stylesheet" href="../styles/products.css" />
 </head>
 
 <body>
-
   <!-- Header -->
   <header>
     <div class="logo">
       <img src="../assets/logo.png" alt="Purple Yam Logo" />
-      <h1>PURPLE YAM</h1>
+      <h1>PURPLE YAM</h1> 
     </div>
 
-    <nav>
+    <nav class="main-nav">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
+        <li><a href="#">Menu</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Stores</a></li>
+        <li><a href="#" class="stores-trigger">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
       <a href="#">
-        <img src="../assets/profile-picture.png" alt="user" class="user-icon" />
+        <img src="../assets/profile-picture.png" alt="user" class="login-trigger" />
       </a>
-      <a href="#" class="login-trigger">Login</a>
       <a href="#" class="signup-trigger">Sign up</a>
     </div>
   </header>
-
 
 
   <!-- Main Content -->
@@ -330,9 +327,9 @@
   </main>
 
   <!-- Product Details Modal -->
-  <div id="productModal" class="modal">
-    <div class="modal-content featured-layout">
-      <span class="close-btn" onclick="closeModal('productModal')">&times;</span>
+ <div id="productModal" class="modal">
+  <div class="modal-content featured-layout">
+    <span class="close-btn" onclick="closeModalbyId('productModal')">&times;</span>
 
       <div class="modal-body">
         <!-- Left side: image -->
@@ -360,11 +357,12 @@
           <!-- Type buttons (moved below photo) -->
           <div id="type-buttons" class="type-selector"></div>
 
-          <!-- Action buttons -->
-          <div class="action-buttons">
-            <button class="order-btn">ADD TO CART</button>
-            <button class="order-btn">ORDER NOW</button>
-          </div>
+        <!-- Action buttons -->
+        <div class="action-buttons">
+          <button class="order-btn" onclick="openModal(document.getElementById('loginModal'))">
+            ADD TO CART
+          </button>
+          <button class="order-btn">ORDER NOW</button>
         </div>
       </div>
     </div>
@@ -402,13 +400,24 @@
       document.getElementById('productModal').style.display = 'block';
     }
 
-    function selectType(type) {
-      selectedPrice = type.price;
-      document.getElementById('modal-img').src = type.img;
-      document.getElementById('modal-description').innerText = type.description;
-      updatePrice();
-      highlightSelectedType(type.label);
-    }
+function openLoginModal() {
+  const loginModal = document.getElementById('loginModal');
+  loginModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeLoginModal() {
+  const loginModal = document.getElementById('loginModal');
+  loginModal.setAttribute('aria-hidden', 'true');
+}
+
+
+function selectType(type) {
+  selectedPrice = type.price;
+  document.getElementById('modal-img').src = type.img;
+  document.getElementById('modal-description').innerText = type.description;
+  updatePrice();
+  highlightSelectedType(type.label);
+}
 
     function updatePrice() {
       const qty = parseInt(document.getElementById('quantity').value) || 1;
@@ -431,9 +440,9 @@
       });
     }
 
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
+function closeModalbyId(id) {
+  document.getElementById(id).style.display = 'none';
+}
 
     function showCategory(categoryId) {
       const sections = document.querySelectorAll('.category-section');
