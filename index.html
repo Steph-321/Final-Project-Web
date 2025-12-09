@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Purple Yam Bakeshop</title>
   <link rel="icon" href="../Final-Project-Web/assets/" type="image/png" />
   <link rel="stylesheet" href="styles/style.css" />
 </head>
+
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
       <img src="assets/logo.png" alt="Purple Yam Logo" />
-      <h1>PURPLE YAM</h1> 
+      <h1>PURPLE YAM</h1>
     </div>
 
     <nav class="main-nav">
@@ -47,14 +49,14 @@
     <section class="spots-section">
       <h2>Menu</h2>
       <nav class="category-tabs">
-      <button onclick="showCategory('ube')">CLASSIC UBE CAKES</button>
-      <button onclick="showCategory('brazo')">BRAZO DE MERCEDES</button>
-      <button onclick="showCategory('choco')">CHOCO MOIST</button>
-      <button onclick="showCategory('custard')">UBE CUSTARD</button>
-      <button onclick="showCategory('creamcheese')">UBE CREAMCHEESE BARS</button>
-      <button onclick="showCategory('calamansi')">UBE CALAMANSI BARS</button>
-    </nav>
-      
+        <button onclick="showCategory('ube')">CLASSIC UBE CAKES</button>
+        <button onclick="showCategory('brazo')">BRAZO DE MERCEDES</button>
+        <button onclick="showCategory('choco')">CHOCO MOIST</button>
+        <button onclick="showCategory('custard')">UBE CUSTARD</button>
+        <button onclick="showCategory('creamcheese')">UBE CREAMCHEESE BARS</button>
+        <button onclick="showCategory('calamansi')">UBE CALAMANSI BARS</button>
+      </nav>
+
       <!-- Category: CLASSIC UBE CAKES -->
       <div id="ube" class="category-section">
         <div class="spots-grid">
@@ -65,8 +67,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/cakemedium.jpg" alt="Medium">
                 <span class="variant-price">₱610-₱920</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Purple Yam Cake',
                     'Soft, moist, and unforgettable. Served with coffee or on its own.',
                     '../assets/photos/cakemedium.jpg',
@@ -82,8 +83,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/cake.jpg" alt="Round">
                 <span class="variant-price">₱490</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Purple Yam Cake',
                     'A round and heart-shaped version of our classic ube cake, soft and moist with a rich yam flavor.',
                     '../assets/photos/cake.jpg',
@@ -105,12 +105,11 @@
                   VIEW DETAILS
                 </button>
               </div>
-        
+
               <div class="variant-box">
                 <img src="../assets/photos/cakesalata.jpg" alt="Tincan Round">
                 <span class="variant-price">₱340–₱360</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Purple Yam Cake (Tincan)',
                     'Special ube cake in tin containers, available in round or heart shapes.',
                     '../assets/photos/cakesalata.jpg',
@@ -127,8 +126,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/messycup.jpg" alt="Messy Cup">
                 <span class="variant-price">₱70</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Messy Cup',
                     'Single‑serve ube messy cup, soft and moist with rich yam flavor.',
                     '../assets/photos/messycup.jpg',
@@ -155,8 +153,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/tallbrazo.jpg" alt="Tall">
                 <span class="variant-price">₱100</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Ube Brazo de Mercedes',
                     'Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.',
                     '../assets/photos/tallbrazo.jpg',
@@ -184,8 +181,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/cake4.jpg" alt="Choco Moist">
                 <span class="variant-price">₱730–₱1,150</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Choco Moist Cake',
                     'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
                     '../assets/photos/cake4.jpg',
@@ -202,8 +198,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/roundchoco.jpg" alt="Choco Moist">
                 <span class="variant-price">₱530</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Choco Moist Cake',
                     'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
                     '../assets/photos/roundchoco.jpg',
@@ -220,8 +215,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/cakesalata5.jpg" alt="Choco Moist Tincan">
                 <span class="variant-price">₱380–₱410</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Choco Moist Cake (Tincan)',
                     'Rich chocolate cake in compact tin containers, perfect for gifting or sharing.',
                     '../assets/photos/cakesalata5.jpg',
@@ -238,8 +232,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/messychoco.jpg" alt="Messy Cup">
                 <span class="variant-price">₱85</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Choco Moist Messy Cup',
                     'Single‑serve choco moist cup, rich and indulgent for a quick treat.',
                     '../assets/photos/messychoco.jpg',
@@ -266,8 +259,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/ubecustard.jpg" alt="Round">
                 <span class="variant-price">₱490</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Ube Custard Cake',
                     'Velvety ube sponge layered with golden custard. A Filipino classic reimagined.',
                     '../assets/photos/ubecustard.jpg',
@@ -295,8 +287,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/purplebrownie.jpg" alt="Ube Creamcheese Bars">
                 <span class="variant-price">₱23–₱545</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Ube Creamcheese Bars',
                     'Delicious ube bars topped with creamcheese, available by slice or box of 16.',
                     '../assets/photos/purplebrownie.jpg',
@@ -309,7 +300,7 @@
                   VIEW DETAILS
                 </button>
               </div>
-            </div>      
+            </div>
           </div>
         </div>
       </div>
@@ -324,8 +315,7 @@
               <div class="variant-box">
                 <img src="../assets/photos/ubecalamansi.jpg" alt="Ube Calamansi Bars">
                 <span class="variant-price">₱20–₱475</span>
-                <button class="details-btn"
-                  onclick="openProductModal(
+                <button class="details-btn" onclick="openProductModal(
                     'Ube Calamansi Bars',
                     'Tangy calamansi blended with sweet ube in chewy bars, available by slice or box of 16.',
                     '../assets/photos/ubecalamansi.jpg',
@@ -345,47 +335,47 @@
     </section>
   </main>
 
-<!-- Product Details Modal -->
- <div id="productModal" class="modal">
-  <div class="modal-content featured-layout">
-    <span class="close-btn" onclick="closeModalById('productModal')">&times;</span>
+  <!-- Product Details Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content featured-layout">
+      <span class="close-btn" onclick="closeModalById('productModal')">&times;</span>
 
-    <div class="modal-body">
-      <!-- Left side: image -->
-      <img id="modal-img" src="" alt="Product" class="modal-img-side">
+      <div class="modal-body">
+        <!-- Left side: image -->
+        <img id="modal-img" src="" alt="Product" class="modal-img-side">
 
-      <!-- Right side: details -->
-      <div class="modal-info">
-        <h3 id="modal-title">Purple Yam Cake</h3>
+        <!-- Right side: details -->
+        <div class="modal-info">
+          <h3 id="modal-title">Purple Yam Cake</h3>
 
-        <!-- Price (replaces type position) -->
-        <p id="action-price" class="modal-price">₱920</p>
+          <!-- Price (replaces type position) -->
+          <p id="action-price" class="modal-price">₱920</p>
 
-        <!-- Description -->
-        <p id="modal-description" class="modal-description"></p>
+          <!-- Description -->
+          <p id="modal-description" class="modal-description"></p>
 
 
-        <!-- Quantity (moved to lower right) -->
-        <div class="quantity-row">
-          <label for="quantity">Qty:</label>
-          <button onclick="adjustQuantity(-1)">−</button>
-          <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
-          <button onclick="adjustQuantity(1)">+</button>
-        </div>
+          <!-- Quantity (moved to lower right) -->
+          <div class="quantity-row">
+            <label for="quantity">Qty:</label>
+            <button onclick="adjustQuantity(-1)">−</button>
+            <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+            <button onclick="adjustQuantity(1)">+</button>
+          </div>
 
-        <!-- Type buttons (moved below photo) -->
-        <div id="type-buttons" class="type-selector"></div>
+          <!-- Type buttons (moved below photo) -->
+          <div id="type-buttons" class="type-selector"></div>
 
-        <!-- Action buttons -->
-        <div class="action-buttons">
-          <!-- Direct Login -->
-          <button class="order-btn" onclick="openLoginModal()">ADD TO CART</button>
-          <button class="order-btn" onclick="openLoginModal()">ORDER NOW</button>
+          <!-- Action buttons -->
+          <div class="action-buttons">
+            <!-- Direct Login -->
+            <button class="order-btn" onclick="openLoginModal()">ADD TO CART</button>
+            <button class="order-btn" onclick="openLoginModal()">ORDER NOW</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
 
@@ -439,8 +429,8 @@
     <div class="modal-content" role="document">
       <img src="../assets/logo.png" alt="Purple Yam Logo">
       <button class="close" aria-label="Close login dialog">&times;</button>
-      
-      <form class="login-form" id="loginForm" >
+
+      <form class="login-form" id="loginForm">
         <p>Sign in to continue ordering your favorite treats!</p>
 
         <div class="form-group">
@@ -467,24 +457,27 @@
     <div class="modal-content" role="document">
       <img src="../assets/logo.png" alt="Purple Yam Logo">
       <button class="close-signup" aria-label="Close sign up dialog">&times;</button>
-      
+
       <form class="signup-form" id="signupForm">
         <!-- <h2 id="signupTitle">Create Your Purple Yam Account</h2> -->
         <p>Join us and enjoy delicious cakes and pastries!</p>
 
         <div class="form-group">
           <!-- <label for="signup-firstname">Firstname</label> -->
-          <input type="text" id="index-signup-firstname" name="firstname" placeholder="Firstname" required autocomplete="firstname">
+          <input type="text" id="index-signup-firstname" name="firstname" placeholder="Firstname" required
+            autocomplete="firstname">
         </div>
 
         <div class="form-group">
           <!-- <label for="signup-lastname">Lastname</label> -->
-          <input type="text" id="index-signup-lastname" name="lastname" placeholder="Lastname" required autocomplete="lastname">
+          <input type="text" id="index-signup-lastname" name="lastname" placeholder="Lastname" required
+            autocomplete="lastname">
         </div>
 
         <div class="form-group">
           <!-- <label for="signup-contact">Contact</label> -->
-          <input type="text" id="index-signup-contact" name="contact" placeholder="Phone" required autocomplete="contact number">
+          <input type="text" id="index-signup-contact" name="contact" placeholder="Phone" required
+            autocomplete="contact number">
         </div>
 
         <div class="form-group">
@@ -493,13 +486,13 @@
         </div>
 
         <div class="form-group">
-          <!-- <label for="signup-password">Password</label> -->
-          <input type="password" id="index-signup-password" name="password" placeholder="Password" required autocomplete="new-password">
+          <input type="password" id="index-signup-password" name="password" placeholder="Password" required
+            autocomplete="new-password">
         </div>
 
         <div class="form-group">
-          <!-- <label for="signup-confirm-password">Confirm Password</label> -->
-          <input type="password" id="index-signup-confirm-password" name="confirm" placeholder="Confirm password" required autocomplete="new-password">
+          <input type="password" id="index-signup-confirm-password" name="confirm" placeholder="Confirm password"
+            required autocomplete="new-password">
         </div>
 
         <button type="submit" class="btn">Sign Up</button>
@@ -511,7 +504,6 @@
     </div>
   </div>
 
-  <!-- Stores Modal -->
   <div id="storesModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-content" role="document">
       <button class="close" aria-label="Close stores dialog">&times;</button>
@@ -519,38 +511,38 @@
         <section class="store-list">
           <h2>CEBU BRANCHES</h2>
           <div class="store-card" onclick="openMap('argao')">
-              <h3>PURPLE YAM - ARGAO</h3>
-              <p>12 San Miguel St, Poblacion, Argao, 6021 Cebu</p>
+            <h3>PURPLE YAM - ARGAO</h3>
+            <p>12 San Miguel St, Poblacion, Argao, 6021 Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('carcar')">
-              <h3>PURPLE YAM - CARCAR CITY</h3>
-              <p>4J6W+636, Carcar, Cebu</p>
+            <h3>PURPLE YAM - CARCAR CITY</h3>
+            <p>4J6W+636, Carcar, Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('cebu')">
-              <h3>PURPLE YAM - CEBU CITY</h3>
-              <p>Punta Princesa, 65 Francisco Llamas St, Cebu City, 6014 Cebu</p>
+            <h3>PURPLE YAM - CEBU CITY</h3>
+            <p>Punta Princesa, 65 Francisco Llamas St, Cebu City, 6014 Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('cordova')">
-              <h3>PURPLE YAM - CORDOVA</h3>
-              <p>BangBang, Cordova, Cebu</p>
+            <h3>PURPLE YAM - CORDOVA</h3>
+            <p>BangBang, Cordova, Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('dalaguete')">
-              <h3>PURPLE YAM - DALAGUETE</h3>
-              <p>Dalaguete, Cebu</p>
+            <h3>PURPLE YAM - DALAGUETE</h3>
+            <p>Dalaguete, Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('gallery')">
-              <h3>PURPLE YAM (THE GALLERY)</h3>
-              <p>8WF5+JMV, Pope John Paul II Ave, Cebu City, 6000 Cebu</p>
+            <h3>PURPLE YAM (THE GALLERY)</h3>
+            <p>8WF5+JMV, Pope John Paul II Ave, Cebu City, 6000 Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('oslob')">
-              <h3>PURPLE YAM - OSLOB OUTLET</h3>
-              <p>Eternidad St, Poblacion, Oslob, 6025 Cebu</p>
+            <h3>PURPLE YAM - OSLOB OUTLET</h3>
+            <p>Eternidad St, Poblacion, Oslob, 6025 Cebu</p>
           </div>
           <div class="store-card" onclick="openMap('talisay')">
-              <h3>PURPLE YAM - TALISAY</h3>
-              <p>South Agora, Deiparine St, San Isidro Road, Talisay, 6045 Cebu</p>
+            <h3>PURPLE YAM - TALISAY</h3>
+            <p>South Agora, Deiparine St, San Isidro Road, Talisay, 6045 Cebu</p>
           </div>
-        </section> 
+        </section>
       </div>
     </div>
   </div>
@@ -562,7 +554,7 @@
     </div>
   </div>
 
-  <!-- external JS -->
-  <script src="javascripts/index.js" defer></script>  
+  <script src="javascripts/index.js" defer></script>
 </body>
+
 </html>
