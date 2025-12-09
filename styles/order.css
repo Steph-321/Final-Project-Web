@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -42,8 +43,8 @@ header .logo h1{
 }
 
 header .logo img{
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -67,14 +68,36 @@ header nav a:hover, .auth-links a:hover {
   opacity: 0.8;
 }
 
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .auth-links {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 .auth-links a {
   margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
 }
 
 .auth-links input[type="text"] {
@@ -83,21 +106,21 @@ header nav a:hover, .auth-links a:hover {
   border-radius: 10px;
 }
 
-.auth-links .search-icon, .user-icon {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  margin-right: 0.3rem;
+.auth-links img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
-.select-address,
-.signin {
-  background: #eee;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+.auth-links img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(106, 27, 154, 0.4);
 }
+
 
 /* ===== Main Layout ===== */
 .order-main {
