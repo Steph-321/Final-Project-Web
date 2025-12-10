@@ -3,7 +3,7 @@ function loadCart() {
   const cartBox = document.getElementById('cart-box');
   cartBox.innerHTML = '';
 
-  fetch('../php/get_cart.php') // ✅ new PHP endpoint to fetch cart items
+  fetch('get_cart.php') 
     .then(res => res.json())
     .then(cart => {
       const box = document.createElement('div');
@@ -58,7 +58,7 @@ function addToCart() {
   const type = document.querySelector('.type-btn.active')?.innerText || '';
   const img = document.getElementById('modal-img').src;
 
-  fetch('../php/add_to_cart.php', {
+  fetch('add_cart.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, price, quantity, type, img })
@@ -73,7 +73,7 @@ function addToCart() {
 
 // Remove item from cart
 function removeItem(cid) {
-  fetch('../php/remove_from_cart.php', {
+  fetch('remove_from_cart.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ cid })
@@ -97,7 +97,7 @@ function placeOrder() {
     return;
   }
 
-  fetch('../php/place_order.php', {
+  fetch('place_order.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ items: selected })
@@ -111,7 +111,7 @@ function placeOrder() {
 
 // Clear cart
 function clearCart() {
-  fetch('../php/clear_cart.php', { method: 'POST' })
+  fetch('clear_cart.php', { method: 'POST' })
     .then(res => res.json())
     .then(data => {
       alert(data.message || 'Cart cleared!');

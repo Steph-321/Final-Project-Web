@@ -54,7 +54,7 @@ $conn->close();
     </nav>
 
     <div class="auth-links">
-      <a href="cart.php" class="login-trigger">
+      <a href="cart.php">
         <img src="../assets/cart.png" alt="Cart">
       </a>
       <a href="userPage.php">
