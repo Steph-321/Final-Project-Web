@@ -1,7 +1,7 @@
 <?php
 include 'db_connect.php';
 
-$usernameOrEmail = $_POST['username']; // can be email or contact
+$usernameOrEmail = $_POST['email']; // can be email or contact
 $password        = $_POST['password'];
 
 $sql = "SELECT * FROM users WHERE email=? OR contact=?";

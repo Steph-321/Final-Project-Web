@@ -33,102 +33,27 @@
       <a href="#" class="signup-trigger">Sign up</a>
     </div>
   </header>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#" class="stores-trigger">Stores</a></li>
+      </ul>
+    </nav>
+
+    <div class="auth-links">
+      <a href="#">
+        <img src="../assets/profile-picture.png" alt="user" class="login-trigger" />
+      </a>
+      <a href="#" class="signup-trigger">Sign up</a>
+    </div>
+  </header>
   
   <!-- Main Content -->
-  <main id="menu">
-    <!-- Best Sellers -->
-    <div class="category-section">
-      <div class="spots-grid">
-        <div class="spot-card">
-          <h3>Our Best Sellers</h3>
-          <div class="variant-row">
-            <div class="variant-box">
-              <img src="../assets/photos/cakemedium.jpg" alt="Medium">
-              <span class="variant-price">₱610-₱920</span>
-              <button class="details-btn" onclick="openModal(
-                  'Purple Yam Cake',
-                  'Soft, moist, and unforgettable. Served with coffee or on its own.',
-                  '../assets/photos/cakemedium.jpg',
-                  [
-                    { label: 'Large', price: 920, img: '../assets/photos/cakemedium.jpg', description: 'A generously sized ube cake, soft and moist with rich yam flavor. Perfect for celebrations, family gatherings, or sharing with a crowd.' },
-                    { label: 'Medium', price: 610, img: '../assets/photos/cake3.jpg', description: 'A medium-sized version of our classic ube cake, ideal for smaller gatherings or intimate occasions. Still packed with flavor, it offers just the right amount for a cozy treat.' }
-                  ]
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
+  <main>
 
-            <div class="variant-box">
-              <img src="../assets/photos/tallbrazo.jpg" alt="Tall">
-              <span class="variant-price">₱100</span>
-              <button class="details-btn" onclick="openModal(
-                  'Ube Brazo de Mercedes',
-                  'Meringue roll filled with creamy ube custard. Soft, sweet, and nostalgic.',
-                  '../assets/photos/tallbrazo.jpg',
-                  [
-                    { label: 'Tall', price: 100, img: '../assets/photos/tallbrazo.jpg', description: 'A tall roll filled with creamy ube custard, soft and sweet with a nostalgic flavor. Perfect for sharing at family gatherings or enjoying as a centerpiece dessert.' },
-                    { label: 'Small', price: 55, img: '../assets/photos/cakesabaso1.jpg', description: 'A small roll of ube brazo de mercedes, light and chewy with a rich custard filling. Ideal for individual servings, it’s a delightful treat for a quick indulgence.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-
-            <div class="variant-box">
-              <img src="../assets/photos/ubecustard.jpg" alt="Round">
-              <span class="variant-price">₱490</span>
-              <button class="details-btn" onclick="openModal(
-                  'Ube Custard Cake',
-                  'Velvety ube sponge layered with golden custard. A Filipino classic reimagined.',
-                  '../assets/photos/ubecustard.jpg',
-                  [
-                    { label: 'Round', price: 490, img: '../assets/photos/ubecustard.jpg', description: 'A round ube custard cake, velvety and moist with layers of golden custard. A Filipino classic reimagined, it’s perfect for sharing at family gatherings or festive occasions.' },
-                    { label: 'Slice', price: 70, img: '../assets/photos/ubecustardtriangle.jpg', description: 'A slice of ube custard cake, soft and flavorful with a creamy custard layer. Ideal for a quick treat, it offers a taste of tradition in every bite.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-            <div class="variant-box">
-              <img src="../assets/photos/cake4.jpg" alt="Choco Moist">
-              <span class="variant-price">₱730–₱1,150</span>
-              <button class="details-btn" onclick="openModal(
-                  'Choco Moist Cake',
-                  'Rich chocolate base topped with creamy swirled frosting. Perfect for chocoholics!',
-                  '../assets/photos/cake4.jpg',
-                  [
-                    { label: 'Large', price: 1150, img: '../assets/photos/cake4.jpg', description: 'A large choco moist cake, rich and indulgent with a soft chocolate base and creamy frosting. Perfect for big celebrations, it’s designed to satisfy a crowd of chocoholics with every slice.' },
-                    { label: 'Medium', price: 730, img: '../assets/photos/mediumchoco.jpg', description: 'A medium‑sized choco moist cake, offering the same decadent flavor in a more compact size. Ideal for smaller gatherings or intimate occasions, it delivers just the right amount of sweetness to share.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-
-            <div class="variant-box">
-              <img src="../assets/photos/ubecalamansi.jpg" alt="Ube Calamansi Bars">
-              <span class="variant-price">₱20–₱475</span>
-              <button class="details-btn" onclick="openModal(
-                  'Ube Calamansi Bars',
-                  'Tangy calamansi blended with sweet ube in chewy bars, available by slice or box of 16.',
-                  '../assets/photos/ubecalamansi.jpg',
-                  [
-                    { label: 'Box of 16', price: 475, img: '../assets/photos/ubecalamansi.jpg', description: 'Perfect for sharing — 16 pieces of ube calamansi bars, blending tangy citrus with sweet purple yam. Chewy and refreshing, they’re a unique twist on a Filipino favorite.' },
-                    { label: 'Slice', price: 20, img: '../assets/photos/ubecalamansi2.jpg', description: 'A single slice of ube calamansi bar, zesty and sweet with a chewy texture. Ideal for a quick treat, it’s a vibrant way to enjoy ube with a citrus kick.' }
-                  ],
-                  true
-                )">
-                VIEW DETAILS
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
     <section class="spots-section">
       <nav class="category-tabs">
         <button onclick="showCategory('ube')">CLASSIC UBE CAKES</button>
@@ -138,7 +63,6 @@
         <button onclick="showCategory('creamcheese')">UBE CREAMCHEESE BARS</button>
         <button onclick="showCategory('calamansi')">UBE CALAMANSI BARS</button>
       </nav>
-
 
       <!-- Category: CLASSIC UBE CAKES -->
       <div id="ube" class="category-section">
@@ -549,8 +473,6 @@ function closeModalbyId(id) {
     }
 
   </script>
-  <script src="js/modal.js"></script>
-
 
   <!-- Footer -->
   <footer>

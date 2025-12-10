@@ -1,4 +1,3 @@
-
 let currentProduct = {};
 let selectedPrice = 0;
 
