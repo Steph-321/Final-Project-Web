@@ -144,13 +144,13 @@ header nav a:hover, .auth-links a:hover {
 }
 
 .go-shopping-btn {
-  background: transparent;
-  border: 2px solid #6a1b9a;
-  color: #6a1b9a;
+  text-decoration: none;   /* removes underline */
+  border: none;            /* optional: removes border */
+  background-color: #6A1B9A; /* purple tone */
+  color: white;
   padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
   transition: background 0.3s ease;
 }
 

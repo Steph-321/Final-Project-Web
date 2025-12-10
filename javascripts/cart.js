@@ -1,45 +1,95 @@
+// Load cart items from the server
 function loadCart() {
   const cartBox = document.getElementById('cart-box');
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cartBox.innerHTML = '';
 
-  cartBox.innerHTML = ''; // Clear previous content
+  fetch('../php/get_cart.php') // ✅ new PHP endpoint to fetch cart items
+    .then(res => res.json())
+    .then(cart => {
+      const box = document.createElement('div');
+      box.className = 'cart-content-box';
 
-  const box = document.createElement('div');
-  box.className = 'cart-content-box';
+      if (cart.length === 0) {
+        box.innerHTML = `
+          <h2>Oops, Cart is Empty</h2>
+          <p>Browse our products and add your favorites!</p>
+          <button onclick="window.location.href='account.php#menu'" class="go-shopping-btn">
+            Order your cravings now
+          </button>
+        `;
+      } else {
+        cart.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'cart-item';
 
-  if (cart.length === 0) {
-    box.innerHTML = `
-      <h2>Oops, Cart is Empty</h2>
-      <p>Browse our products and add your favorites!</p>
-    `;
-  } else {
-    cart.forEach((item, index) => {
-      const div = document.createElement('div');
-      div.className = 'cart-item';
+          div.innerHTML = `
+            <input type="checkbox" data-id="${item.cid}">
+            <img src="../assets/${item.product_image}" alt="${item.product_name}">
+            <div class="cart-info">
+              <strong>${item.product_name}</strong><br>
+              Qty: ${item.quantity}<br>
+              Price: ₱${item.price}
+            </div>
+            <button onclick="removeItem(${item.cid})">Remove</button>
+          `;
 
-      div.innerHTML = `
-        <input type="checkbox" id="item-${index}" data-index="${index}">
-        <img src="${item.img}" alt="${item.title}">
-        <div class="cart-info">
-          <strong>${item.title}</strong><br>
-          Type: ${item.type} | Qty: ${item.qty}<br>
-          Price: ₱${item.price}
-        </div>
-      `;
+          box.appendChild(div);
+        });
 
-      box.appendChild(div);
+        // Cart actions
+        const actions = document.createElement('div');
+        actions.className = 'cart-actions';
+        actions.innerHTML = `
+          <button onclick="placeOrder()">Place Selected Order</button>
+          <button onclick="clearCart()">Clear Cart</button>
+        `;
+        box.appendChild(actions);
+      }
+
+      cartBox.appendChild(box);
     });
-  }
-
-  cartBox.appendChild(box);
 }
 
-function placeOrder() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const selected = [];
+// Add item to cart (server-side)
+function addToCart() {
+  const title = document.getElementById('modal-title').innerText;
+  const price = parseFloat(document.getElementById('action-price').innerText.replace('₱', ''));
+  const quantity = parseInt(document.getElementById('quantity').value);
+  const type = document.querySelector('.type-btn.active')?.innerText || '';
+  const img = document.getElementById('modal-img').src;
 
+  fetch('../php/add_to_cart.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title, price, quantity, type, img })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message || 'Added to cart!');
+    closeModalById('productModal');
+    loadCart(); // refresh cart display
+  });
+}
+
+// Remove item from cart
+function removeItem(cid) {
+  fetch('../php/remove_from_cart.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cid })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message || 'Item removed!');
+    loadCart();
+  });
+}
+
+// Place order
+function placeOrder() {
+  const selected = [];
   document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
-    selected.push(cart[cb.dataset.index]);
+    selected.push(cb.dataset.id);
   });
 
   if (selected.length === 0) {
@@ -47,16 +97,26 @@ function placeOrder() {
     return;
   }
 
-  // Save selected items to sessionStorage
-  sessionStorage.setItem('selectedOrder', JSON.stringify(selected));
-
-  // Redirect to order.html
-  window.location.href = '../pages/order.html';
+  fetch('../php/place_order.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ items: selected })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message || 'Order placed!');
+    loadCart();
+  });
 }
 
+// Clear cart
 function clearCart() {
-  localStorage.removeItem('cart');
-  loadCart();
+  fetch('../php/clear_cart.php', { method: 'POST' })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || 'Cart cleared!');
+      loadCart();
+    });
 }
 
 window.onload = loadCart;

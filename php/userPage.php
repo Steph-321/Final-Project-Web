@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../php/account.php");
+    header("Location: account.php");
     exit();
 }
 
@@ -18,7 +18,7 @@ $user = $result->fetch_assoc();
 $stmt->close();
 
 $orders = [];
-$order_sql = "SELECT id, total, order_date, status FROM orders WHERE user_id=? ORDER BY order_date DESC";
+$order_sql = "SELECT id, total, order_date FROM orders WHERE user_id=? ORDER BY order_date DESC";
 $order_stmt = $conn->prepare($order_sql);
 $order_stmt->bind_param("i", $user_id);
 $order_stmt->execute();
@@ -48,23 +48,21 @@ $conn->close();
 
         <nav class="main-nav">
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#menu">Menu</a></li>
-                <li><a href="../index.html#about">About</a></li>
+                <li><a href="account.php">Home</a></li>
+                <li><a href="account#menu">Menu</a></li>
+                <li><a href="account.php#about">About</a></li>
                 <li><a href="#" class="stores-trigger">Stores</a></li>
             </ul>
         </nav>
 
         <div class="auth-links">
-            <span></span>
+            <!-- <span>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></span> -->
         </div>
     </header>
 
     <div class="container">
         <div class="sidebar">
-            <div class="auth-links">
-                <h2><span>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></span></h2>
-            </div>
+            <h2>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></h2>
             <ul>
                 <li class="active" data-section="account-info"><a href="#">Account Information</a></li>
                 <li data-section="transactions"><a href="#transactions">Purchase History</a></li>
@@ -74,6 +72,7 @@ $conn->close();
 
         <main class="main-content">
 
+            <!-- Account Info -->
             <section id="account-info" class="section active account-info">
                 <h2>Account Information</h2>
                 <form>
@@ -96,6 +95,7 @@ $conn->close();
                 </form>
             </section>
 
+            <!-- Purchase History -->
             <section id="transactions" class="transactions section">
                 <h2>Purchase History</h2>
                 <table>
@@ -103,19 +103,17 @@ $conn->close();
                         <tr>
                             <th>Order #</th>
                             <th>Date</th>
-                            <th>Status</th>
                             <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if (empty($orders)): ?>
-                        <tr><td colspan="4">No orders yet.</td></tr>
+                        <tr><td colspan="3">No orders yet.</td></tr>
                         <?php else: ?>
                         <?php foreach ($orders as $order): ?>
                         <tr>
                             <td><?php echo $order['id']; ?></td>
                             <td><?php echo $order['order_date']; ?></td>
-                            <td><?php echo $order['status']; ?></td>
                             <td>₱<?php echo number_format($order['total'], 2); ?></td>
                         </tr>
                         <?php endforeach; ?>
@@ -124,10 +122,11 @@ $conn->close();
                 </table>
             </section>
 
+            <!-- Logout -->
             <section id="logout" class="logout section">
                 <h2>Logout</h2>
                 <p>Click below to end your session.</p>
-                <a href="../php/logout.php"><button>Logout</button></a>
+                <button id="logoutBtn">Logout</button>
             </section>
 
         </main>
@@ -137,7 +136,7 @@ $conn->close();
         <p class="footer-bottom">© 2025 Purple Yam Bakeshop. All rights reserved.</p>
     </footer>
 
-    <script src="javascripts/account.js"></script>
+    <script src="../javascripts/userPage.js"></script>
 </body>
 
 </html>

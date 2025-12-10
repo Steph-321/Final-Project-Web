@@ -80,7 +80,7 @@ signupForm && signupForm.addEventListener('submit', e => {
         signupForm.reset();
         closeModalById('signupModal');
         openLoginModal();
-        
+
         const loginEmail = document.getElementById('index-login-email');
         const signupEmail = document.getElementById('index-signup-email');
         if (loginEmail && signupEmail) {

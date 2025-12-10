@@ -42,15 +42,15 @@ $conn->close();
 
         <nav class="main-nav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#" class="stores-trigger">Stores</a></li>
+                <li><a href="account.php">Home</a></li>
+                <li><a href="account.php#menu">Menu</a></li>
+                <li><a href="account.php#about">About</a></li>
+                <li><a href="#menu" class="stores-trigger">Stores</a></li>
             </ul>
         </nav>
 
         <div class="auth-links">
-            <a href="../php/cart.php" class="login-trigger">
+            <a href="cart.php" class="login-trigger">
                 <img src="../assets/cart.png" alt="Cart">
             </a>
             <a href="../php/userPage.php">
@@ -390,8 +390,8 @@ $conn->close();
                     <!-- Action buttons -->
                     <div class="action-buttons">
                         <!-- Direct Login -->
-                        <button class="order-btn" onclick="openLoginModal()">ADD TO CART</button>
-                        <button class="order-btn" onclick="openLoginModal()">ORDER NOW</button>
+                        <button class="order-btn" onclick="addToCart()">ADD TO CART</button>
+                        <button class="order-btn" onclick="addToCart()">ORDER NOW</button>
                     </div>
                 </div>
             </div>
@@ -579,7 +579,7 @@ $conn->close();
     </div>
 
     <!-- external JS -->
-    <script src="javascripts/index.js" defer></script>
+    <script src="../javascripts/index.js" defer></script>
 </body>
 
 </html>

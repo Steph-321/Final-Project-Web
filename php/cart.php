@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.html");
+    header("Location: account.php");
     exit();
 }
 
@@ -10,10 +10,10 @@ include 'db_connect.php';
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT c.id, c.product_name, c.product_image, c.price, c.quantity 
-        FROM cart c 
-        WHERE c.user_id = ?";
-$stmt = $conn->prepare($sql);
+$cart_sql = "SELECT cid, product_name, product_image, price, quantity 
+             FROM cart WHERE user_id = ?";
+
+$stmt = $conn->prepare($cart_sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -46,18 +46,18 @@ $conn->close();
 
     <nav class="main-nav">
       <ul>
-        <li><a href="../php/index.php">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="../pages/order.html">Stores</a></li>
+        <li><a href="account.php">Home</a></li>
+        <li><a href="account.php#menu">Menu</a></li>
+        <li><a href="account.php#about">About</a></li>
+        <li><a href="account.php" class="stores-trigger">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
-      <a href="../php/cart.php" class="login-trigger">
+      <a href="cart.php" class="login-trigger">
         <img src="../assets/cart.png" alt="Cart">
       </a>
-      <a href="../php/userPage.php">
+      <a href="userPage.php">
         <img src="../assets/profile-picture.png" alt="User" class="user-icon" />
         <span>Account</span>
       </a>
@@ -74,7 +74,7 @@ $conn->close();
         </div>
         <h2>Oops, Your Food Cart is Empty</h2>
         <p>Browse our awesome cake deals now!</p>
-        <button onclick="goShopping()" class="go-shopping-btn">Order your cravings now</button>
+        <a href="account.php#menu" class="go-shopping-btn">Order your cravings now</a>
       </div>
       <?php else: ?>
       <!-- Cart items -->
@@ -82,19 +82,13 @@ $conn->close();
         <?php foreach ($cart_items as $item): ?>
         <div class="cart-item">
           <img src="../assets/<?php echo htmlspecialchars($item['product_image']); ?>"
-            alt="<?php echo htmlspecialchars($item['product_name']); ?>" />
+               alt="<?php echo htmlspecialchars($item['product_name']); ?>" />
           <div class="item-details">
-            <h3>
-              <?php echo htmlspecialchars($item['product_name']); ?>
-            </h3>
-            <p>₱
-              <?php echo number_format($item['price'], 2); ?>
-            </p>
-            <p>Quantity:
-              <?php echo (int)$item['quantity']; ?>
-            </p>
+            <h3><?php echo htmlspecialchars($item['product_name']); ?></h3>
+            <p>₱<?php echo number_format($item['price'], 2); ?></p>
+            <p>Quantity: <?php echo (int)$item['quantity']; ?></p>
           </div>
-          <button class="remove-item" onclick="removeItem(<?php echo (int)$item['id']; ?>)">Remove</button>
+          <button class="remove-item" onclick="removeItem(<?php echo (int)$item['cid']; ?>)">Remove</button>
         </div>
         <?php endforeach; ?>
       </div>
@@ -112,7 +106,7 @@ $conn->close();
     <p class="footer-bottom">© 2025 Purple Yam Bakeshop. All rights reserved.</p>
   </footer>
 
-  <script src="../scripts/cart.js"></script>
+  <script src="../javascripts/cart.js"></script>
 </body>
 
 </html>
