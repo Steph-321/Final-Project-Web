@@ -50,7 +50,7 @@ $conn->close();
         </nav>
 
         <div class="auth-links">
-            <a href="cart.php" class="login-trigger">
+            <a href="cart.php">
                 <img src="../assets/cart.png" alt="Cart">
             </a>
             <a href="../php/userPage.php">
@@ -377,7 +377,7 @@ $conn->close();
                     <div id="type-buttons" class="type-selector"></div>
                     <div class="action-buttons">
                         <button class="order-btn" onclick="addToCart()">ADD TO CART</button>
-                        <button class="order-btn" onclick="addToCart()">ORDER NOW</button>
+                        <button class="order-btn" onclick="orderNow()">ORDER NOW</button>
                     </div>
                 </div>
             </div>
