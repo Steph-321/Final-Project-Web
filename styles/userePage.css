@@ -11,15 +11,12 @@ body {
     background: #f4f4f4;
 }
 
-/* ------------------ */
-/* HEADER             */
-/* ------------------ */
 header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 70px; /* increased for cleaner spacing */
+    height: 70px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,21 +114,17 @@ header nav a:hover,
     cursor: pointer;
 }
 
-/* ------------------ */
-/* LAYOUT             */
-/* ------------------ */
+
 .container {
     display: flex;
     flex: 1;
-    margin-top: 70px; /* match header height */
+    margin-top: 70px;
 }
 
-/* ------------------ */
-/* SIDEBAR            */
-/* ------------------ */
+
 .sidebar {
     width: 250px;
-    background: #6a1b9a;
+    background: #cba7ec;
     color: white;
     padding: 20px;
     box-sizing: border-box;
@@ -149,38 +142,32 @@ header nav a:hover,
     padding: 0;
 }
 
-.sidebar li {
+.sidebar li a{
     margin: 15px 0;
     cursor: pointer;
     padding: 15px;
     border-radius: 4px;
     transition: 0.2s;
+    font-size: 1.5 rem;
 }
 
-.sidebar li:hover {
-    background-color: #8e24aa;
+.sidebar li a:hover {
+    color: #4a148c;
 }
 
-.sidebar li.active {
-    background-color: #8e24aa;
-}
 
-/* ------------------ */
-/* MAIN CONTENT       */
-/* ------------------ */
+
 .main-content {
     flex: 1;
     padding: 30px;
     box-sizing: border-box;
     overflow-y: auto;
 
-    max-width: 1200px;     /* new */
-    margin: 0 auto;        /* center content */
+    max-width: 1200px;     
+    margin: 0 auto;        
 }
 
-/* ------------------ */
-/* SECTIONS           */
-/* ------------------ */
+
 .section {
     display: none;
 }
@@ -189,20 +176,18 @@ header nav a:hover,
     display: block;
 }
 
-/* ------------------ */
-/* ACCOUNT INFO       */
-/* ------------------ */
+
 .account-info h2 {
     color: #6a1b9a;
     margin-bottom: 20px;
-    font-size: 32px; /* larger, cleaner */
+    font-size: 32px; 
     font-weight: 700;
 }
 
 .account-info form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px 40px; /* more elegant spacing */
+    gap: 25px 40px;
 }
 
 .account-info .full-width {

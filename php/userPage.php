@@ -56,17 +56,19 @@ $conn->close();
         </nav>
 
         <div class="auth-links">
-            <span>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></span>
+            <span></span>
         </div>
     </header>
 
     <div class="container">
         <div class="sidebar">
-            <h2>Dashboard</h2>
+            <div class="auth-links">
+                <h2><span>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></span></h2>
+            </div>
             <ul>
-                <li class="active" data-section="account-info">Account Information</li>
-                <li data-section="transactions">Purchase History</li>
-                <li data-section="logout">Logout</li>
+                <li class="active" data-section="account-info"><a href="#">Account Information</a></li>
+                <li data-section="transactions"><a href="#transactions">Purchase History</a></li>
+                <li data-section="logout"><a href="#logout">Logout</a></li>
             </ul>
         </div>
 
