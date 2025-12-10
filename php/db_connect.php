@@ -1,9 +1,8 @@
 <?php
 $host = "localhost";
-$user = "root";   // default XAMPP user
-$pass = "";       // default XAMPP password is empty
-$db   = "purpleyam_db"; // your database name
-
+$user = "root";  
+$pass = "";      
+$db   = "purpleyam_db"; 
 $conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
