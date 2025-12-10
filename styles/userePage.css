@@ -1,18 +1,25 @@
+/* ------------------ */
+/* BODY + GLOBAL      */
+/* ------------------ */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     height: 100vh;
-    background: linear-gradient(135deg, #f4f4f4 0%, #e1bee7 100%);
+    background: #f4f4f4;
 }
 
+/* ------------------ */
+/* HEADER             */
+/* ------------------ */
 header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 64px;
+    height: 70px; /* increased for cleaner spacing */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +28,7 @@ header {
     padding: 0 1.25rem;
     gap: 1rem;
     z-index: 1100;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
@@ -57,12 +64,11 @@ header nav a,
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    transition: opacity 0.3s ease;
 }
 
 header nav a:hover,
 .auth-links a:hover {
-    opacity: 0.8;
+    color: #ddd;
 }
 
 .main-nav {
@@ -100,7 +106,7 @@ header nav a:hover,
 .auth-links input[type="text"] {
     padding: 0.3rem 0.5rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .auth-links img {
@@ -109,18 +115,23 @@ header nav a:hover,
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
 }
 
-.auth-links img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 8px rgba(106, 27, 154, 0.4);
+/* ------------------ */
+/* LAYOUT             */
+/* ------------------ */
+.container {
+    display: flex;
+    flex: 1;
+    margin-top: 70px; /* match header height */
 }
 
+/* ------------------ */
+/* SIDEBAR            */
+/* ------------------ */
 .sidebar {
     width: 250px;
-    background: linear-gradient(180deg, #6a1b9a 0%, #8e24aa 100%);
+    background: #6a1b9a;
     color: white;
     padding: 20px;
     box-sizing: border-box;
@@ -142,70 +153,56 @@ header nav a:hover,
     margin: 15px 0;
     cursor: pointer;
     padding: 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    border-radius: 4px;
+    transition: 0.2s;
 }
 
-.sidebar li::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.sidebar li:hover::before {
-    left: 100%;
+.sidebar li:hover {
+    background-color: #8e24aa;
 }
 
 .sidebar li.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateX(10px);
+    background-color: #8e24aa;
 }
 
+/* ------------------ */
+/* MAIN CONTENT       */
+/* ------------------ */
 .main-content {
     flex: 1;
     padding: 30px;
     box-sizing: border-box;
     overflow-y: auto;
+
+    max-width: 1200px;     /* new */
+    margin: 0 auto;        /* center content */
 }
 
+/* ------------------ */
+/* SECTIONS           */
+/* ------------------ */
 .section {
     display: none;
-    animation: fadeIn 0.5s ease-in-out;
 }
 
 .section.active {
     display: block;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* ------------------ */
+/* ACCOUNT INFO       */
+/* ------------------ */
 .account-info h2 {
     color: #6a1b9a;
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 32px; /* larger, cleaner */
+    font-weight: 700;
 }
 
 .account-info form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 25px 40px; /* more elegant spacing */
 }
 
 .account-info .full-width {
@@ -214,44 +211,44 @@ header nav a:hover,
 
 .account-info label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     font-weight: bold;
     color: #333;
 }
 
 .account-info input {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #fafafa;
     box-sizing: border-box;
 }
 
 .account-info input:focus {
     border-color: #6a1b9a;
-    box-shadow: 0 0 10px rgba(106, 27, 154, 0.3);
     outline: none;
 }
 
 .account-info button {
-    padding: 12px 24px;
-    background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+    padding: 14px 26px;
+    background: #6a1b9a;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .account-info button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(106, 27, 154, 0.4);
+    background: #8e24aa;
 }
 
+/* ------------------ */
+/* TRANSACTIONS       */
+/* ------------------ */
 .transactions h2 {
     color: #6a1b9a;
     margin-bottom: 20px;
@@ -261,13 +258,13 @@ header nav a:hover,
 .transactions table {
     width: 100%;
     border-collapse: collapse;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
     overflow: hidden;
 }
 
 .transactions th {
-    background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+    background: #6a1b9a;
     color: white;
     padding: 15px;
     text-align: left;
@@ -279,19 +276,17 @@ header nav a:hover,
     border-bottom: 1px solid #eee;
 }
 
-.transactions tbody tr {
-    transition: background-color 0.3s;
-}
-
 .transactions tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
 .transactions tbody tr:hover {
     background-color: #e1bee7;
-    transform: scale(1.01);
 }
 
+/* ------------------ */
+/* LOGOUT PAGE        */
+/* ------------------ */
 .logout {
     text-align: center;
     padding: 50px;
@@ -311,16 +306,43 @@ header nav a:hover,
 
 .logout button {
     padding: 15px 30px;
-    background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+    background: #6a1b9a;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 18px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .logout button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(106, 27, 154, 0.4);
+    background: #8e24aa;
+}
+
+/* ------------------ */
+/* FOOTER             */
+/* ------------------ */
+footer {
+    background: #6a1b9a;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ------------------ */
+/* RESPONSIVE         */
+/* ------------------ */
+@media (max-width: 900px) {
+    .account-info form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 750px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        max-width: 100%;
+    }
 }

@@ -35,15 +35,17 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>My Account - Purple Yam</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/userePage.css">
 </head>
 
 <body>
+
     <header>
         <div class="logo">
             <img src="../assets/logo.png" alt="Purple Yam Logo">
             <h1>PURPLE YAM</h1>
         </div>
+
         <nav class="main-nav">
             <ul>
                 <li><a href="../index.html">Home</a></li>
@@ -52,81 +54,82 @@ $conn->close();
                 <li><a href="#" class="stores-trigger">Stores</a></li>
             </ul>
         </nav>
+
         <div class="auth-links">
-            <span>Welcome,
-                <?php echo htmlspecialchars($user['firstname']); ?>
-            </span>
-            <a href="../php/logout.php">Logout</a>
+            <span>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></span>
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="account-info section active">
-            <h2>Account Information</h2>
-            <form>
-                <div>
-                    <label>Firstname</label>
-                    <input type="text" value="<?php echo htmlspecialchars($user['firstname']); ?>" readonly>
-                </div>
-                <div>
-                    <label>Lastname</label>
-                    <input type="text" value="<?php echo htmlspecialchars($user['lastname']); ?>" readonly>
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" value="<?php echo htmlspecialchars($user['email']); ?>" readonly>
-                </div>
-                <div>
-                    <label>Contact</label>
-                    <input type="text" value="<?php echo htmlspecialchars($user['contact']); ?>" readonly>
-                </div>
-            </form>
-        </section>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li class="active" data-section="account-info">Account Information</li>
+                <li data-section="transactions">Purchase History</li>
+                <li data-section="logout">Logout</li>
+            </ul>
+        </div>
 
-        <section class="transactions section">
-            <h2>Purchase History</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order #</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (empty($orders)): ?>
-                    <tr>
-                        <td colspan="4">No orders yet.</td>
-                    </tr>
-                    <?php else: ?>
-                    <?php foreach ($orders as $order): ?>
-                    <tr>
-                        <td>
-                            <?php echo $order['id']; ?>
-                        </td>
-                        <td>
-                            <?php echo $order['order_date']; ?>
-                        </td>
-                        <td>
-                            <?php echo $order['status']; ?>
-                        </td>
-                        <td>₱
-                            <?php echo number_format($order['total'], 2); ?>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </section>
+        <main class="main-content">
 
-        <section class="logout section">
-            <h2>Logout</h2>
-            <p>Click below to end your session.</p>
-            <a href="../php/logout.php"><button>Logout</button></a>
-        </section>
-    </main>
+            <section id="account-info" class="section active account-info">
+                <h2>Account Information</h2>
+                <form>
+                    <div>
+                        <label>Firstname</label>
+                        <input type="text" value="<?php echo htmlspecialchars($user['firstname']); ?>" readonly>
+                    </div>
+                    <div>
+                        <label>Lastname</label>
+                        <input type="text" value="<?php echo htmlspecialchars($user['lastname']); ?>" readonly>
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="text" value="<?php echo htmlspecialchars($user['email']); ?>" readonly>
+                    </div>
+                    <div>
+                        <label>Contact</label>
+                        <input type="text" value="<?php echo htmlspecialchars($user['contact']); ?>" readonly>
+                    </div>
+                </form>
+            </section>
+
+            <section id="transactions" class="transactions section">
+                <h2>Purchase History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($orders)): ?>
+                        <tr><td colspan="4">No orders yet.</td></tr>
+                        <?php else: ?>
+                        <?php foreach ($orders as $order): ?>
+                        <tr>
+                            <td><?php echo $order['id']; ?></td>
+                            <td><?php echo $order['order_date']; ?></td>
+                            <td><?php echo $order['status']; ?></td>
+                            <td>₱<?php echo number_format($order['total'], 2); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="logout" class="logout section">
+                <h2>Logout</h2>
+                <p>Click below to end your session.</p>
+                <a href="../php/logout.php"><button>Logout</button></a>
+            </section>
+
+        </main>
+    </div>
 
     <footer>
         <p class="footer-bottom">© 2025 Purple Yam Bakeshop. All rights reserved.</p>
