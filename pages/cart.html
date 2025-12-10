@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.html");
+    exit();
+}
+
+include 'db_connect.php';
+
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT c.id, c.product_name, c.product_image, c.price, c.quantity 
+        FROM cart c 
+        WHERE c.user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$cart_items = [];
+while ($row = $result->fetch_assoc()) {
+    $cart_items[] = $row;
+}
+
+$stmt->close();
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,23 +46,28 @@
 
     <nav class="main-nav">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#spots-section">Menu</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="pages/order.html">Stores</a></li>
+        <li><a href="../php/index.php">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="../pages/order.html">Stores</a></li>
       </ul>
     </nav>
 
     <div class="auth-links">
-      <a href="#">
-        <img src="../assets/profile-picture.png" alt="user" class="login-trigger" />
+      <a href="../php/cart.php" class="login-trigger">
+        <img src="../assets/cart.png" alt="Cart">
       </a>
-      <a href="#" class="signup-trigger">Sign up</a>
+      <a href="../php/userPage.php">
+        <img src="../assets/profile-picture.png" alt="User" class="user-icon" />
+        <span>Account</span>
+      </a>
     </div>
   </header>
 
   <main>
     <section class="cart-section">
+      <?php if (empty($cart_items)): ?>
+      <!-- Empty cart state -->
       <div class="empty-cart-box">
         <div class="cart-illustration">
           <div class="cart-icon">🛒</div>
@@ -42,22 +76,43 @@
         <p>Browse our awesome cake deals now!</p>
         <button onclick="goShopping()" class="go-shopping-btn">Order your cravings now</button>
       </div>
-
+      <?php else: ?>
+      <!-- Cart items -->
       <div id="cart-box" class="cart-box">
+        <?php foreach ($cart_items as $item): ?>
+        <div class="cart-item">
+          <img src="../assets/<?php echo htmlspecialchars($item['product_image']); ?>"
+            alt="<?php echo htmlspecialchars($item['product_name']); ?>" />
+          <div class="item-details">
+            <h3>
+              <?php echo htmlspecialchars($item['product_name']); ?>
+            </h3>
+            <p>₱
+              <?php echo number_format($item['price'], 2); ?>
+            </p>
+            <p>Quantity:
+              <?php echo (int)$item['quantity']; ?>
+            </p>
+          </div>
+          <button class="remove-item" onclick="removeItem(<?php echo (int)$item['id']; ?>)">Remove</button>
+        </div>
+        <?php endforeach; ?>
       </div>
 
+      <!-- Cart actions -->
       <div class="cart-actions">
         <button onclick="placeOrder()">Place Selected Order</button>
         <button onclick="clearCart()">Clear Cart</button>
       </div>
+      <?php endif; ?>
     </section>
   </main>
-  <footer>
 
+  <footer>
     <p class="footer-bottom">© 2025 Purple Yam Bakeshop. All rights reserved.</p>
   </footer>
 
-  <script src="cart.js"></script>
+  <script src="../scripts/cart.js"></script>
 </body>
 
 </html>
