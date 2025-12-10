@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../index.html");
+    header("Location: ../php/account.php");
     exit();
 }
 
@@ -124,7 +124,7 @@ $conn->close();
         <section class="logout section">
             <h2>Logout</h2>
             <p>Click below to end your session.</p>
-            <a href="php/logout.php"><button>Logout</button></a>
+            <a href="../php/logout.php"><button>Logout</button></a>
         </section>
     </main>
 
