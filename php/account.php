@@ -579,7 +579,7 @@ $conn->close();
     </div>
 
     <!-- external JS -->
-    <script src="../javascripts/index.js" defer></script>
+    <script src="../javascripts/account.js" defer></script>
 </body>
 
 </html>
