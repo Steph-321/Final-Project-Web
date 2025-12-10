@@ -1,7 +1,7 @@
 <?php
 include 'db_connect.php';
 
-$usernameOrEmail = $_POST['email']; // can be email or contact
+$usernameOrEmail = $_POST['email']; 
 $password        = $_POST['password'];
 
 $sql = "SELECT * FROM users WHERE email=? OR contact=?";
@@ -14,10 +14,10 @@ if ($user = $result->fetch_assoc()) {
   if (password_verify($password, $user['password'])) {
     echo "success";
   } else {
-    echo "invalid"; // wrong password
+    echo "invalid"; 
   }
 } else {
-  echo "notfound"; // no user found
+  echo "notfound";
 }
 
 $stmt->close();

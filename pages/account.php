@@ -1,3 +1,27 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'db_connect.php';
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT firstname, lastname, email, contact FROM users WHERE id=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+$stmt->close();
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +34,7 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
+        <header>
         <div class="logo">
             <img src="assets/logo.png" alt="Purple Yam Logo" />
             <h1>PURPLE YAM</h1>
@@ -37,7 +60,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to Purple Yam</h1>
         <p>Delicious cakes and pastries made with love and the finest ingredients</p>
@@ -47,7 +69,6 @@
         </div>
     </section>
 
-    <!-- Menu Content -->
     <main id="menu">
         <section class="spots-section">
             <h2>Menu</h2>
@@ -60,7 +81,6 @@
                 <button onclick="showCategory('calamansi')">UBE CALAMANSI BARS</button>
             </nav>
 
-            <!-- Category: CLASSIC UBE CAKES -->
             <div id="ube" class="category-section">
                 <div class="spots-grid">
                     <div class="spot-card">
@@ -146,7 +166,6 @@
                 </div>
             </div>
 
-            <!-- Category: UBE BRAZO DE MERCEDES -->
             <div id="brazo" class="category-section" style="display:none;">
                 <div class="spots-grid">
                     <div class="spot-card">
@@ -174,7 +193,6 @@
                 </div>
             </div>
 
-            <!-- Category: CHOCO MOIST -->
             <div id="choco" class="category-section" style="display:none;">
                 <div class="spots-grid">
                     <div class="spot-card">
