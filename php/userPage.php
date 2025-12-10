@@ -2,11 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../index.html");
     exit();
 }
 
-include 'php/db_connect.php';
+include 'db_connect.php';
 
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT firstname, lastname, email, contact FROM users WHERE id=?";
@@ -35,20 +35,20 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>My Account - Purple Yam</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="assets/logo.png" alt="Purple Yam Logo">
+            <img src="../assets/logo.png" alt="Purple Yam Logo">
             <h1>PURPLE YAM</h1>
         </div>
         <nav class="main-nav">
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="index.php#menu">Menu</a></li>
-                <li><a href="index.php#about">About</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#menu">Menu</a></li>
+                <li><a href="../index.html#about">About</a></li>
                 <li><a href="#" class="stores-trigger">Stores</a></li>
             </ul>
         </nav>
@@ -56,7 +56,7 @@ $conn->close();
             <span>Welcome,
                 <?php echo htmlspecialchars($user['firstname']); ?>
             </span>
-            <a href="php/logout.php">Logout</a>
+            <a href="../php/logout.php">Logout</a>
         </div>
     </header>
 

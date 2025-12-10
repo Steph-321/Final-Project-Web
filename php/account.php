@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: index.html");
     exit();
 }
 
@@ -50,12 +50,12 @@ $conn->close();
         </nav>
 
         <div class="auth-links">
-            <a href="#">
-                <a href="#" class="login-trigger">
-                    <img src="../assets/cart.png" alt="Cart">
-                </a>
-                <img src="../assets/profile-picture.png" alt="user" class="../assets/cart.png" />
-                <a href="#" class="signup-trigger">Account</a>
+            <a href="#" class="login-trigger">
+                <img src="../assets/cart.png" alt="Cart">
+            </a>
+            <a href="../php/userPage.php">
+                <img src="../assets/profile-picture.png" alt="User" class="user-icon" />
+                <span>Account</span>
             </a>
         </div>
     </header>

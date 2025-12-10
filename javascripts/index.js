@@ -8,7 +8,6 @@ const mapModal = document.getElementById('mapModal');
 const loginTriggers = document.querySelectorAll('.login-trigger');
 const signupTriggers = document.querySelectorAll('.signup-trigger');
 const storesTrigger = document.querySelector('.stores-trigger');
-const menuTrigger = document.querySelector('.menu-trigger'); // nav Menu link
 
 // Forms
 const loginForm = document.getElementById('loginForm');
@@ -68,19 +67,6 @@ if (storesTrigger) {
   });
 }
 
-// Menu trigger (currently disabled product modal logic)
-// You can repurpose this to scroll to a section instead:
-if (menuTrigger) {
-  menuTrigger.addEventListener('click', e => {
-    e.preventDefault();
-    // Example: scroll to category section
-    const section = document.getElementById('ube');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-}
-
 // ===== Signup Form =====
 signupForm && signupForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -94,8 +80,7 @@ signupForm && signupForm.addEventListener('submit', e => {
         signupForm.reset();
         closeModalById('signupModal');
         openLoginModal();
-
-        // Auto-fill login email
+        
         const loginEmail = document.getElementById('index-login-email');
         const signupEmail = document.getElementById('index-signup-email');
         if (loginEmail && signupEmail) {
