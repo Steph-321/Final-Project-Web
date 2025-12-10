@@ -19,7 +19,7 @@ function openModal(title, description, imgSrc, types = []) {
       btn.onclick = () => selectType(type);
       container.appendChild(btn);
     });
-    selectType(types[0]); // default to first type
+    selectType(types[0]);
   } else {
     selectedPrice = 0;
     updatePrice();

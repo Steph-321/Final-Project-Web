@@ -4,20 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   links.forEach(link => {
     link.addEventListener("click", e => {
-      e.preventDefault(); // stop default # scroll
+      e.preventDefault();
 
-      // find the parent <li> and its data-section
       const parentLi = link.parentElement;
       const targetSectionId = parentLi.getAttribute("data-section");
 
-      // remove active class from all sidebar items
       document.querySelectorAll(".sidebar ul li").forEach(li => li.classList.remove("active"));
       parentLi.classList.add("active");
 
-      // hide all sections
       sections.forEach(section => section.classList.remove("active"));
 
-      // show the target section
       const targetSection = document.getElementById(targetSectionId);
       if (targetSection) {
         targetSection.classList.add("active");
@@ -26,20 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Grab the logout button
 const logoutBtn = document.getElementById("logoutBtn");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
     try {
-      // Call the PHP logout script
       const response = await fetch("../php/logout.php", {
         method: "GET",
         credentials: "same-origin"
       });
 
       if (response.ok) {
-        // Redirect to homepage after logout
         window.location.href = "../index.php";
       } else {
         alert("Logout failed. Please try again.");

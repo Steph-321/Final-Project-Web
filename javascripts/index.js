@@ -1,19 +1,15 @@
-// ===== Grab Elements =====
 const loginModal = document.getElementById('loginModal');
 const signupModal = document.getElementById('signupModal');
 const storesModal = document.getElementById('storesModal');
 const mapModal = document.getElementById('mapModal');
 
-// Triggers
 const loginTriggers = document.querySelectorAll('.login-trigger');
 const signupTriggers = document.querySelectorAll('.signup-trigger');
 const storesTrigger = document.querySelector('.stores-trigger');
 
-// Forms
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
-// ===== Utility Functions =====
 function openModalById(id) {
   const modal = document.getElementById(id);
   if (!modal) return;
@@ -28,7 +24,6 @@ function closeModalById(id) {
   modal.setAttribute('aria-hidden', 'true');
 }
 
-// Close buttons
 document.querySelectorAll('.close, .close-signup, .close-btn').forEach(btn => {
   btn.addEventListener('click', e => {
     const modal = e.target.closest('.modal');
@@ -39,7 +34,6 @@ document.querySelectorAll('.close, .close-signup, .close-btn').forEach(btn => {
   });
 });
 
-// ===== Nav Trigger Events =====
 loginTriggers.forEach(trigger => {
   trigger.addEventListener('click', e => {
     e.preventDefault();
@@ -67,7 +61,6 @@ if (storesTrigger) {
   });
 }
 
-// ===== Signup Form =====
 signupForm && signupForm.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(signupForm);
@@ -94,7 +87,6 @@ signupForm && signupForm.addEventListener('submit', e => {
     });
 });
 
-// ===== Login Form =====
 loginForm && loginForm.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(loginForm);
@@ -106,7 +98,7 @@ loginForm && loginForm.addEventListener('submit', e => {
         alert('Login successful!');
         loginForm.reset();
         closeModalById('loginModal');
-        localStorage.setItem('isLoggedIn', 'true'); // mark user logged in
+        localStorage.setItem('isLoggedIn', 'true'); 
         window.location.href = 'php/account.php';
       } else if (data === 'invalid') {
         alert('Incorrect password.');
@@ -118,7 +110,6 @@ loginForm && loginForm.addEventListener('submit', e => {
     });
 });
 
-// ===== Store Map =====
 function openMap(storeId) {
   const mapImage = document.getElementById('mapImage');
   const mapMap = {
@@ -142,7 +133,6 @@ function closeMap() {
   closeModalById('mapModal');
 }
 
-// ===== Helpers =====
 function openLoginModal() {
   openModalById('loginModal');
 }
@@ -150,7 +140,6 @@ function openSignupModal() {
   openModalById('signupModal');
 }
 
-// ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
   closeModalById('loginModal');
   closeModalById('signupModal');
@@ -158,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
   closeModalById('mapModal');
 });
 
-// Product script
 let currentProduct = {};
 let selectedPrice = 0;
 
@@ -180,13 +168,13 @@ function openProductModal(title, description, imgSrc, types = []) {
       btn.onclick = () => selectType(type);
       container.appendChild(btn);
     });
-    selectType(types[0]); // default to first type
+    selectType(types[0]);
   } else {
     selectedPrice = 0;
     updatePrice();
   }
 
-  openModalById('productModal'); // use generic opener
+  openModalById('productModal'); 
 }
 
 function selectType(type) {

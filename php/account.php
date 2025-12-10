@@ -270,7 +270,6 @@ $conn->close();
                 </div>
             </div>
 
-            <!-- Category: UBE CUSTARD CAKE -->
             <div id="custard" class="category-section" style="display:none;">
                 <div class="spots-grid">
                     <div class="spot-card">
@@ -298,7 +297,6 @@ $conn->close();
                 </div>
             </div>
 
-            <!-- Category: UBE CREAMCHEESE BAR -->
             <div id="creamcheese" class="category-section" style="display:none;">
                 <div class="spots-grid">
                     <div class="spot-card">
@@ -326,7 +324,6 @@ $conn->close();
                 </div>
             </div>
 
-            <!-- Category: UBE CALAMANSI BAR -->
             <div id="calamansi" class="category-section" style="display:none;">
                 <div class="spots-grid">
                     <div class="spot-card">
@@ -356,27 +353,20 @@ $conn->close();
         </section>
     </main>
 
-    <!-- Product Details Modal -->
     <div id="productModal" class="modal">
         <div class="modal-content featured-layout">
             <span class="close-btn" onclick="closeModalById('productModal')">&times;</span>
 
             <div class="modal-body">
-                <!-- Left side: image -->
                 <img id="modal-img" src="" alt="Product" class="modal-img-side">
 
-                <!-- Right side: details -->
                 <div class="modal-info">
                     <h3 id="modal-title">Purple Yam Cake</h3>
 
-                    <!-- Price (replaces type position) -->
                     <p id="action-price" class="modal-price">₱920</p>
 
-                    <!-- Description -->
                     <p id="modal-description" class="modal-description"></p>
 
-
-                    <!-- Quantity (moved to lower right) -->
                     <div class="quantity-row">
                         <label for="quantity">Qty:</label>
                         <button onclick="adjustQuantity(-1)">−</button>
@@ -384,12 +374,8 @@ $conn->close();
                         <button onclick="adjustQuantity(1)">+</button>
                     </div>
 
-                    <!-- Type buttons (moved below photo) -->
                     <div id="type-buttons" class="type-selector"></div>
-
-                    <!-- Action buttons -->
                     <div class="action-buttons">
-                        <!-- Direct Login -->
                         <button class="order-btn" onclick="addToCart()">ADD TO CART</button>
                         <button class="order-btn" onclick="addToCart()">ORDER NOW</button>
                     </div>
@@ -398,9 +384,6 @@ $conn->close();
         </div>
     </div>
 
-
-
-    <!-- Why Choose Us -->
     <section id="about" class="why">
         <h2>Why Choose Purple Yam?</h2>
         <div class="reasons">
@@ -419,7 +402,6 @@ $conn->close();
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="about">
@@ -445,7 +427,6 @@ $conn->close();
         <p class="footer-bottom">© 2025 Purple Yam Bakeshop. All rights reserved.</p>
     </footer>
 
-    <!-- Login Modal -->
     <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
         <div class="modal-content" role="document">
             <img src="../assets/logo.png" alt="Purple Yam Logo">
@@ -455,12 +436,10 @@ $conn->close();
                 <p>Sign in to continue ordering your favorite treats!</p>
 
                 <div class="form-group">
-                    <!-- <label for="login-email">Email Address</label> -->
                     <input type="email" id="index-login-email" name="email" placeholder="Email" required />
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="login-password">Password</label> -->
                     <input type="password" id="index-login-password" name="password" placeholder="Password" required />
                 </div>
 
@@ -473,48 +452,40 @@ $conn->close();
         </div>
     </div>
 
-    <!-- Sign Up Modal -->
     <div id="signupModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="signupTitle">
         <div class="modal-content" role="document">
             <img src="../assets/logo.png" alt="Purple Yam Logo">
             <button class="close-signup" aria-label="Close sign up dialog">&times;</button>
 
             <form class="signup-form" id="signupForm">
-                <!-- <h2 id="signupTitle">Create Your Purple Yam Account</h2> -->
                 <p>Join us and enjoy delicious cakes and pastries!</p>
 
                 <div class="form-group">
-                    <!-- <label for="signup-firstname">Firstname</label> -->
                     <input type="text" id="index-signup-firstname" name="firstname" placeholder="Firstname" required
                         autocomplete="firstname">
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="signup-lastname">Lastname</label> -->
                     <input type="text" id="index-signup-lastname" name="lastname" placeholder="Lastname" required
                         autocomplete="lastname">
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="signup-contact">Contact</label> -->
                     <input type="text" id="index-signup-contact" name="contact" placeholder="Phone" required
                         autocomplete="contact number">
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="signup-email">Email</label> -->
                     <input type="email" id="index-signup-email" name="email" placeholder="Email" required
                         autocomplete="email">
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="signup-password">Password</label> -->
                     <input type="password" id="index-signup-password" name="password" placeholder="Password" required
                         autocomplete="new-password">
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="signup-confirm-password">Confirm Password</label> -->
                     <input type="password" id="index-signup-confirm-password" name="confirm"
                         placeholder="Confirm password" required autocomplete="new-password">
                 </div>
@@ -578,7 +549,6 @@ $conn->close();
         </div>
     </div>
 
-    <!-- external JS -->
     <script src="../javascripts/account.js" defer></script>
 </body>
 

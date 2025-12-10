@@ -56,7 +56,7 @@ $conn->close();
         </nav>
 
         <div class="auth-links">
-            <!-- <span>Welcome, <?php echo htmlspecialchars($user['firstname']); ?></span> -->
+            <?php echo htmlspecialchars($user['firstname']); ?></span> 
         </div>
     </header>
 
@@ -72,7 +72,6 @@ $conn->close();
 
         <main class="main-content">
 
-            <!-- Account Info -->
             <section id="account-info" class="section active account-info">
                 <h2>Account Information</h2>
                 <form>
@@ -95,7 +94,6 @@ $conn->close();
                 </form>
             </section>
 
-            <!-- Purchase History -->
             <section id="transactions" class="transactions section">
                 <h2>Purchase History</h2>
                 <table>
@@ -122,7 +120,6 @@ $conn->close();
                 </table>
             </section>
 
-            <!-- Logout -->
             <section id="logout" class="logout section">
                 <h2>Logout</h2>
                 <p>Click below to end your session.</p>

@@ -1,14 +1,11 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Import Material Symbols */
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-200..200');
 
-/* Fonts & Colors */
 body {
   font-family: 'Material Symbols Outlined', sans-serif;
   line-height: 1.6;
@@ -16,7 +13,6 @@ body {
   color: #333;
 }
 
-/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -33,7 +29,7 @@ header .logo {
   gap: 0.5rem;
 }
 
-header .logo h1{
+header .logo h1 {
   font-family: 'Quicksand', sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
@@ -42,7 +38,7 @@ header .logo h1{
   margin: 0;
 }
 
-header .logo img{
+header .logo img {
   height: 35px;
   width: 35px;
   object-fit: cover;
@@ -56,7 +52,8 @@ header nav ul {
   align-items: center;
 }
 
-header nav a, .auth-links a {
+header nav a,
+.auth-links a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -64,7 +61,8 @@ header nav a, .auth-links a {
   transition: opacity 0.3s ease;
 }
 
-header nav a:hover, .auth-links a:hover {
+header nav a:hover,
+.auth-links a:hover {
   opacity: 0.8;
 }
 
@@ -121,8 +119,6 @@ header nav a:hover, .auth-links a:hover {
   box-shadow: 0 0 8px rgba(106, 27, 154, 0.4);
 }
 
-
-/* ===== Main Layout ===== */
 .order-main {
   display: flex;
   flex-wrap: wrap;
@@ -130,19 +126,18 @@ header nav a:hover, .auth-links a:hover {
   padding: 20px;
 }
 
-.info{
+.info {
   display: block;
   margin-top: 16px;
   font-weight: bold;
 }
 
-/* Delivery Box (Left) */
 .left {
   flex: 1 1 400px;
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   border: 1px solid #ccc;
 }
 
@@ -194,13 +189,12 @@ input[type="text"] {
   background: #6a1b9a;
 }
 
-/* Order List Box (Right) */
 .right {
   flex: 1 1 400px;
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   border: 1px solid #ccc;
 }
 
@@ -214,7 +208,7 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .order-list {
@@ -260,18 +254,17 @@ input[type="text"] {
 }
 
 .places {
-    color: #fff;
-    background: #6a1b9a;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    padding-left: 100px ;
+  color: #fff;
+  background: #6a1b9a;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 100px;
 
 }
 
-/* Footer */
 footer {
   background: #6a1b9a;
   color: #fff;
@@ -282,8 +275,6 @@ footer {
 .footer-bottom {
   text-align: center;
   margin-top: 1.25rem;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
 }
-
-

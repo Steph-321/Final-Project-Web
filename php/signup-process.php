@@ -7,21 +7,19 @@ $contact   = $_POST['contact'];
 $email     = $_POST['email'];
 $password  = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-// Check if email already exists
 $check = $conn->prepare("SELECT id FROM users WHERE email=?");
 $check->bind_param("s", $email);
 $check->execute();
 $check->store_result();
 
 if ($check->num_rows > 0) {
-  echo "exists"; // email already registered
+  echo "exists"; 
   $check->close();
   $conn->close();
   exit;
 }
 $check->close();
 
-// Insert new user
 $sql = "INSERT INTO users (firstname, lastname, contact, email, password) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssss", $firstname, $lastname, $contact, $email, $password);
