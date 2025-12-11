@@ -17,17 +17,15 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $stmt->close();
 
-$orders = [];
-$order_sql = "SELECT id, total, order_date FROM orders WHERE user_id=? ORDER BY order_date DESC";
-$order_stmt = $conn->prepare($order_sql);
-$order_stmt->bind_param("i", $user_id);
-$order_stmt->execute();
-$order_result = $order_stmt->get_result();
-while ($row = $order_result->fetch_assoc()) {
-    $orders[] = $row;
-}
-$order_stmt->close();
-$conn->close();
+$sql = "SELECT id, order_date, product_name, variant, quantity, unit_price, total, grand_total 
+        FROM orders 
+        WHERE user_id = ? 
+        ORDER BY order_date DESC";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +33,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>My Account - Purple Yam</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png" /> 
     <link rel="stylesheet" href="../styles/userePage.css">
 </head>
 
@@ -49,14 +48,13 @@ $conn->close();
         <nav class="main-nav">
             <ul>
                 <li><a href="account.php">Home</a></li>
-                <li><a href="account#menu">Menu</a></li>
+                <li><a href="account.php#menu">Menu</a></li>
                 <li><a href="account.php#about">About</a></li>
                 <li><a href="#" class="stores-trigger">Stores</a></li>
             </ul>
         </nav>
 
         <div class="auth-links">
-            <?php echo htmlspecialchars($user['firstname']); ?></span> 
         </div>
     </header>
 
@@ -74,24 +72,26 @@ $conn->close();
 
             <section id="account-info" class="section active account-info">
                 <h2>Account Information</h2>
-                <form>
-                    <div>
-                        <label>Firstname</label>
-                        <input type="text" value="<?php echo htmlspecialchars($user['firstname']); ?>" readonly>
-                    </div>
-                    <div>
-                        <label>Lastname</label>
-                        <input type="text" value="<?php echo htmlspecialchars($user['lastname']); ?>" readonly>
-                    </div>
-                    <div>
-                        <label>Email</label>
-                        <input type="text" value="<?php echo htmlspecialchars($user['email']); ?>" readonly>
-                    </div>
-                    <div>
-                        <label>Contact</label>
-                        <input type="text" value="<?php echo htmlspecialchars($user['contact']); ?>" readonly>
-                    </div>
+                <form action="update_account.php" method="POST">
+                <div>
+                    <label>Firstname</label>
+                    <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']); ?>" required>
+                </div>
+                <div>
+                    <label>Lastname</label>
+                    <input type="text" name="lastname" value="<?php echo htmlspecialchars($user['lastname']); ?>" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                </div>
+                <div>
+                    <label>Contact</label>
+                    <input type="text" name="contact" value="<?php echo htmlspecialchars($user['contact']); ?>" required>
+                </div>
+                <button type="submit" class="save-btn">Update Info</button>
                 </form>
+
             </section>
 
             <section id="transactions" class="transactions section">
@@ -101,24 +101,37 @@ $conn->close();
                         <tr>
                             <th>Order #</th>
                             <th>Date</th>
+                            <th>Product</th>
+                            <th>Variant</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
                             <th>Total</th>
+                            <th>Grand Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (empty($orders)): ?>
-                        <tr><td colspan="3">No orders yet.</td></tr>
+                        <?php if ($result->num_rows === 0): ?>
+                            <tr><td colspan="8">No orders yet.</td></tr>
                         <?php else: ?>
-                        <?php foreach ($orders as $order): ?>
-                        <tr>
-                            <td><?php echo $order['id']; ?></td>
-                            <td><?php echo $order['order_date']; ?></td>
-                            <td>₱<?php echo number_format($order['total'], 2); ?></td>
-                        </tr>
-                        <?php endforeach; ?>
+                            <?php while ($order = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><?php echo $order['id']; ?></td>
+                                <td><?php echo $order['order_date']; ?></td>
+                                <td><?php echo htmlspecialchars($order['product_name']); ?></td>
+                                <td><?php echo htmlspecialchars($order['variant']); ?></td>
+                                <td><?php echo (int)$order['quantity']; ?></td>
+                                <td>₱<?php echo number_format($order['unit_price'], 2); ?></td>
+                                <td>₱<?php echo number_format($order['total'], 2); ?></td>
+                                <td>₱<?php echo number_format($order['grand_total'], 2); ?></td>
+                            </tr>
+                            <?php endwhile; ?>
                         <?php endif; ?>
-                    </tbody>
+                        </tbody>
+
                 </table>
             </section>
+
+
 
             <section id="logout" class="logout section">
                 <h2>Logout</h2>

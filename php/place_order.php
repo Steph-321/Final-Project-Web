@@ -1,43 +1,49 @@
 <?php
+include("db_connect.php");
 session_start();
-include 'db_connect.php';
 
-$data = json_decode(file_get_contents("php://input"), true);
-$user_id = $_SESSION['user_id'];
-$item_ids = $data['items'];
-
-// Calculate total
-$total = 0;
-foreach ($item_ids as $cid) {
-    $sql = "SELECT price, quantity FROM cart WHERE cid=? AND user_id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $cid, $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $total += $row['price'] * $row['quantity'];
-    }
-    $stmt->close();
+if (!isset($_SESSION['user_id'])) {
+    echo "User not logged in.";
+    exit;
 }
 
-// Insert into orders
-$order_sql = "INSERT INTO orders (user_id, total, order_date) VALUES (?, ?, NOW())";
-$order_stmt = $conn->prepare($order_sql);
-$order_stmt->bind_param("id", $user_id, $total);
-$order_stmt->execute();
-$order_id = $order_stmt->insert_id;
-$order_stmt->close();
+$user_id      = $_SESSION['user_id'];
+$name         = $_POST['name'];
+$contact      = $_POST['contact'];
+$location     = $_POST['location'];
+$address      = $_POST['address'];
+$product_name = $_POST['product_name'];
+$variant      = $_POST['variant'];
+$quantity     = (int)$_POST['quantity'];
+$unit_price   = (float)$_POST['unit_price'];
+$total        = (float)$_POST['total'];
+$delivery_fee = 50.00;
+$grand_total  = $total + $delivery_fee;
+$order_date   = date("Y-m-d H:i:s");
 
-// Remove ordered items from cart
-foreach ($item_ids as $cid) {
-    $del_sql = "DELETE FROM cart WHERE cid=? AND user_id=?";
-    $del_stmt = $conn->prepare($del_sql);
-    $del_stmt->bind_param("ii", $cid, $user_id);
-    $del_stmt->execute();
-    $del_stmt->close();
+$sql = "INSERT INTO orders 
+        (user_id, product_name, variant, quantity, unit_price, total, grand_total, order_date) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("issiddds", 
+    $user_id, 
+    $product_name, 
+    $variant, 
+    $quantity, 
+    $unit_price, 
+    $total, 
+    $grand_total, 
+    $order_date
+);
+
+if ($stmt->execute()) {
+    header("Location: order.php?success=1");
+    exit;
+} else {
+    echo "Error: " . $stmt->error;
 }
 
-echo json_encode(["message" => "Order placed successfully", "order_id" => $order_id]);
-
+$stmt->close();
 $conn->close();
 ?>

@@ -29,14 +29,14 @@ $conn->close();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Purple Yam Bakeshop</title>
-    <link rel="icon" href="../Final-Project-Web/assets/logo.png" type="image/png" />
+    <link rel="icon" href="../assets/logo.png" type="image/png" />
     <link rel="stylesheet" href="../styles/style.css" />
 </head>
 
 <body>
         <header>
         <div class="logo">
-            <img src="assets/logo.png" alt="Purple Yam Logo" />
+            <img src="../assets/logo.png" alt="Purple Yam Logo" />
             <h1>PURPLE YAM</h1>
         </div>
 
@@ -50,10 +50,10 @@ $conn->close();
         </nav>
 
         <div class="auth-links">
-            <a href="cart.php">
+            <a href="order.php">
                 <img src="../assets/cart.png" alt="Cart">
             </a>
-            <a href="../php/userPage.php">
+            <a href="userPage.php">
                 <img src="../assets/profile-picture.png" alt="User" class="user-icon" />
                 <span>Account</span>
             </a>
@@ -65,7 +65,7 @@ $conn->close();
         <p>Delicious cakes and pastries made with love and the finest ingredients</p>
         <div class="hero-buttons">
             <a href="#menu" class="btn">Browse Products</a>
-            <a href="#" class="login-trigger">Learn More</a>
+            <a href="#about" class="btn">Learn More</a>
         </div>
     </section>
 
@@ -376,9 +376,9 @@ $conn->close();
 
                     <div id="type-buttons" class="type-selector"></div>
                     <div class="action-buttons">
-                        <button class="order-btn" onclick="addToCart()">ADD TO CART</button>
-                        <button class="order-btn" onclick="orderNow()">ORDER NOW</button>
+                        <button class="order-btn" onclick="redirectToOrderPage()">ORDER NOW</button>
                     </div>
+
                 </div>
             </div>
         </div>

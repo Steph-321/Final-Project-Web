@@ -33,7 +33,7 @@ if (logoutBtn) {
       });
 
       if (response.ok) {
-        window.location.href = "../index.php";
+        window.location.href = "../index.html";
       } else {
         alert("Logout failed. Please try again.");
       }

@@ -1,15 +1,4 @@
-const loginModal = document.getElementById('loginModal');
-const signupModal = document.getElementById('signupModal');
-const storesModal = document.getElementById('storesModal');
-const mapModal = document.getElementById('mapModal');
-
-const loginTriggers = document.querySelectorAll('.login-trigger');
-const signupTriggers = document.querySelectorAll('.signup-trigger');
-const storesTrigger = document.querySelector('.stores-trigger');
-
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
-
+// --- Modal Handling ---
 function openModalById(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
@@ -28,125 +17,15 @@ document.querySelectorAll('.close, .close-signup, .close-btn').forEach(btn => {
     btn.addEventListener('click', e => {
         const modal = e.target.closest('.modal');
         if (modal) {
-            modal.style.display = 'none';
-            modal.setAttribute('aria-hidden', 'true');
+            closeModalById(modal.id);
         }
     });
 });
 
-loginTriggers.forEach(trigger => {
-    trigger.addEventListener('click', e => {
-        e.preventDefault();
-        openLoginModal();
-        closeModalById('signupModal');
-        closeModalById('storesModal');
-    });
-});
+function openLoginModal() { openModalById('loginModal'); }
+function openSignupModal() { openModalById('signupModal'); }
 
-signupTriggers.forEach(trigger => {
-    trigger.addEventListener('click', e => {
-        e.preventDefault();
-        openSignupModal();
-        closeModalById('loginModal');
-        closeModalById('storesModal');
-    });
-});
-
-if (storesTrigger) {
-    storesTrigger.addEventListener('click', e => {
-        e.preventDefault();
-        openModalById('storesModal');
-        closeModalById('loginModal');
-        closeModalById('signupModal');
-    });
-}
-
-signupForm && signupForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(signupForm);
-
-    fetch('php/signup-process.php', { method: 'POST', body: formData })
-        .then(res => res.text())
-        .then(data => {
-            if (data === 'success') {
-                alert('Account created successfully!');
-                signupForm.reset();
-                closeModalById('signupModal');
-                openLoginModal();
-
-                const loginEmail = document.getElementById('index-login-email');
-                const signupEmail = document.getElementById('index-signup-email');
-                if (loginEmail && signupEmail) {
-                    loginEmail.value = signupEmail.value;
-                }
-            } else if (data === 'exists') {
-                alert('Email already registered.');
-            } else {
-                alert('Signup failed.');
-            }
-        });
-});
-
-loginForm && loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(loginForm);
-
-    fetch('php/login-process.php', { method: 'POST', body: formData })
-        .then(res => res.text())
-        .then(data => {
-            if (data === 'success') {
-                alert('Login successful!');
-                loginForm.reset();
-                closeModalById('loginModal');
-                localStorage.setItem('isLoggedIn', 'true'); // mark user logged in
-                window.location.href = 'php/account.php';
-            } else if (data === 'invalid') {
-                alert('Incorrect password.');
-            } else if (data === 'notfound') {
-                alert('No account found with that email.');
-            } else {
-                alert('Login failed.');
-            }
-        });
-});
-
-function openMap(storeId) {
-    const mapImage = document.getElementById('mapImage');
-    const mapMap = {
-        argao: '../assets/argao.png',
-        dalaguete: '../assets/dalaguete.png',
-        carcar: '../assets/carcar.png',
-        talisay: '../assets/talisay.png',
-        cebu: '../assets/cebu.png',
-        gallery: '../assets/gallery.png',
-        cordova: '../assets/cordova.png',
-        oslob: '../assets/oslob.png'
-    };
-
-    if (mapMap[storeId]) {
-        mapImage.src = mapMap[storeId];
-        openModalById('mapModal');
-    }
-}
-
-function closeMap() {
-    closeModalById('mapModal');
-}
-
-function openLoginModal() {
-    openModalById('loginModal');
-}
-function openSignupModal() {
-    openModalById('signupModal');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    closeModalById('loginModal');
-    closeModalById('signupModal');
-    closeModalById('storesModal');
-    closeModalById('mapModal');
-});
-
+// --- Product Modal ---
 let currentProduct = {};
 let selectedPrice = 0;
 
@@ -168,13 +47,13 @@ function openProductModal(title, description, imgSrc, types = []) {
             btn.onclick = () => selectType(type);
             container.appendChild(btn);
         });
-        selectType(types[0]); 
+        selectType(types[0]);
     } else {
         selectedPrice = 0;
         updatePrice();
     }
 
-    openModalById('productModal'); 
+    openModalById('productModal');
 }
 
 function selectType(type) {
@@ -184,19 +63,6 @@ function selectType(type) {
     updatePrice();
     highlightSelectedType(type.label);
 }
-
-function showCategory(categoryId) {
-    const sections = document.querySelectorAll('.category-section');
-    sections.forEach(section => {
-        section.style.display = section.id === categoryId ? 'block' : 'none';
-    });
-
-    const buttons = document.querySelectorAll('.category-tabs button');
-    buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('onclick').includes(categoryId));
-    });
-}
-
 
 function updatePrice() {
     const qty = parseInt(document.getElementById('quantity').value) || 1;
@@ -217,4 +83,25 @@ function highlightSelectedType(label) {
     buttons.forEach(btn => {
         btn.classList.toggle('active', btn.innerText === label);
     });
+}
+
+// --- Redirect to Order Page ---
+
+function redirectToOrderPage() {
+    const title = document.getElementById("modal-title").innerText;
+    const price = parseFloat(document.getElementById("action-price").innerText.replace("₱", ""));
+    const quantity = parseInt(document.getElementById("quantity").value);
+    const variant = document.querySelector(".type-btn.active")?.innerText || "";
+
+    const orderData = [{
+        title: title,
+        price: price,
+        qty: quantity,
+        type: variant
+    }];
+    
+    sessionStorage.setItem("selectedOrder", JSON.stringify(orderData));
+    alert("Redirect triggered!");
+
+    window.location.href = "order.php";
 }

@@ -924,7 +924,7 @@ html.modal-open {
 
 .action-buttons {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  justify-content: left;
+  align-items: center;
   margin-top: 10px;
 }
