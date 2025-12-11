@@ -41,7 +41,7 @@ $grand_total  = $total + $delivery_fee;
       <li><a href="account.php">Home</a></li>
       <li><a href="account.php#menu">Menu</a></li>
       <li><a href="account.php#about">About</a></li>
-      <li><a href="account.php#store" class="stores-trigger">Stores</a></li>
+      <li><a href="account.php" class="stores-trigger">Stores</a></li>
     </ul>
   </nav>
 

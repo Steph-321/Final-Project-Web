@@ -35,30 +35,30 @@ $conn->close();
 
 <body>
         <header>
-        <div class="logo">
-            <img src="../assets/logo.png" alt="Purple Yam Logo" />
-            <h1>PURPLE YAM</h1>
-        </div>
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Purple Yam Logo" />
+                <h1>PURPLE YAM</h1>
+            </div>
 
-        <nav class="main-nav">
-            <ul>
-                <li><a href="account.php">Home</a></li>
-                <li><a href="account.php#menu">Menu</a></li>
-                <li><a href="account.php#about">About</a></li>
-                <li><a href="#menu" class="stores-trigger">Stores</a></li>
-            </ul>
-        </nav>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="account.php">Home</a></li>
+                    <li><a href="account.php#menu">Menu</a></li>
+                    <li><a href="account.php#about">About</a></li>
+                    <li><a href="#" class="stores-trigger">Stores</a></li>
+                </ul>
+            </nav>
 
-        <div class="auth-links">
-            <a href="order.php">
-                <img src="../assets/cart.png" alt="Cart">
-            </a>
-            <a href="userPage.php">
-                <img src="../assets/profile-picture.png" alt="User" class="user-icon" />
-                <span>Account</span>
-            </a>
-        </div>
-    </header>
+            <div class="auth-links">
+                <a href="order.php">
+                    <img src="../assets/cart.png" alt="Cart">
+                </a>
+                <a href="userPage.php">
+                    <img src="../assets/profile-picture.png" alt="User" class="user-icon" />
+                    <span>Account</span>
+                </a>
+            </div>
+        </header>
 
     <section class="hero">
         <h1>Welcome to Purple Yam</h1>

@@ -21,6 +21,50 @@ document.querySelectorAll('.close, .close-signup, .close-btn').forEach(btn => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Existing close button logic
+  document.querySelectorAll('.close, .close-signup, .close-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const modal = e.target.closest('.modal');
+      if (modal) closeModalById(modal.id);
+    });
+  });
+
+  const storesTrigger = document.querySelector(".stores-trigger");
+  const storesModal = document.getElementById("storesModal");
+
+  if (storesTrigger && storesModal) {
+    storesTrigger.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent page jump
+      openModalById("storesModal");
+    });
+  }
+});
+
+function openMap(storeId) {
+  const mapImage = document.getElementById('mapImage');
+  const mapMap = {
+    argao: '../assets/argao.png',
+    dalaguete: '../assets/dalaguete.png',
+    carcar: '../assets/carcar.png',
+    talisay: '../assets/talisay.png',
+    cebu: '../assets/cebu.png',
+    gallery: '../assets/gallery.png',
+    cordova: '../assets/cordova.png',
+    oslob: '../assets/oslob.png'
+  };
+
+  if (mapMap[storeId]) {
+    mapImage.src = mapMap[storeId];
+    openModalById('mapModal');
+  }
+}
+
+function closeMap() {
+  closeModalById('mapModal');
+}
+
+
 function openLoginModal() { openModalById('loginModal'); }
 function openSignupModal() { openModalById('signupModal'); }
 
@@ -103,3 +147,25 @@ function redirectToOrderPage() {
 
     window.location.href = "order.php";
 }
+
+// --- Category Tabs ---
+function showCategory(categoryId) {
+  // Hide all category sections
+  const sections = document.querySelectorAll('.category-section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Show the selected category
+  const selected = document.getElementById(categoryId);
+  if (selected) {
+    selected.style.display = 'block';
+  }
+
+  // Highlight the active tab
+  const buttons = document.querySelectorAll('.category-tabs button');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(categoryId));
+  });
+}
+

@@ -50,7 +50,7 @@ $result = $stmt->get_result();
                 <li><a href="account.php">Home</a></li>
                 <li><a href="account.php#menu">Menu</a></li>
                 <li><a href="account.php#about">About</a></li>
-                <li><a href="#" class="stores-trigger">Stores</a></li>
+                <li><a href="account.php" class="stores-trigger">Stores</a></li>
             </ul>
         </nav>
 
