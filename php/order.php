@@ -59,7 +59,7 @@ $grand_total  = $total + $delivery_fee;
 <main class="order-main">
   <form action="place_order.php" method="POST">
     <section class="left">
-      <h2>Delivery: Schedule for later &gt;</h2>
+      <h2>Delivery Information</h2>
       <div class="info">
         <label for="name">Name</label>
         <input type="text" name="name" placeholder="Full Name" required />
