@@ -82,7 +82,6 @@ $grand_total  = $total + $delivery_fee;
           <li id="order-summary">No product selected yet.</li>
         </ul>
 
-        <!-- Hidden fields for backend -->
         <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product_name); ?>" />
         <input type="hidden" name="variant" value="<?php echo htmlspecialchars($variant); ?>" />
         <input type="hidden" name="quantity" value="<?php echo $quantity; ?>" />
@@ -122,11 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const orderData = JSON.parse(sessionStorage.getItem("selectedOrder") || "[]");
   if (orderData.length > 0) {
     const item = orderData[0];
-    // Update summary
+    
     document.getElementById("order-summary").innerText =
       `${item.title} – ${item.type} (x${item.qty})`;
 
-    // Fill hidden inputs
     document.querySelector("input[name='product_name']").value = item.title;
     document.querySelector("input[name='variant']").value = item.type;
     document.querySelector("input[name='quantity']").value = item.qty;
@@ -134,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("input[name='total']").value = item.price * item.qty;
     document.querySelector("input[name='grand_total']").value = (item.price * item.qty) + 50;
 
-    // Update totals display
     document.getElementById("total-display").value = `₱${(item.price * item.qty).toFixed(2)}`;
     document.getElementById("grand-total-display").value = `₱${((item.price * item.qty) + 50).toFixed(2)}`;
   }

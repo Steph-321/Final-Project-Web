@@ -1,4 +1,3 @@
-// --- Modal Handling ---
 function openModalById(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
@@ -86,7 +85,6 @@ function highlightSelectedType(label) {
 }
 
 // --- Redirect to Order Page ---
-
 function redirectToOrderPage() {
     const title = document.getElementById("modal-title").innerText;
     const price = parseFloat(document.getElementById("action-price").innerText.replace("₱", ""));
